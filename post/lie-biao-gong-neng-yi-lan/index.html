@@ -1,84 +1,80 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>列表(list)使用指南 | Terena&#39;s Blog</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633337819344">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+<meta charset="utf-8" >
+
+<title>列表(list)使用指南 | 停云轩</title>
+<meta name="description" content="乘风好去，长空万里，直下看山河。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633337980730">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="列表(list)使用指南 | Terena&#39;s Blog - Atom Feed" href="https://CTerena.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="Referenced sourse : Charpter 4&amp;8 from 《Learning Python, Fourth Edition》
-总述🎐：
-列表是Python中最具灵活性的有序集合对象类型，可以包含任意种类的对象：数..." />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633337819344" alt="">
-  </a>
-  <h1 class="site-title">
-    Terena&#39;s Blog
-  </h1>
-  <p class="site-description">
-    乘风好去，长空万里，直下看山河。
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://CTerena.github.io">
+        <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633337980730" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://CTerena.github.io">
+        <h1 class="site-title">停云轩</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              列表(list)使用指南
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-10-04
-              </span>
-              <span>
-                4 min read
-              </span>
-              
-            </div>
+          
+          <h2 class="post-title">列表(list)使用指南</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-10-04</span>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>Referenced sourse : Charpter 4&amp;8 from 《Learning Python, Fourth Edition》</p>
+          </div>
+          <div class="post-content">
+            <p>Referenced sourse : Charpter 4&amp;8 from 《Learning Python, Fourth Edition》</p>
 <h2 id="总述"><strong>总述🎐：</strong></h2>
 <p>列表是Python中最具灵活性的有序集合对象类型，可以包含任意种类的对象：数字、字符串甚至是其它列表。<br>
 列表是可变对象，支持在原位置修改元素的操作，可以通过偏移值、分片、列表方法调用、删除语句等方法实现</p>
@@ -122,88 +118,57 @@
 <p><code>del L[1]</code> 同为删去列表中第二个元素 ——&gt; L = ['a', 'c', 'd', 'e', 'f']</p>
 <p><code>del L[1:]</code> 删去列表中的第二至最后一个元素 ——&gt; L = ['a']</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E6%80%BB%E8%BF%B0"><strong>总述🎐：</strong></a></li>
-</ul>
-</li>
-<li><a href="#part-1-%E5%88%9B%E5%BB%BA%E5%88%97%E8%A1%A8">Part 1 : 创建列表 📐</a></li>
-<li><a href="#part-2-%E5%9F%BA%E6%9C%AC%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C">Part 2 ： 基本列表操作 🎉</a></li>
-<li><a href="#part-3-%E7%B4%A2%E5%BC%95-%E5%88%86%E7%89%87%E4%B8%8E%E7%9F%A9%E9%98%B5">Part 3 : 索引、分片与矩阵 📙</a></li>
-<li><a href="#part-4-%E5%9C%A8%E5%8E%9F%E4%BD%8D%E7%BD%AE%E4%BF%AE%E6%94%B9%E5%88%97%E8%A1%A8">Part 4 : 在原位置修改列表📫</a></li>
-<li><a href="#part-5-%E5%85%B6%E5%AE%83%E5%B8%B8%E8%A7%81%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C">Part 5 : 其它常见列表操作 🍕</a></li>
-</ul>
-
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
 
         
           <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://CTerena.github.io/post/zhi-shi-dian-yu-yi-cuo-dian-zong-jie-lecture1-lecture4/">
+            <a class="purple-link" href="https://CTerena.github.io/post/zhi-shi-dian-yu-yi-cuo-dian-zong-jie-lecture1-lecture4/">
               <h3 class="post-title">
-                Summary：lecture1-lecture4
+                下一篇：Summary：lecture1-lecture4
               </h3>
             </a>
           </div>
-        
+          
+      </div>
 
-        
+      
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+      <div class="site-footer">
+  <div class="slogan">乘风好去，长空万里，直下看山河。</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-      </div>
+
     </div>
+    <script type="application/javascript">
 
-    <script>
-      hljs.initHighlightingOnLoad()
+hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+</script>
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
   </body>
 </html>

@@ -1,120 +1,109 @@
+
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Terena&#39;s Blog</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633337819344">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+<meta charset="utf-8" >
+
+<title>停云轩</title>
+<meta name="description" content="乘风好去，长空万里，直下看山河。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633337980730">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Terena&#39;s Blog - Atom Feed" href="https://CTerena.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="乘风好去，长空万里，直下看山河。" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633337819344" alt="">
-  </a>
-  <h1 class="site-title">
-    Terena&#39;s Blog
-  </h1>
-  <p class="site-description">
-    乘风好去，长空万里，直下看山河。
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://CTerena.github.io">
+        <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633337980730" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://CTerena.github.io">
+        <h1 class="site-title">停云轩</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        
+        
+<section class="post-item">
+    <div class="content">
       <a href="https://CTerena.github.io/post/numpy-ku-shi-yong-zhi-nan/">
         <h2 class="post-title">Numpy库使用指南</h2>
       </a>
-      <div class="post-info">
-        <span>
-          2021-10-04
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-      </div>
-      
       <div class="post-abstract">
         
       </div>
-    </article>
-  
-    <article class="post">
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-10-04</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
       <a href="https://CTerena.github.io/post/lie-biao-gong-neng-yi-lan/">
         <h2 class="post-title">列表(list)使用指南</h2>
       </a>
-      <div class="post-info">
-        <span>
-          2021-10-04
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-      </div>
-      
       <div class="post-abstract">
         
       </div>
-    </article>
-  
-    <article class="post">
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-10-04</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
       <a href="https://CTerena.github.io/post/zhi-shi-dian-yu-yi-cuo-dian-zong-jie-lecture1-lecture4/">
         <h2 class="post-title">Summary：lecture1-lecture4</h2>
       </a>
-      <div class="post-info">
-        <span>
-          2021-10-04
-        </span>
-        <span>
-          6 min read
-        </span>
-        
-          <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
-            # Python
-          </a>
-        
-      </div>
-      
       <div class="post-abstract">
         <p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
 <strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
@@ -132,25 +121,68 @@ black)</li>
 </blockquote>
 
       </div>
-    </article>
-  
-</div>
-
-    
-        <div class="pagination-container">
-  
-  
-</div>
-
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-10-04</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://CTerena.github.io/tag/200FfDP2C/">
+                Python
+                
+              </a>
+            
+          </span>
+        
       </div>
     </div>
+    
+  </section>
+
+
+<div class="pagination-container">
+  
+  
+</div>
+
+
+      </div>
+
+      <div class="site-footer">
+  <div class="slogan">乘风好去，长空万里，直下看山河。</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
   </body>
 </html>
