@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-04T09:13:58.788Z</updated>
+    <updated>2021-10-04T09:16:07.393Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -190,7 +190,7 @@ print(a[1,2]) # 10
         <summary type="html"><![CDATA[<p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
 <strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
 <strong>列表的知识归纳另附一份文件💁‍♂</strong></p>
-<h1 id="part1程序中的基本元素from-silde">Part1.程序中的基本元素（from silde)🏐:</h1>
+<h1 id="part1-程序中的基本元素from-silde">Part1 : 程序中的基本元素（from silde)🏐:</h1>
 <blockquote>
 <ul>
 <li>1.literals - Numbers and the text strings (blue and<br>
@@ -205,7 +205,7 @@ black)</li>
         <content type="html"><![CDATA[<p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
 <strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
 <strong>列表的知识归纳另附一份文件💁‍♂</strong></p>
-<h1 id="part1程序中的基本元素from-silde">Part1.程序中的基本元素（from silde)🏐:</h1>
+<h1 id="part1-程序中的基本元素from-silde">Part1 : 程序中的基本元素（from silde)🏐:</h1>
 <blockquote>
 <ul>
 <li>1.literals - Numbers and the text strings (blue and<br>
@@ -217,7 +217,7 @@ black)</li>
 </ul>
 </blockquote>
 <!-- more -->
-<h1 id="part2运算符operators">Part2.运算符operators🏉</h1>
+<h1 id="part2-运算符operators">Part2 : 运算符operators🏉</h1>
 <ul>
 <li>+-*</li>
 <li>exponentiation: **（乘方）</li>
@@ -227,7 +227,7 @@ black)</li>
 <li>*bitwise  left shift: <<(二进制下全体左移一位)</li>
 <li>*bitwise right shift: >>(二进制下全体右移一位)</li>
 <p>补充：在使用运算符对变量进行赋值时有两种常用语法：1. <code>a += b</code> 2. <code>a = a + b</code>两种语法效果相同</p>
-<h1 id="part3数字类型">Part3.数字类型🤹‍♀</h1>
+<h1 id="part3-数字类型">Part3 : 数字类型🤹‍♀</h1>
 <pre><code>1. 整型(int) : 不限大小、正负的整数
 2. 浮点数(float): 带有“.”的非复数数字类型
 3. 复数(complex): 由实部虚部两部分组成，如3+5j 
@@ -237,7 +237,7 @@ black)</li>
 (复数的实部虚部查询：print( x.real ) print( x.imag )
 (可直接用类似 a=1+1j的语句创建复数变量，也可用a=complex(x,y)的函数方法，后者a=x+yj
 </code></pre>
-<h1 id="part4字符串">Part4.字符串🥁</h1>
+<h1 id="part4-字符串">Part4 : 字符串🥁</h1>
 <p>1：创建字符串：将字符串内容置于单引号，双引号或三引号中<br>
 #注意: 当字符串本身含有引号时，最外层的引号应与内层引号相异，否则会报错👿<br>
 如：创建字符串I‘m good 需用双引号: <code>s = “I’m good”</code><br>
@@ -283,7 +283,7 @@ l.upper()
 print(l)
 </code></pre>
 <p>输出结果仍为 'abc' 这是因为字符串与列表不同，不支持在原位置上直接修改某些字符，若想储存修改结果，可将该操作放入赋值语句：<code>s = l.upper()</code>也可以对自身进行迭代：<code>l = l.upper()</code></p>
-<h1 id="part5占位符">Part5.占位符🎪</h1>
+<h1 id="part5-占位符">Part5 : 占位符🎪</h1>
 <pre><code> 使用格式为：’占位符’ % 变量 e.g：’%d’ % a 其意义在于单引号内输入直接变量不能转化为变量对应的值，故用占位符占据变量位置，再于后面列出应出现在占位符位置的变量
  注意：当同时使用多个占位符时，变量全部置于括号内，以逗号隔开 							 e.g: ‘%d%d’ % (a,b)
 </code></pre>
@@ -292,7 +292,7 @@ print(l)
 	<li>  %i %d : 整数</li>
 	 <li>  %f : 浮点数，常见地，%.3f表示保留浮点数三位小数（其它数值同理）</li>
     <li>  %s：字符串 </li>
-<h1 id="part6逻辑运算例题quiz03-2">Part6.逻辑运算（例题：quiz03-2）🎯</h1>
+<h1 id="part6-逻辑运算例题quiz03-2">Part6 : 逻辑运算（例题：quiz03-2）🎯</h1>
 <pre><code>布尔变量：True 或 False 
 e.g: a = (3 &gt; 2) 则 a = True ；a = (3 &lt; 2) 则 a = False
 </code></pre>
