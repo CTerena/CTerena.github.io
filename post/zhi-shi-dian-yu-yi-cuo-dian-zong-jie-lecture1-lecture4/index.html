@@ -1,0 +1,291 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Summary：lecture1-lecture4 | Terena&#39;s Blog</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633333425960">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Summary：lecture1-lecture4 | Terena&#39;s Blog - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="*代表该内容未曾出现在试题中，可选择性了解😎
+若对任何操作未完全理解，建议自己在Spyder中尝试😃
+列表的知识归纳另附一份文件💁‍♂
+程序中的基本元素（from silde):
+
+
+1.literals - Numbers and ..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633333425960" alt="">
+  </a>
+  <h1 class="site-title">
+    Terena&#39;s Blog
+  </h1>
+  <p class="site-description">
+    乘风好去，长空万里，直下看山河。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Summary：lecture1-lecture4
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-04
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
+<strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
+<strong>列表的知识归纳另附一份文件💁‍♂</strong></p>
+<h1 id="程序中的基本元素from-silde">程序中的基本元素（from silde):</h1>
+<blockquote>
+<ul>
+<li>1.literals - Numbers and the text strings (blue and<br>
+black)</li>
+<li>2.operators - like + and = to calculate values</li>
+<li>3.names – functions and variables like print and C</li>
+<li>4.comments - # anything behind is not interpreted by python</li>
+<li>5.keywords - e.g., assert</li>
+</ul>
+</blockquote>
+<!-- more -->
+<h1 id="运算符operators">运算符operators:</h1>
+<ul>
+<li>	+-*/</li>
+<li>exponentiation: **（乘方）</li>
+<li>	modulus: %(取模，相当于取除法的余数 e.g: 5 % 3 = 2)</li>
+<li>	floor division //（向下取整）</li>
+<li>*XOR: ^(异或运算 a^b时a与b被转化成二进制，每一位若相等则在该位返回0，反之返回1，最后转化回十进制作为结果</li>
+<li>*bitwise  left shift: <<(二进制下全体左移一位)</li>
+<li>*bitwise right shift: >>(二进制下全体右移一位)</li>
+<p>补充：在使用运算符对变量进行赋值时有两种常用语法：1.' a += b' 2. 'a = a + b'两种语法效果相同</p>
+<h1 id="数字类型">数字类型：</h1>
+<pre><code>1. 整型(int) : 不限大小、正负的整数
+2. 浮点数(float): 带有“.”的非复数数字类型
+3. 复数(complex): 由实部虚部两部分组成，如3+5j 
+</code></pre>
+<!-- more -->
+<pre><code>特殊地：1.0 、2.0 、8.0等属于浮点数，1 + 0j 属于复数
+(复数的实部虚部查询：print( x.real ) print( x.imag )
+(可直接用类似 a=1+1j的语句创建复数变量，也可用a=complex(x,y)的函数方法，后者a=x+yj
+</code></pre>
+<h1 id="字符串">字符串：</h1>
+<p>1：创建字符串：将字符串内容置于单引号，双引号或三引号中<br>
+#注意: 当字符串本身含有引号时，最外层的引号应与内层引号相异，否则会报错👿<br>
+如：创建字符串I‘m good 需用双引号: s = “I’m good”<br>
+*小技巧：如果不想考虑引号的选择，可以在字符串中的每个引号前打上”\”字符，”\”字符后的引号不会引起冲突 e.g: s = ‘I\‘m good’（因使用了\，可在最外层用单引号）</p>
+<p>2：index：字符串中单个字符的标号<br>
+标号规则：左至右：从0开始——0，1，2，3，4……<br>
+右至左：从-1开始——-1，-2，-3……<br>
+标号使用：给出标号返回字符：s<a href="%E8%BF%94%E5%9B%9Es%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%AD%97%E7%AC%A6">2</a><br>
+给出字符求标号（左起第一处出现）：s.index(a)（返回第一个’a’的位置）</p>
+<p>3：silcing切片，按指定规则提取字符串的一部分</p>
+<pre><code> 设s = ‘abcdefg’
+
+ s[2:5]：s的第3—5个字符：cde
+
+ s[:6]：s的第7个字符前所有的字符：abcde
+
+ s[2:]：s的第3个字符后所有的字符：defg
+
+ s[0:-1]：-1相当于最后一个字符，即相当于6：abcdef
+
+ s[ : ]：啥也没干:abcdefg
+</code></pre>
+<p>4：常用操作：</p>
+<pre><code> len(s)：求字符串长度（字符数，包括空格）
+
+ .find(str)：找到字符串中第一个出现的str，返回其起始字母的标号
+
+ .upper()/.lower()：字母大写化/小写化
+
+ .count(str)：统计字符串中str出现了多少次
+
+ .replace(str1,str2)：将字符串中的str1替换为str2
+
+ .strip()：去除字符串开头结尾的空格
+
+ .isdigit()/.isalpha()：判定字符串是否仅由数字/字母组成
+
+ .islower()/.isupper()：判定字符串是否全为大写/小写
+</code></pre>
+<h1 id="占位符">占位符:</h1>
+<pre><code> 使用格式为：’占位符’ % 变量 e.g：’%d’ % a 其意义在于单引号内输入直接变量不能转化为变量对应的值，故用占位符占据变量位置，再于后面列出应出现在占位符位置的变量
+ 注意：当同时使用多个占位符时，变量全部置于括号内，以逗号隔开 							 e.g: ‘%d%d’ % (a,b)
+</code></pre>
+<p>占位符中%后的不同字母对应不同类型的变量：</p>
+<ul>
+	<li>  %i %d : 整数</li>
+	 <li>  %f : 浮点数，常见地，%.3f表示保留浮点数三位小数（其它数值同理）</li>
+    <li>  %s：字符串 </li>
+<h1 id="逻辑运算例题quiz03-2">逻辑运算：（例题：quiz03-2）</h1>
+<pre><code>布尔变量：True 或 False 
+e.g: a = (3 &gt; 2) 则 a = True ；a = (3 &lt; 2) 则 a = False
+</code></pre>
+<p><strong>布尔变量的意义在于帮助程序判定某种情况下是否满足某种条件，以进行后续操作的选择</strong></p>
+<pre><code> and 运算符：当两边的布尔变量都为True 时为True，否则为False
+ e.g：(8 &gt; 3) and (2 &lt; 6) == True ；(7 &gt; 4) and (8 == 9) == False
+
+ or 运算符：当两边的布尔变量至少有一个为True时为True，否则为False
+ e.g：(7 &gt; 4) or (8 == 9) ==True ；(8 &lt; 1) or (1 == 4) == False
+
+ not 运算符：将后接的布尔变量反转
+ e.g：not True == False ；not False == True
+</code></pre>
+<!-- more -->
+<pre><code> 其它操作：
+1.指示输入：input() 使用方法：a = input()，也可a = input(‘请输入一个数字：’)单引号内可书写任意内容。
+ **注意：input得到的任何输入都属于字符串类型，若想将其转化为整数，可进行如下操作：**
+                a = int( input(‘请输入一个整数：’) ) ；b = float( input() )
+2.range：(a,b,c)表示从a至b-1，每隔c个取一个，其中c可不写，不写时默认为1
+3.循环中的continue 与 break：continue 会令程序直接进入下一次循环，break则令程序终止循环
+4.注释：井号为单行注释，三个双引号可进行多行注释
+</code></pre>
+<p>🤗<br>
+# 注意：<br>
+1.变量命名：变量名仅能由数字、大小写字母、下划线_组成，且不能以数字开头<br>
+2.区分 &quot;=&quot; 与 &quot;==&quot; ， 前者表示赋值，后者表示判定两端是否相同<br>
+3.使用if 、while、for和函数时记得加引号<br>
+4.注意运算符的优先级：括号&gt;乘方&gt;乘除&gt;加减</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0from-silde">程序中的基本元素（from silde):</a></li>
+<li><a href="#%E8%BF%90%E7%AE%97%E7%AC%A6operators">运算符operators:</a></li>
+<li><a href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B">数字类型：</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串：</a></li>
+<li><a href="#%E5%8D%A0%E4%BD%8D%E7%AC%A6">占位符:</a></li>
+<li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E4%BE%8B%E9%A2%98quiz03-2">逻辑运算：（例题：quiz03-2）</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
