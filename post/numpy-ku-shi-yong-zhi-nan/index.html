@@ -1,0 +1,274 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Numpy库使用指南 | Terena&#39;s Blog</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633337819344">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Numpy库使用指南 | Terena&#39;s Blog - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具
+Part 1 : array数组🤠
+import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633337819344" alt="">
+  </a>
+  <h1 class="site-title">
+    Terena&#39;s Blog
+  </h1>
+  <p class="site-description">
+    乘风好去，长空万里，直下看山河。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Numpy库使用指南
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-04
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
+<h1 id="part-1-array数组">Part 1 : array数组🤠</h1>
+<p><code>import numpy as np</code>  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调用函数<br>
+<code>import random</code></p>
+<p>·a = np.array([1,2,3])` 创建一个一维数组</p>
+<p><code>print(a.shape)</code> <strong>输出：</strong>(3,)代表该数组代表三列一行的矩阵<br>
+<code>print(a[0],a[1],a[2])</code> <strong>输出：</strong>&quot;1 2 3&quot;<br>
+<code>a[0] = 4</code> <strong>支持原位置修改</strong></p>
+<pre><code class="language-cpp">a = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9]])#创建一个多维数组对象，注意在列表元素的最外侧用方括号括死
+</code></pre>
+<p><code>print(a.shape)</code> <strong>输出：</strong>(3,3)<br>
+<code>print(a[2][1],a[1][1],a[0][2])</code> <strong>输出：</strong>&quot;8 5 3&quot;</p>
+<h1 id="part-2-numpy库提供的数组创建函数">Part 2 : Numpy库提供的数组创建函数🥋</h1>
+<p><code>a = np.zeros((2,3))</code> 创建一个二行三列的全零数组<br>
+<code>print(a)</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">    [[0. 0. 0.]
+     [0. 0. 0.]]
+</code></pre>
+<p><code>a = np.ones((1,4))</code>  创建一个一行四列的全一数组<br>
+<code>print(a)</code> 输出： [1. 1. 1. 1]</p>
+<p><code>a = np.full((3,2),7)</code>  创建一个三行二列，全为7的数组<br>
+<code>print(a)</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">   [[7 7]
+    [7 7]
+    [7 7]]
+</code></pre>
+<p><code>a = np.eye(3)</code>  创建一个3维单位矩阵<br>
+<code>print(a)</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+</code></pre>
+<p><code>a = np.random.random((3,2))</code> 创建一个随机数组成的矩阵<br>
+<code>print(a)</code><br>
+<strong>输出：</strong>(一个随机矩阵)</p>
+<pre><code class="language-cpp">[[0.81083542 0.78030703]
+ [0.28447308 0.0237447 ]
+ [0.20348505 0.34019911]] 
+</code></pre>
+<h1 id="part-3-数组索引">Part 3 : 数组索引 🤾‍♀</h1>
+<p><code>a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])</code><br>
+<code>b = a[:2,1:3]</code><br>
+<code>print(b)</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[2 3]
+ [6 7]]
+</code></pre>
+<p><code>b = a[1:,:4]</code><br>
+<code>print(b)</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[ 5  6  7  8]
+ [ 9 10 11 12]]
+</code></pre>
+<p><strong>注意！当修改从原数组切片产生的新数组中的元素时，原数组的同一个元素会被同步修改</strong><br>
+如下：</p>
+<pre><code class="language-cpp">print(a[1,2]) # 7
+b[0,2] = 10
+print(a[1,2]) # 10
+</code></pre>
+<p><strong>该例说明：使用切片索引到numpy数组时，生成的数组将绑定为原数组的子数组</strong><br>
+<strong>不同于对列表进行切片时得到一个独立的新列表</strong></p>
+<h1 id="布尔数组索引">布尔数组索引</h1>
+<p><code>bool_idx = (a&gt;2)</code>  返回一个由布尔类型组成的矩阵<br>
+<code>print(bool_idx)</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[False False  True  True]
+ [ True  True  True  True]
+ [ True  True  True  True]]
+</code></pre>
+<p><code>print(a[a&gt;2])</code>  输出a中所有大于二的元素</p>
+<h1 id="part-4-数组中的数学">Part 4 : 数组中的数学🏄‍♀</h1>
+<p><code>x = np.array([[1,2],[3,4]])</code><br>
+<code>y = np.array([[5,6],[7,8]])</code></p>
+<p><code>print(x + y)</code><br>
+<code>print(np.add(x,y))</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[ 6  8]
+ [10 12]] 加法
+</code></pre>
+<p><code>print(y - x)</code><br>
+<code>print(np.subtract(y,x))</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[4 4]
+ [4 4]] 减法
+</code></pre>
+<p><code>print(x * y)</code><br>
+<code>print(np.multiply(x,y))</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[ 5 12]
+ [21 32]] 乘法
+</code></pre>
+<p><code>print(x / y)</code><br>
+<code>print(np.divide(x,y))</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[0.2        0.33333333]
+ [0.42857143 0.5       ]] 除法
+</code></pre>
+<p><code>print(np.sqrt(x))</code><br>
+<strong>输出：</strong></p>
+<pre><code class="language-cpp">[[1.         1.41421356]
+ [1.73205081 2.        ]] 开方
+</code></pre>
+<p><code>print(np.sum(x))</code> **输出：**10   全部元素加和<br>
+<code>print(np.sum(x,axis = 0))</code> <strong>输出：</strong>[4,6]   将每一列加和<br>
+<code>print(np.sum(x,axis = 1))</code> <strong>输出：</strong>[3,7]   将每一行加和<br>
+<code>print(np.sum(x,axis = 2))</code> #将会报错</p>
+<h1 id="part-5-广播">Part 5 : 广播 🚴</h1>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#part-1-array%E6%95%B0%E7%BB%84">Part 1 : array数组🤠</a></li>
+<li><a href="#part-2-numpy%E5%BA%93%E6%8F%90%E4%BE%9B%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">Part 2 : Numpy库提供的数组创建函数🥋</a></li>
+<li><a href="#part-3-%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">Part 3 : 数组索引 🤾‍♀</a></li>
+<li><a href="#%E5%B8%83%E5%B0%94%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">布尔数组索引</a></li>
+<li><a href="#part-4-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6">Part 4 : 数组中的数学🏄‍♀</a></li>
+<li><a href="#part-5-%E5%B9%BF%E6%92%AD">Part 5 : 广播 🚴</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/lie-biao-gong-neng-yi-lan/">
+              <h3 class="post-title">
+                列表(list)使用指南
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
