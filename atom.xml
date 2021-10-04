@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-04T09:16:07.393Z</updated>
+    <updated>2021-10-04T12:24:20.503Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -20,7 +20,7 @@
 <h1 id="part-1-array数组">Part 1 : array数组🤠</h1>
 <p><code>import numpy as np</code>  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调用函数<br>
 <code>import random</code></p>
-<p>·a = np.array([1,2,3])` 创建一个一维数组</p>
+<p><code>a = np.array([1,2,3])</code> 创建一个一维数组</p>
 <p><code>print(a.shape)</code> <strong>输出：</strong>(3,)代表该数组代表三列一行的矩阵<br>
 <code>print(a[0],a[1],a[2])</code> <strong>输出：</strong>&quot;1 2 3&quot;<br>
 <code>a[0] = 4</code> <strong>支持原位置修改</strong></p>
