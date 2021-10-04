@@ -1,80 +1,84 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
-<title>Numpy库使用指南 | 停云轩</title>
-<meta name="description" content="乘风好去，长空万里，直下看山河。">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633338171557">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Numpy库使用指南 | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633338386499">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Numpy库使用指南 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-
+    <meta name="description" content="Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具
+Part 1 : array数组🤠
+import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://CTerena.github.io">
-        <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633338171557" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://CTerena.github.io">
-        <h1 class="site-title">停云轩</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633338386499" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    乘风好去，长空万里，直下看山河。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          
-          <h2 class="post-title">Numpy库使用指南</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2021-10-04</span>
+          <article class="post">
+            <h2 class="post-title">
+              Numpy库使用指南
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-04
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
             
-          </div>
-          <div class="post-content">
-            <p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
 <h1 id="part-1-array数组">Part 1 : array数组🤠</h1>
 <p><code>import numpy as np</code>  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调用函数<br>
 <code>import random</code></p>
@@ -187,57 +191,84 @@ print(a[1,2]) # 10
 <code>print(np.sum(x,axis = 2))</code> #将会报错</p>
 <h1 id="part-5-广播">Part 5 : 广播 🚴</h1>
 
-          </div>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#part-1-array%E6%95%B0%E7%BB%84">Part 1 : array数组🤠</a></li>
+<li><a href="#part-2-numpy%E5%BA%93%E6%8F%90%E4%BE%9B%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">Part 2 : Numpy库提供的数组创建函数🥋</a></li>
+<li><a href="#part-3-%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">Part 3 : 数组索引 🤾‍♀</a></li>
+<li><a href="#%E5%B8%83%E5%B0%94%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">布尔数组索引</a></li>
+<li><a href="#part-4-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6">Part 4 : 数组中的数学🏄‍♀</a></li>
+<li><a href="#part-5-%E5%B9%BF%E6%92%AD">Part 5 : 广播 🚴</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://CTerena.github.io/post/lie-biao-gong-neng-yi-lan/">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/lie-biao-gong-neng-yi-lan/">
               <h3 class="post-title">
-                下一篇：列表(list)使用指南
+                列表(list)使用指南
               </h3>
             </a>
           </div>
-          
-      </div>
+        
 
-      
+        
 
-      <div class="site-footer">
-  <div class="slogan">乘风好去，长空万里，直下看山河。</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">RSS</a>
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
 
-
+      </div>
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script>
+      hljs.initHighlightingOnLoad()
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-</script>
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
-
+    </script>
   </body>
 </html>
