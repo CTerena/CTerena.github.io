@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-07T08:19:37.068Z</updated>
+    <updated>2021-10-07T08:26:28.298Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -16,20 +16,25 @@
         <link href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/">
         </link>
         <updated>2021-10-07T05:29:17.000Z</updated>
-        <summary type="html"><![CDATA[<p>概述：文件是计算机中由操作系统管理的具有名字的存储区域<br>
-借助Python内置的open函数，我们可通过程序对计算机上已有的文件进行读写，也可以创建新文件并赋予其任意内容</p>
-<h1 id="part-1-打开文件">Part 1. 打开文件🚗</h1>
-<p> 操作：<code>myfile = open('file.txt','r')</code><br>
- 为了打开一个文件，程序要调用open函数，内部参数首先是文件名，接着是处理模式。处理模式中，<code>'r'</code>代表输入打开文件，<code>'w'</code>代表输出生成并打开文件，<code>'a'</code>代表在打开文件并在文件尾部追加内容，若想对一个文件同时进行读写操作，可使用<code>'r+'</code>。若不填写处理模式，则默认为<code>'r'</code><br>
-<strong>注意：关闭文件：<code>myfile.close()</code>调用close函数将会终止对外部文件的链接，手动关闭文件不是必要的，但是一个很好的习惯，可以有效地防止文件数据丢失或篡改</strong></p>
-]]></summary>
-        <content type="html"><![CDATA[<p>概述：文件是计算机中由操作系统管理的具有名字的存储区域<br>
-借助Python内置的open函数，我们可通过程序对计算机上已有的文件进行读写，也可以创建新文件并赋予其任意内容</p>
-<h1 id="part-1-打开文件">Part 1. 打开文件🚗</h1>
-<p> 操作：<code>myfile = open('file.txt','r')</code><br>
- 为了打开一个文件，程序要调用open函数，内部参数首先是文件名，接着是处理模式。处理模式中，<code>'r'</code>代表输入打开文件，<code>'w'</code>代表输出生成并打开文件，<code>'a'</code>代表在打开文件并在文件尾部追加内容，若想对一个文件同时进行读写操作，可使用<code>'r+'</code>。若不填写处理模式，则默认为<code>'r'</code><br>
-<strong>注意：关闭文件：<code>myfile.close()</code>调用close函数将会终止对外部文件的链接，手动关闭文件不是必要的，但是一个很好的习惯，可以有效地防止文件数据丢失或篡改</strong></p>
+        <content type="html"><![CDATA[<!-- more -->
 <!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p>概述：文件是计算机中由操作系统管理的具有名字的存储区域<br>
+借助Python内置的open函数，我们可通过程序对计算机上已有的文件进行读写，也可以创建新文件并赋予其任意内容</p>
+<h1 id="part-1-打开文件">Part 1. 打开文件🚗</h1>
+<p> 操作：<code>myfile = open('file.txt','r')</code><br>
+ 为了打开一个文件，程序要调用open函数，内部参数首先是文件名，接着是处理模式。处理模式中，<code>'r'</code>代表输入打开文件，<code>'w'</code>代表输出生成并打开文件，<code>'a'</code>代表在打开文件并在文件尾部追加内容，若想对一个文件同时进行读写操作，可使用<code>'r+'</code>。若不填写处理模式，则默认为<code>'r'</code><br>
+<strong>注意：关闭文件：<code>myfile.close()</code>调用close函数将会终止对外部文件的链接，手动关闭文件不是必要的，但是一个很好的习惯，可以有效地防止文件数据丢失或篡改</strong></p>
 <h1 id="part-2-读取文件内容">Part 2. 读取文件内容🛴</h1>
 <!-- more -->
 <ul>
@@ -351,22 +356,17 @@ print(a[1,2]) # 10
         <link href="https://CTerena.github.io/post/zhi-shi-dian-yu-yi-cuo-dian-zong-jie-lecture1-lecture4/">
         </link>
         <updated>2021-10-04T03:08:56.000Z</updated>
-        <summary type="html"><![CDATA[<p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
-<strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
-<strong>列表的知识归纳另附一份文件💁‍♂</strong></p>
-<h1 id="part1-程序中的基本元素from-silde">Part1 : 程序中的基本元素（from silde)🏐:</h1>
-<blockquote>
-<ul>
-<li>1.literals - Numbers and the text strings (blue and<br>
-black)</li>
-<li>2.operators - like + and = to calculate values</li>
-<li>3.names – functions and variables like print and C</li>
-<li>4.comments - # anything behind is not interpreted by python</li>
-<li>5.keywords - e.g., assert</li>
-</ul>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
 <strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
 <strong>列表的知识归纳另附一份文件💁‍♂</strong></p>
 <h1 id="part1-程序中的基本元素from-silde">Part1 : 程序中的基本元素（from silde)🏐:</h1>
