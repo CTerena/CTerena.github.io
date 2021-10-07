@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-07T08:39:44.864Z</updated>
+    <updated>2021-10-07T13:39:17.666Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,110 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[可持久化线段树（prizident tree）学习笔记]]></title>
+        <id>https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/</id>
+        <link href="https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/">
+        </link>
+        <updated>2021-10-07T13:29:10.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="part1-定义">Part1. 定义：</h1>
+<p>    可持久化：数据结构可以支持回退，访问之前版本的性质<br>
+    主席树：可以访问未经过其他操作的版本的线段树</p>
+<h1 id="part-2-原理">Part 2. 原理：</h1>
+<p>主席树与线段树的基本操作相同，难点在于可持久化的实现。</p>
+<p>如果想要访问每个版本的线段树，首先想到的是对线段树进行全盘复制，然后在上个版本的基础上进行本次操作以建立新版本。但很显然如此一来空间复杂度会窜到O（n*m），显然不可行</p>
+<p>考虑操作对线段树的作用：每次操作一定不会涉及线段树上所有的节点，而不涉及的节点必然在两        个版本中是相同的，也就是可以共享的</p>
+<p>以此为切入点，如果我们在每次进行操作时只修改被影响的节点，可以得到如下的结果（图源洛谷）<img src="https://CTerena.github.io/post-images/1633613428792.png" alt="" loading="lazy"></p>
+<p>具体的做法是，进行每次操作时复制上个版本的根作为新版本的根，再递归判断修改的子节点进行修改</p>
+<p>代码：</p>
+<pre><code class="language-cpp">inline int update(int pre, int l, int r, int x)
+{
+    int rt=++cnt;
+    L[rt]=L[pre]; R[rt]=R[pre]; sum[rt]=sum[pre]+1;
+    if (l&lt;r)
+    {
+        if (x &lt;= mid) L[rt] = update(L[pre], l, mid, x);
+        else R[rt]=update(R[pre], mid+1, r, x);
+    }
+    return rt;
+}
+</code></pre>
+<h1 id="part3-模板题查询静态区间第k小">Part3. 模板题：查询静态区间第k小</h1>
+<p>与主席树的联系：把序列从左到右插入到树中，没插入一次对应一个版本，在l——r间查询对应在版本l和r间进行比较查询</p>
+<p>建树方法：先把整个序列进行离散化，线段树维护每个数出现过多少次</p>
+<p>比较方法：导入两个根，先对两者左儿子中数的个数进行比较，若比k小则说明k在右儿子中，进行递归</p>
+<p>完整代码：</p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#define maxn 200010
+#define mid (l + r) / 2
+using namespace std;
+int ls[maxn &lt;&lt; 5],rs[maxn &lt;&lt; 5],sum[maxn &lt;&lt; 5];
+int a[maxn],b[maxn],cnt = 0,t[maxn &lt;&lt; 5];
+int n,m,q;
+int build(int l,int r)
+{
+    int rt = ++cnt;
+    sum[rt] = 0;
+    if(l &lt; r)
+    {
+        ls[rt] = build(l,mid);
+        rs[rt] = build(mid + 1,r);
+    }
+    return rt;
+}
+int update(int pre,int l,int r,int k)
+{
+    int rt = ++cnt;
+    ls[rt] = ls[pre];
+    rs[rt] = rs[pre];
+    sum[rt] = sum[pre] + 1;
+    if(l &lt; r)
+    {
+        if(k &lt;= mid)
+            ls[rt] = update(ls[pre],l,mid,k);
+        else
+            rs[rt] = update(rs[pre],mid + 1,r,k);
+    }
+    return rt;
+}
+int query(int u,int v,int l,int r,int k)
+{
+    if(l &gt;= r)
+        return l;
+    int usm = sum[ls[v]]-sum[ls[u]];
+    if(k &lt;= usm)
+        return query(ls[u],ls[v],l,mid,k);
+    else
+        return query(rs[u],rs[v],mid + 1,r,k - usm);
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;q);
+    for(int  i = 1;i &lt;= n;i++)    
+    {
+        scanf(&quot;%d&quot;,&amp;a[i]);
+        b[i] = a[i];
+    }
+    sort(b + 1,b + n + 1);
+    m = unique(b + 1,b + n + 1) - b - 1;
+    t[0] = build(1,m);
+    for(int i = 1;i &lt;= n;i++)
+    {
+        int p = lower_bound(b + 1,b + m + 1,a[i]) - b;
+        t[i] = update(t[i - 1],1,m,p);
+    }
+    while(q--)
+    {
+        int x,y,z;
+        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+        printf(&quot;%d\n&quot;,b[query(t[x - 1],t[y],1,m,z)]);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python中的文件操作]]></title>
         <id>https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/</id>
