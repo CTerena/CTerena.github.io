@@ -1,0 +1,214 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>线性代数中的线性方程组（一） | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633622474787">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="线性代数中的线性方程组（一） | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1.1 线性方程组
+Part 1. 概念
+
+ 1.包含变量x1,x2,...xn的线性方程是形如
+                                                     a1x1+ a2x2+...+ an..." />
+    <meta name="keywords" content="数学" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633622474787" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    尽道清歌传皓齿，风起，雪飞炎海变清凉
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              线性代数中的线性方程组（一）
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-07
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://CTerena.github.io/tag/m3ZXT2XuP/" class="post-tag">
+                  # 数学
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/032d55fbb2fb43165c69f2e72ca4462308f7d3fd.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="11-线性方程组">1.1 线性方程组</h1>
+<h2 id="part-1-概念">Part 1. 概念</h2>
+<!-- more -->
+<p> 1.包含变量x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>的<strong>线性方程</strong>是形如<br>
+                                                     a<sub>1</sub>x<sub>1</sub>+ a<sub>2</sub>x<sub>2</sub>+...+ a<sub>n</sub>x<sub>n</sub>=b<br>
+  的方程</p>
+<!-- more -->
+<p> 2.<strong>线性方程组</strong>是由一个或几个包含相同变量x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>的线性方程组成的</p>
+<!-- more -->
+<p> 3.线性方程组的<strong>解</strong>是一组数（s<sub>1</sub>,s<sub>2</sub>,...,s<sub>n</sub>),用这组数分别替代x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>时所有方程的两边相等</p>
+<!-- more -->
+<p> 4.方程组所有可能的解的集合称为线性方程组的<strong>解集</strong></p>
+<!-- more -->
+<p> 5.若两个线性方程组有相同的解集，则这两个线性方程组称为<strong>等价的</strong></p>
+<p>  6.线性方程组的解有下列三种情况：<br>
+   1. 无解<br>
+   2. 有唯一解<br>
+   3. 有无穷多解</p>
+<!-- more -->
+<p> 7.有一个或无穷多个解的线性方程组是<strong>相容的</strong>；无解的线性方程组是<strong>不相容的</strong></p>
+<!-- more -->
+<p> 8.由变量系数组成的矩阵称为<strong>系数矩阵</strong></p>
+<!-- more -->
+<p> 9.由变量系数和常数项组成的矩阵称为<strong>增广矩阵</strong></p>
+<!-- more -->
+<p> 10.<strong>初等行变换</strong><br>
+  1. （倍加变换）把某一行换成它本身和另一行的倍数的和<br>
+  2. （对换变换）把两行对换<br>
+  3. （倍乘变换）把某一行的所有元素乘以同一个非零数</p>
+<!-- more -->
+<p> 11.若两个矩阵中的一个能经初等行变换变换为另一个矩阵，则成这两个矩阵为<strong>行等价的</strong>，它们具有相同的解集</p>
+<!-- more -->
+<p> 12.一个矩阵称为<strong>阶梯形（REF)</strong>，当它有以下三个性质：<br>
+  1. 每一非零行都在每一零行之上<br>
+  2. 某一行的先导元素所在的列位于前一行先导元素的右边<br>
+  3.某一先导元素所在列下方元素都是零</p>
+<!-- more -->
+<p> 13.若一个阶梯形矩阵还满足以下性质，则称它为<strong>简化阶梯形(RREF)</strong><br>
+  1.每一非零行的先导元素是1<br>
+  2.每一先导元素1是该元素所在列的唯一非零元素</p>
+<p> 14.</p>
+<!-- more -->
+<h2 id="part-2-定理">Part 2. 定理</h2>
+<p> <strong>定理1</strong>：<em>每个矩阵行等价于唯一的简化阶梯形矩阵</em></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#11-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84">1.1 线性方程组</a>
+<ul>
+<li><a href="#part-1-%E6%A6%82%E5%BF%B5">Part 1. 概念</a></li>
+<li><a href="#part-2-%E5%AE%9A%E7%90%86">Part 2. 定理</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/shu-lian-pou-fen-xue-xi-bi-ji/">
+              <h3 class="post-title">
+                树链剖分 (QTREE) 学习笔记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

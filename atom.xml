@@ -2,14 +2,69 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-07T14:58:16.478Z</updated>
+    <updated>2021-10-07T16:01:18.165Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
-    <subtitle>乘风好去，长空万里，直下看山河。</subtitle>
+    <subtitle>尽道清歌传皓齿，风起，雪飞炎海变清凉</subtitle>
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[线性代数中的线性方程组（一）]]></title>
+        <id>https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/</id>
+        <link href="https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/">
+        </link>
+        <updated>2021-10-07T15:18:10.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="11-线性方程组">1.1 线性方程组</h1>
+<h2 id="part-1-概念">Part 1. 概念</h2>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="11-线性方程组">1.1 线性方程组</h1>
+<h2 id="part-1-概念">Part 1. 概念</h2>
+<!-- more -->
+<p> 1.包含变量x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>的<strong>线性方程</strong>是形如<br>
+                                                     a<sub>1</sub>x<sub>1</sub>+ a<sub>2</sub>x<sub>2</sub>+...+ a<sub>n</sub>x<sub>n</sub>=b<br>
+  的方程</p>
+<!-- more -->
+<p> 2.<strong>线性方程组</strong>是由一个或几个包含相同变量x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>的线性方程组成的</p>
+<!-- more -->
+<p> 3.线性方程组的<strong>解</strong>是一组数（s<sub>1</sub>,s<sub>2</sub>,...,s<sub>n</sub>),用这组数分别替代x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>时所有方程的两边相等</p>
+<!-- more -->
+<p> 4.方程组所有可能的解的集合称为线性方程组的<strong>解集</strong></p>
+<!-- more -->
+<p> 5.若两个线性方程组有相同的解集，则这两个线性方程组称为<strong>等价的</strong></p>
+<p>  6.线性方程组的解有下列三种情况：<br>
+   1. 无解<br>
+   2. 有唯一解<br>
+   3. 有无穷多解</p>
+<!-- more -->
+<p> 7.有一个或无穷多个解的线性方程组是<strong>相容的</strong>；无解的线性方程组是<strong>不相容的</strong></p>
+<!-- more -->
+<p> 8.由变量系数组成的矩阵称为<strong>系数矩阵</strong></p>
+<!-- more -->
+<p> 9.由变量系数和常数项组成的矩阵称为<strong>增广矩阵</strong></p>
+<!-- more -->
+<p> 10.<strong>初等行变换</strong><br>
+  1. （倍加变换）把某一行换成它本身和另一行的倍数的和<br>
+  2. （对换变换）把两行对换<br>
+  3. （倍乘变换）把某一行的所有元素乘以同一个非零数</p>
+<!-- more -->
+<p> 11.若两个矩阵中的一个能经初等行变换变换为另一个矩阵，则成这两个矩阵为<strong>行等价的</strong>，它们具有相同的解集</p>
+<!-- more -->
+<p> 12.一个矩阵称为<strong>阶梯形（REF)</strong>，当它有以下三个性质：<br>
+  1. 每一非零行都在每一零行之上<br>
+  2. 某一行的先导元素所在的列位于前一行先导元素的右边<br>
+  3.某一先导元素所在列下方元素都是零</p>
+<!-- more -->
+<p> 13.若一个阶梯形矩阵还满足以下性质，则称它为<strong>简化阶梯形(RREF)</strong><br>
+  1.每一非零行的先导元素是1<br>
+  2.每一先导元素1是该元素所在列的唯一非零元素</p>
+<p> 14.</p>
+<!-- more -->
+<h2 id="part-2-定理">Part 2. 定理</h2>
+<p> <strong>定理1</strong>：<em>每个矩阵行等价于唯一的简化阶梯形矩阵</em></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[树链剖分 (QTREE) 学习笔记]]></title>
         <id>https://CTerena.github.io/post/shu-lian-pou-fen-xue-xi-bi-ji/</id>
