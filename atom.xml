@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-07T08:33:50.658Z</updated>
+    <updated>2021-10-07T08:39:44.864Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -98,7 +98,7 @@
     ['So long as men can breathe, or eyes can see,\n', 'So long lives this, and this gives life to thee.']
     So long lives this, and this gives life to thee.
 </code></pre>
-<h1 id="part-3处理文件内容">Part 3.处理文件内容🚲</h1>
+<h1 id="part-3-处理文件内容">Part 3. 处理文件内容🚲</h1>
 <p>实际办公编程中，我们常常不仅需要读取文件的所有内容，更需要对其中的重要信息进行提取归纳。这需要我们掌握一些进阶的字符串处理操作：</p>
 <p><strong>例1</strong> 提取所有作家的名字：<br>
 <img src="https://CTerena.github.io/post-images/1633590885680.png" alt="" loading="lazy"><br>
