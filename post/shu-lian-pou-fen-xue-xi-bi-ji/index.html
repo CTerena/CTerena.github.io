@@ -1,0 +1,507 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>树链剖分学习笔记 | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633615036260">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="树链剖分学习笔记 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Part1. 树链剖分的功能
+对一棵树分成几条链，把树形变为线性，减少处理难度
+需要处理的问题：
+1. 将树从x到y结点最短路径上所有节点的值都加上z
+2. 求树从x到y结点最短路径上所有节点的值之和
+3. 将以x为根节点的子树内所有节点值..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633615036260" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    乘风好去，长空万里，直下看山河。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              树链剖分学习笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-07
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/be4a19d8bc3eb13556c9823aaa1ea8d3fc1f44e0.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="part1-树链剖分的功能">Part1. 树链剖分的功能</h1>
+<p>对一棵树分成几条链，把树形变为线性，减少处理难度<br>
+需要处理的问题：</p>
+<p>1. 将树从x到y结点最短路径上所有节点的值都加上z</p>
+<p>2. 求树从x到y结点最短路径上所有节点的值之和</p>
+<p>3. 将以x为根节点的子树内所有节点值都加上z</p>
+<p>4. 求以x为根节点的子树内所有节点值之和</p>
+<h1 id="part2-相关概念">Part2. 相关概念</h1>
+<ol>
+<li>
+<p>重儿子：对于每一个非叶子节点，它的儿子中以那个儿子为根的子树节点数（包括自身）最大的儿子为该节点的重儿子</p>
+</li>
+<li>
+<p>轻儿子：非重儿子</p>
+</li>
+<li>
+<p>重边：一个父节点与其重儿子的连边</p>
+</li>
+<li>
+<p>轻边：非重边</p>
+</li>
+<li>
+<p>重链：相邻重边相连形成的链</p>
+</li>
+</ol>
+<p>  tips：叶子结点若为轻儿子，则自成一条长度为1的链</p>
+<p>  重链以轻儿子或根节点为起点</p>
+<h1 id="part3-常规操作">Part3. 常规操作</h1>
+<p>1.预处理</p>
+<p>（1）dfs1：</p>
+<p>   处理： 各点深度；  各点重儿子编号； 各点最大子树大小 ；各点父亲</p>
+<p>代码：</p>
+<pre><code class="language-cpp">void dfs1(int now,int fa,int deep)
+{
+    siz[now]=1;
+    fat[now]=fa;
+    dep[now]=deep;
+    zs=-1;
+    for(int i=head[now];i;i=nxt[i])
+    {
+        if(to[i]==now)
+            continue; //别忘了 
+        dfs1(to[i],now,deep+1);
+        siz[now]+=siz[to[i]];
+        if(siz[to[i]]&gt;zs)//处理重儿子 
+            zhoson[now]=to[i],zs=siz[to[i]];
+    }
+}
+</code></pre>
+<p>（2）dfs2</p>
+<p>处理：</p>
+<p>标记每个点的新编号（线段树中编号）</p>
+<p>赋值每个点的初始值到新编号上</p>
+<p>处理每个点所在链的顶端</p>
+<p>处理每条链</p>
+<p>顺序规定：先重后轻</p>
+<p>代码：</p>
+<pre><code class="language-cpp">void dfs2(int now,int top)
+{
+    tp[now]=top;
+    id[now]=++cnt;
+    wt[cnt]=w[x];
+    if(!zhoson[now])
+        return;
+    dfs2(zhoson[now],top);
+    for(int i=head[now];i;i=nxt[i])
+    {
+        if(to[i]==fat[now]||to[i]==zhoson[now])
+            continue;
+        dfs2(to[i],to[i]);
+    }
+} 
+</code></pre>
+<p>2.功能实现</p>
+<p>1.查询两点间距离</p>
+<p>方法：每次选定两点所在链中深度较大的，加上它到其链起点的权值，然后跳到链起点的父节点重复操作，直至两点在同一条链上。</p>
+<p></p>
+<pre><code class="language-cpp">int qiurange(int x,int y)
+{
+    int ans=0;
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+            swap(x,y);
+        res=0;
+        query(1,1,n,tid[top[x]],tid[x]);
+        ans=(ans+res)%mod;
+        x=fat[top[x]];
+    }
+
+    if(deep[x]&gt;deep[y])
+    swap(x,y);
+    res=0;
+    query(1,1,n,tid[x],tid[y]);
+    ans=(ans+res)%mod;
+    return ans;
+}
+</code></pre>
+<p>2.两点间路径修改：</p>
+<p>同1，反复跳并update（线段树）</p>
+<pre><code class="language-cpp">void uprange(int x,int y,int k)
+{
+    k%=mod;
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+        swap(x,y);
+        update(1,1,n,tid[top[x]],tid[x],k);
+        x=fat[top[x]];
+    }
+    if(deep[x]&gt;deep[y])
+    swap(x,y);
+    update(1,1,n,tid[x],tid[y],k);
+}
+</code></pre>
+<p>3.子树修改</p>
+<p>上边提到过，子树中节点的编号是连续的，因此在线段树上也是一段连续的区间，相当于线段树区间修改</p>
+<pre><code class="language-cpp">void updSon(int x,int k)
+{
+    update(1,1,n,tid[x],tid[x]+siz[x]-1,k);
+}
+</code></pre>
+<p>4.子树查询</p>
+<p>只要直接维护即可。（区间的起点是该子树根节点，大小是子树大小）</p>
+<pre><code class="language-cpp">int qSon(int x)
+{
+    res=0;
+    query(1,1,n,tid[x],tid[x]+siz[x]-1);
+    return res;
+}
+</code></pre>
+<p>完整代码如下，除了上面的部分还要有线段树的基本操作函数：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define maxn 100005
+#define mid (l+r&gt;&gt;1)
+#define len (r-l+1)
+#define ls id&lt;&lt;1
+#define rs id&lt;&lt;1|1
+using namespace std;
+int cnt,head[maxn],nxt[maxn &lt;&lt; 1],to[maxn &lt;&lt; 1];
+int w[maxn],wt[maxn],tidnum,siz[maxn],deep[maxn],son[maxn],fat[maxn],tid[maxn],top[maxn];
+int a[maxn &lt;&lt; 2],laz[maxn &lt;&lt; 2];
+int res=0,n,m,r,mod;
+void addedge(int x,int y)
+{
+    to[++cnt]=y;
+    nxt[cnt]=head[x];
+    head[x]=cnt;
+}
+void pushdown(int rt,int l,int r)
+{
+    (laz[rt&lt;&lt;1]+=laz[rt]) %= mod;
+    (laz[rt&lt;&lt;1|1]+=laz[rt]) %= mod;
+    a[rt&lt;&lt;1]+=laz[rt]*(mid - l + 1);
+    a[rt&lt;&lt;1|1]+=laz[rt]*(r - mid);
+    a[rt&lt;&lt;1]%=mod;
+    a[rt&lt;&lt;1|1]%=mod;
+    laz[rt]=0;
+}
+
+void build(int id,int l,int r)
+{
+    if(l==r)
+    {
+        a[id]=wt[l];
+        if(a[id]&gt;mod)
+        a[id]%=mod;
+        return;
+    }
+    build(ls,l,mid);
+    build(rs,mid+1,r);
+    a[id]=(a[id&lt;&lt;1]+a[id&lt;&lt;1|1])%mod;
+}
+
+void query(int id,int l,int r,int tol,int tor)
+{
+    if(tol&lt;=l&amp;&amp;r&lt;=tor)
+    {
+        res+=a[id];
+        res%=mod;
+        return;
+    }
+    else
+    {
+        if(laz[id])
+        pushdown(id,l,r);
+        if(tol&lt;=mid)
+        query(ls,l,mid,tol,tor);
+        if(tor&gt;mid)
+        query(rs,mid+1,r,tol,tor);
+    }
+}
+
+void update(int id,int l,int r,int tol,int tor,int k)
+{
+    if(tol&lt;=l&amp;&amp;r&lt;=tor)
+    {
+        laz[id]+=k;
+        a[id]+=k*len;
+        a[id] %= mod;
+        laz[id] %= mod;
+    }
+    else
+    {
+        if(laz[id])
+        pushdown(id,l,r);
+        if(tol&lt;=mid)
+        update(ls,l,mid,tol,tor,k);
+        if(tor&gt;mid)
+        update(rs,mid+1,r,tol,tor,k);
+        a[id]=(a[id&lt;&lt;1]+a[id&lt;&lt;1|1])%mod;
+    }
+}
+
+int qiurange(int x,int y)
+{
+    int ans=0;
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+            swap(x,y);
+        res=0;
+        query(1,1,n,tid[top[x]],tid[x]);
+        ans=(ans+res)%mod;
+        x=fat[top[x]];
+    }
+
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    res=0;
+    query(1,1,n,tid[x],tid[y]);
+    ans=(ans+res)%mod;
+    return ans;
+}
+
+void uprange(int x,int y,int k)
+{
+    k%=mod;
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+        swap(x,y);
+        update(1,1,n,tid[top[x]],tid[x],k);
+        x=fat[top[x]];
+    }
+    if(deep[x]&gt;deep[y])
+    swap(x,y);
+    update(1,1,n,tid[x],tid[y],k);
+}
+
+int qSon(int x)
+{
+    res=0;
+    query(1,1,n,tid[x],tid[x]+siz[x]-1);
+    return res;
+}
+
+void updSon(int x,int k)
+{
+    update(1,1,n,tid[x],tid[x]+siz[x]-1,k);
+}
+
+void dfs1(int x,int f,int deeep) 
+{
+    deep[x]=deeep;
+    fat[x]=f;
+    siz[x]=1;
+    int maxson=-1;
+    for(int i=head[x];i;i=nxt[i])
+    {
+        int y=to[i];
+        if(y==f)
+        continue;
+        dfs1(y,x,deeep+1); 
+        siz[x]+=siz[y]; 
+        if(siz[y]&gt;maxson)
+        son[x]=y,maxson=siz[y];
+    }
+}
+
+void dfs2(int id,int tp)
+{
+    tid[id]=++tidnum;
+    wt[tidnum]=w[id];
+    top[id]=tp;
+    if(!son[id])
+    return; 
+    dfs2(son[id],tp);
+    for(int i=head[id];i;i=nxt[i])
+    {
+        if(to[i]==fat[id]||to[i]==son[id])
+        continue;
+        dfs2(to[i],to[i]);
+    }
+}
+
+int main()
+{
+    scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;m,&amp;r,&amp;mod);
+    for(int i=1;i&lt;=n;i++)
+    scanf(&quot;%d&quot;,&amp;w[i]);
+    for(int i=1;i&lt;n;i++)
+    {
+        int a,b;
+        scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+        addedge(a,b);
+        addedge(b,a);
+    }
+    dfs1(r,0,1);
+    dfs2(r,r);
+    build(1,1,n);
+    while(m--)
+    {
+        int t,x,y,z;
+        scanf(&quot;%d&quot;,&amp;t);
+        if(t==1)
+        {
+            scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+            uprange(x,y,z);
+        }
+        else if(t==2)
+        {
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+            printf(&quot;%d\n&quot;,qiurange(x,y));
+        }
+        else if(t==3)
+        {
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+            updSon(x,y);
+        }
+        else
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            printf(&quot;%d\n&quot;,qSon(x));
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#part1-%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86%E7%9A%84%E5%8A%9F%E8%83%BD">Part1. 树链剖分的功能</a></li>
+<li><a href="#part2-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5">Part2. 相关概念</a></li>
+<li><a href="#part3-%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C">Part3. 常规操作</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/">
+              <h3 class="post-title">
+                可持久化线段树（prizident tree）学习笔记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
