@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-04T12:24:20.503Z</updated>
+    <updated>2021-10-07T08:16:08.095Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,170 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[Python中的文件操作]]></title>
+        <id>https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/</id>
+        <link href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/">
+        </link>
+        <updated>2021-10-07T05:29:17.000Z</updated>
+        <summary type="html"><![CDATA[<p><em>概述：文件是计算机中由操作系统管理的具有名字的存储区域</em><br>
+<em>借助Python内置的open函数，我们可通过程序对计算机上已有的文件进行读写，也可以创建新文件并赋予其任意内容</em></p>
+<h1 id="part-1-打开文件">Part 1. 打开文件🚗</h1>
+<p> 操作：<code>myfile = open('file.txt','r')</code><br>
+ 为了打开一个文件，程序要调用open函数，内部参数首先是文件名，接着是处理模式。处理模式中，<code>'r'</code>代表输入打开文件，<code>'w'</code>代表输出生成并打开文件，<code>'a'</code>代表在打开文件并在文件尾部追加内容，若想对一个文件同时进行读写操作，可使用<code>'r+'</code>。若不填写处理模式，则默认为<code>'r'</code><br>
+<strong>注意：关闭文件：<code>myfile.close()</code>调用close函数将会终止对外部文件的链接，手动关闭文件不是必要的，但是一个很好的习惯，可以有效地防止文件数据丢失或篡改</strong></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><em>概述：文件是计算机中由操作系统管理的具有名字的存储区域</em><br>
+<em>借助Python内置的open函数，我们可通过程序对计算机上已有的文件进行读写，也可以创建新文件并赋予其任意内容</em></p>
+<h1 id="part-1-打开文件">Part 1. 打开文件🚗</h1>
+<p> 操作：<code>myfile = open('file.txt','r')</code><br>
+ 为了打开一个文件，程序要调用open函数，内部参数首先是文件名，接着是处理模式。处理模式中，<code>'r'</code>代表输入打开文件，<code>'w'</code>代表输出生成并打开文件，<code>'a'</code>代表在打开文件并在文件尾部追加内容，若想对一个文件同时进行读写操作，可使用<code>'r+'</code>。若不填写处理模式，则默认为<code>'r'</code><br>
+<strong>注意：关闭文件：<code>myfile.close()</code>调用close函数将会终止对外部文件的链接，手动关闭文件不是必要的，但是一个很好的习惯，可以有效地防止文件数据丢失或篡改</strong></p>
+<!-- more -->
+<h1 id="part-2-读取文件内容">Part 2. 读取文件内容🛴</h1>
+<!-- more -->
+<ul>
+<li><code>mydata = myfile.read()</code>  将整个文件读进单一字符串<br>
+使用read()读取将会返回一个包含文件全部内容（包括行末标识符）的字符串</li>
+</ul>
+<!-- more -->
+<ul>
+<li><code>mydata = myfile.readline()</code>  读取下一行（包括行末标识符）到一个字符串<br>
+从第一行开始，每次使用readline会自动读取下一行的全部内容，以字符串形式返回</li>
+</ul>
+<!-- more -->
+<ul>
+<li><code>mydata = myfile.readlines()</code> 读取整个文件到字符串列表<br>
+生成一个元素数等于文件行数的列表，列表中的每一元素为文件中一行全部内容的字符串</li>
+</ul>
+<p>使用演示：</p>
+<p>以三种方法读取以下文件：<br>
+<img src="https://CTerena.github.io/post-images/1633588030389.png" alt="" loading="lazy"></p>
+<ol>
+<li>read()</li>
+</ol>
+<pre><code class="language-cpp">    myfile = open('sonnet 18.txt','r')
+    mydata = myfile.read()
+    myfile.close()
+    print(type(mydata))
+    print(mydata)
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-cpp">    &lt;class 'str'&gt;
+    So long as men can breathe, or eyes can see,
+    So long lives this, and this gives life to thee.
+</code></pre>
+<!-- more -->
+<p>2.readline()</p>
+<pre><code class="language-cpp">    myfile = open('sonnet 18.txt','r')
+    mydata1 = myfile.readline()
+    mydata2 = myfile.readline()
+    myfile.close()
+    print(type(mydata1))
+    print('第一行：%s' % mydata2)
+    print('第二行：%s' % mydata1)
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-cpp">    &lt;class 'str'&gt;
+    第一行：So long lives this, and this gives life to thee.
+    第二行：So long as men can breathe, or eyes can see,
+</code></pre>
+<!-- more -->
+<p>3.readlines()</p>
+<pre><code class="language-cpp">    myfile = open('sonnet 18.txt','r')
+    mydata = myfile.readlines()
+    myfile.close()
+    print(type(mydata))
+    print(mydata)
+
+    print(mydata[1])
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-cpp">    &lt;class 'list'&gt;
+    ['So long as men can breathe, or eyes can see,\n', 'So long lives this, and this gives life to thee.']
+    So long lives this, and this gives life to thee.
+</code></pre>
+<h1 id="part-3处理文件内容">Part. 3处理文件内容🚲</h1>
+<p>实际办公编程中，我们常常不仅需要读取文件的所有内容，更需要对其中的重要信息进行提取归纳。这需要我们掌握一些进阶的字符串处理操作：</p>
+<p><strong>例1</strong> 提取所有作家的名字：<br>
+<img src="https://CTerena.github.io/post-images/1633590885680.png" alt="" loading="lazy"><br>
+    可以注意到，该文件中作家名字被逗号和换行符分开，为提取单个作家名字，可以使用<code>split()</code>函数<br>
+    * <code>split()</code>函数用法：通过切除字符串中的指定字符将字符串拆分成多个并以列表形式存储，如下：</p>
+<pre><code class="language-cpp">    str = 'A rose,is a rose,is a rose,is a rose'
+    lis = str.split(',')
+    print(lis)
+</code></pre>
+<p>    结果：</p>
+<pre><code class="language-cpp">    ['A rose', 'is a rose', 'is a rose', 'is a rose']
+</code></pre>
+<p>    该例中，我们使用<code>split()</code>以逗号为隔断将字符串拆成多个。而为了处理上方的作家名问    题，我们需要分别以换行符和逗号作为隔断，顺便一提，换行符的表示方法是<code>'\n'</code></p>
+<pre><code class="language-cpp">    myfile = open('2021诺贝尔文学奖预测.txt','r')
+    mydata = myfile.read() #全部读取
+    print(mydata,'\n') 
+
+    mydata = mydata.split('\n') #以换行符为隔断
+    print(mydata,'\n') 
+
+    for row in mydata: #枚举列表元素，相当于枚举原文件每行（字符串形式）
+        name = row.split(',') #在该行中以逗号为隔断
+        for i in range(0,len(name)): #输出名字
+            print(name[i])
+</code></pre>
+<p>    结果：</p>
+<pre><code class="language-cpp">    Murakami,Ngugi,Carson,Ulitskaya
+    Atwood,Krasznahorkai,Lillo
+    Oates,Pynchon,CanXue,Houellebecq
+    YanLianke,Elena,Kincaid 
+
+    ['Murakami,Ngugi,Carson,Ulitskaya', 'Atwood,Krasznahorkai,Lillo', 'Oates,   Pynchon,CanXue,Houellebecq', 'YanLianke,Elena,Kincaid'] 
+
+    Murakami
+    Ngugi
+    Carson
+    Ulitskaya
+    Atwood
+    Krasznahorkai
+    Lillo
+    Oates
+    Pynchon
+    CanXue
+    Houellebecq
+    YanLianke
+    Elena
+    Kincaid
+</code></pre>
+<p><strong>例2</strong> 将每一行的词语连成一句话：<br>
+<img src="https://CTerena.github.io/post-images/1633593025159.png" alt="" loading="lazy"><br>
+     首先，我们可通过<code>split()</code>将词语归纳到一个列表中：</p>
+<pre><code class="language-cpp">    myfile = open('An American folk.txt','r')
+    mydata = myfile.read()
+    mydata = mydata.split('\n')
+</code></pre>
+<p>     此时，<code>mydata</code>为<code>['May', 'your', 'days', 'be', 'fragrant,', 'And may', 'all', 'your', 'Christamses', 'be', 'merry', 'and bright.']</code></p>
+<!-- more -->
+<p>     借着，我们可借助<code>join()</code>函数将这些词语连为一句：</p>
+<pre><code class="language-cpp">    folk = ' '.join(mydata)
+    print(folk)
+</code></pre>
+<p>     结果：</p>
+<pre><code class="language-cpp">May your days be fragrant, And may all your Christamses be merry and bright.
+</code></pre>
+<h1 id="part-4-写入文件内容">Part 4. 写入文件内容🚝</h1>
+<p>     <code>myfile.write(xxx)</code> 写入字节字符串到文件，以课件为例：<br>
+<img src="https://CTerena.github.io/post-images/1633594109676.png" alt="" loading="lazy"><br>
+（<code>open('poem.txt','w')</code>会创建了一个新文件poem.txt）<br>
+另外，可以通过<code>writelines()</code>将列表内容按行写入文件：</p>
+<pre><code class="language-cpp">L = ['Wee ', 'Liat ', 'speaks ', 'so his mother ', 'fast ']
+
+myfile = open('Wee.txt','w')
+myfile.writelines(L)
+
+myfile.close()
+</code></pre>
+<p>即可得到文件：<br>
+<img src="https://CTerena.github.io/post-images/1633594483848.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Numpy库使用指南]]></title>
         <id>https://CTerena.github.io/post/numpy-ku-shi-yong-zhi-nan/</id>
