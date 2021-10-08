@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-08T02:21:38.132Z</updated>
+    <updated>2021-10-08T03:18:42.590Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -130,6 +130,8 @@ df2:
 <p>实际应用中，更多的情况是通过Python读取外部数据，这些数据可能是文本文件（如csv、txt等）和电子表格等<br>
 Pandas库中的read_csv函数，可以读取txt或csv（逗号分隔的文本文件）的文本格式数据</p>
 <!-- more -->
+<p><strong>参考文献</strong><br>
+[1]司守奎，孙玺青. Python数学实验与建模. 北京：科学出版社，2020</p>
 ]]></content>
     </entry>
     <entry>
