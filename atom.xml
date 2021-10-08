@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-07T16:03:15.768Z</updated>
+    <updated>2021-10-08T02:21:38.132Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,128 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[Pandas库使用指南]]></title>
+        <id>https://CTerena.github.io/post/pandas-ku-shi-yong-zhi-nan/</id>
+        <link href="https://CTerena.github.io/post/pandas-ku-shi-yong-zhi-nan/">
+        </link>
+        <updated>2021-10-08T01:29:38.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<h2 id="概述">概述</h2>
+<p>Pandas(panel data,面板数据)是在Numpy基础上开发的数据分析工具，该工具库可以用于解决数据的预处理问题，如数据类型的转换、缺失值的处理、描述性统计分析、数据的汇总等.</p>
+<!-- more -->
+<p>Pandas数据结构的范围可以从一维到三维。Series（序列）是一维的，DataFrame（数据框）是二维的，Panel是更高维的数据结构。<br>
+Series是一个带标签的一维数组，可以存储任意类型的数据，它的行标签称作index<br>
+DataFrame是一个带标签的二维数组，有行和列。列可以有很多类型。DataFrame也可以看作包含多个不同类型的Series的集合<br>
+Panel：在统计学与经济学中，Panel data（面板数据）指多维数据，这个多维数据包括不同时间的不同测量结果。与Series和FrameData相比，面板数据是不太常用的一种数据结构</p>
+<h1 id="part-1-series">Part 1. Series</h1>
+<p>构造一个序列可以使用以下方式实现：</p>
+<ol>
+<li>通过同类型的列表或元组构建</li>
+<li>通过字典构建</li>
+<li>通过Numpy中的一维数组构建</li>
+<li>通过数据框中的某一列构建</li>
+</ol>
+<p>序列构造示例：<br>
+<code>import pandas as pd</code><br>
+<code>import numpy as np</code></p>
+<pre><code class="language-cpp">s1 = pd.Series(np.array([101,202,303]))#由一维数组构造
+s2 = pd.Series({'CS':101,'MATH':220,'CHEM':102})#由字典构造
+s3 = pd.Series([101,202,303],index=['A','B','C'])#用行标签命名
+</code></pre>
+<p>对应的结果：</p>
+<pre><code class="language-cpp">0    101
+1    202
+2    303
+dtype: int32
+---------
+CS      101
+MATH    220
+CHEM    102
+dtype: int64
+---------
+A    101
+B    202
+C    303
+dtype: int64
+</code></pre>
+<p>序列与一维数组相似，获取一维数组元素的方法都可以应用于序列，且数组的数学和统计函数也可以应用到序列对象上，不同的是，序列拥有更多的处理方法</p>
+<!-- more -->
+<p>Pandas序列中可以进行统计特征计算，包括均值、方差、分位数、相关系数和协方差等，这些统计特征能反映数据的整体分布.<br>
+<code>mean()</code>用于计算样本数据的算术平均值</p>
+<!-- more -->
+<p><code>std()</code>用于计算样本数据的标准差</p>
+<!-- more -->
+<p><code>cov()</code>用于计算样本数据的协方差矩阵</p>
+<!-- more -->
+<p><code>var()</code>用于计算样本数据的方差</p>
+<!-- more -->
+<p><code>describe()</code>用于描述样本数据的基本情况，包括非NaN数据个数，均值，标准差，最小值，最大值以及样本的25%，50%，75%分位数</p>
+<p>序列索引与计算示例：</p>
+<pre><code class="language-cpp">import pandas as pd
+s = pd.Series([101,202,303],index=['A','B','C'])
+print(s['C'])
+print(s.mean())
+print(s.var())
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-cpp">303
+202.0
+10201.0
+</code></pre>
+<h1 id="part-2-dataframe">Part 2. DataFrame</h1>
+<p>DataFrame是由行和列构成的二维数据结构。索引可以看作行标签，列名称可以看作列标签</p>
+<!-- more -->
+<p>数据框的构造方法如下：<br>
+<code>DataFrame(data=二维数据, index=行索引,columns=列索引, dtype=数据类型)</code><br>
+其中“二维数据”可以是二维Numpy数组，后三项可选择性填写</p>
+<!-- more -->
+<p>DataFrame构建示例：</p>
+<pre><code class="language-cpp">import pandas as pd
+import numpy as np
+
+a = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9]])
+
+df1 = pd.DataFrame(a)
+df2 = pd.DataFrame(a,index=['一','二','三'],columns=['壹','贰','参'])
+print('df1:')
+print(df1)
+print('df2:')
+print(df2)
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-cpp">df1:
+   0  1  2
+0  1  2  3
+1  4  5  6
+2  7  8  9
+df2:
+   壹  贰  参
+一  1  2  3
+二  4  5  6
+三  7  8  9
+</code></pre>
+<h1 id="part-3文本文件的读取">Part 3.文本文件的读取</h1>
+<p>实际应用中，更多的情况是通过Python读取外部数据，这些数据可能是文本文件（如csv、txt等）和电子表格等<br>
+Pandas库中的read_csv函数，可以读取txt或csv（逗号分隔的文本文件）的文本格式数据</p>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[线性代数中的线性方程组（一）]]></title>
         <id>https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/</id>
@@ -31,8 +153,7 @@
 <!-- more -->
 <!-- more -->
 <!-- more -->
-<h1 id="11-线性方程组">1.1 线性方程组</h1>
-<h2 id="part-1-概念">Part 1. 概念</h2>
+<h1 id="part-1-概念">Part 1. 概念</h1>
 <!-- more -->
 <p> 1.包含变量x<sub>1</sub>,x<sub>2</sub>,...x<sub>n</sub>的<strong>线性方程</strong>是形如<br>
                                                      a<sub>1</sub>x<sub>1</sub>+ a<sub>2</sub>x<sub>2</sub>+...+ a<sub>n</sub>x<sub>n</sub>=b<br>
@@ -71,10 +192,27 @@
 <p> 13.若一个阶梯形矩阵还满足以下性质，则称它为<strong>简化阶梯形(RREF)</strong><br>
   1.每一非零行的先导元素是1<br>
   2.每一先导元素1是该元素所在列的唯一非零元素</p>
-<p> 14.</p>
+<p> 14.矩阵中的<strong>主元位置</strong>是其中对应于它的阶梯形中先导元素1的位置</p>
 <!-- more -->
-<h2 id="part-2-定理">Part 2. 定理</h2>
+<p> 15.<strong>主元列</strong>是A的含有主元位置的列</p>
+<!-- more -->
+<p> 16.将矩阵化简为REF的步骤称为<strong>向前步骤</strong>，将REF化简为RREF的步骤称为<strong>向后步骤</strong></p>
+<!-- more -->
+<p> 17.对应于主元列的变量称为<strong>基本变量</strong>；其它变量称为<strong>自由变量</strong></p>
+<!-- more -->
+<p> 18.仅含一列的矩阵称为<strong>列向量</strong>，简称<strong>向量</strong>，所有元素都是零的向量称为<strong>零向量</strong><br>
+ 19.给定R</p>
+<h1 id="part-2-定理">Part 2. 定理</h1>
 <p> <strong>定理1</strong>：<em>每个矩阵行等价于唯一的简化阶梯形矩阵</em></p>
+<!-- more -->
+<p> <strong>定理2（存在与唯一性定理）</strong>：<em>线性方程组相容的充要条件是增广矩阵的最右列不是主元列</em></p>
+<h1 id="part-3-方法">Part 3. 方法</h1>
+<p> <strong>应用行化简算法求解线性方程组</strong><br>
+  1. 写出方程的增广矩阵<br>
+  2.应用行化简算法把增广矩阵化为阶梯形；确定方程组是否相容，若否则停止<br>
+  3.继续行化简算法得到它的简化阶梯形<br>
+  4.写出由第三步得到的矩阵对应的方程组<br>
+  5.把第四步所得的每个非零方程改写为用任意自由变量表示其基本变量的形式</p>
 ]]></content>
     </entry>
     <entry>
