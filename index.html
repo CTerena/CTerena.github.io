@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>停云</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633769693657">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633778296214">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633769693657" alt="">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633778296214" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -58,6 +58,67 @@
 
     
         <div class="post-container">
+  
+    <article class="post">
+      <a href="https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/">
+        <h2 class="post-title">神经网络入门</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2021-10-09
+        </span>
+        <span>
+          5 min read
+        </span>
+        
+          <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
+            # 机器学习
+          </a>
+        
+          <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
+            # Python
+          </a>
+        
+      </div>
+      
+        <a href="https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/" class="post-feature-image" style="background-image: url('http://imgsrc.baidu.com/forum/pic/item/b904ebf81a4c510f571eacb26759252dd52aa504.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        <h1 id="part-1-阶跃函数的实现">Part 1. 阶跃函数的实现</h1>
+<pre><code class="language-cpp">def step_function(x):
+    y = x &gt; 0
+    return y.astype(np.int)
+</code></pre>
+<p>原理示例：</p>
+<pre><code class="language-cpp">import numpy as np
+
+def step_function(x):
+    y = x &gt; 0
+    return y.astype(np.int)
+
+x = np.array([-1.0, 1.0, 2.0])
+y = x &gt; 0
+print(y) #输出结果：[False  True  True]
+</code></pre>
+<p>对Numpy数组进行不等号运算时，数组的各个元素都会进行不等号运算，生成一个布尔型数组，进而用<code>astype()</code>方法将布尔型转换为int型即可得到我们想要的阶跃函数（输出int型的0或1的函数）</p>
+<p>获取阶跃函数的图形：</p>
+<pre><code class="language-cpp">import numpy as np
+import matplotlib.pylab as plt
+
+def step_function(x):
+    return np.array(x &gt; 0, dtype = np.int)
+
+x = np.arange(-5.0, 5.0, 0.1)
+y = step_function(x)
+plt.plot(x, y)
+plt.ylim(-0.1, 1.1)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633770470145.png" alt="" loading="lazy"></figure>
+
+      </div>
+    </article>
   
     <article class="post">
       <a href="https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
@@ -258,32 +319,6 @@
       </div>
       
         <a href="https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/" class="post-feature-image" style="background-image: url('http://imgsrc.baidu.com/forum/pic/item/b21494eef01f3a29d772b3529525bc315d607cb0.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/">
-        <h2 class="post-title">Python中的文件操作</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-10-07
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
-            # Python
-          </a>
-        
-      </div>
-      
-        <a href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/" class="post-feature-image" style="background-image: url('http://imgsrc.baidu.com/forum/pic/item/e98a7bcb0a46f21f164a38cffa246b600d33aef4.jpg')">
         </a>
       
       <div class="post-abstract">

@@ -1,0 +1,309 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>神经网络入门 | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633778296214">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="神经网络入门 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Part 1. 阶跃函数的实现
+def step_function(x):
+    y = x &gt; 0
+    return y.astype(np.int)
+
+原理示例：
+import numpy as np
+
+def step_f..." />
+    <meta name="keywords" content="机器学习,Python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633778296214" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    尽道清歌传皓齿，风起，雪飞炎海变清凉
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              神经网络入门
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-09
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
+                  # 机器学习
+                </a>
+              
+                <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
+                  # Python
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/b904ebf81a4c510f571eacb26759252dd52aa504.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="part-1-阶跃函数的实现">Part 1. 阶跃函数的实现</h1>
+<pre><code class="language-cpp">def step_function(x):
+    y = x &gt; 0
+    return y.astype(np.int)
+</code></pre>
+<p>原理示例：</p>
+<pre><code class="language-cpp">import numpy as np
+
+def step_function(x):
+    y = x &gt; 0
+    return y.astype(np.int)
+
+x = np.array([-1.0, 1.0, 2.0])
+y = x &gt; 0
+print(y) #输出结果：[False  True  True]
+</code></pre>
+<p>对Numpy数组进行不等号运算时，数组的各个元素都会进行不等号运算，生成一个布尔型数组，进而用<code>astype()</code>方法将布尔型转换为int型即可得到我们想要的阶跃函数（输出int型的0或1的函数）</p>
+<p>获取阶跃函数的图形：</p>
+<pre><code class="language-cpp">import numpy as np
+import matplotlib.pylab as plt
+
+def step_function(x):
+    return np.array(x &gt; 0, dtype = np.int)
+
+x = np.arange(-5.0, 5.0, 0.1)
+y = step_function(x)
+plt.plot(x, y)
+plt.ylim(-0.1, 1.1)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633770470145.png" alt="" loading="lazy"></figure>
+<!-- more -->
+<h1 id="part-2-sigmoid函数的实现">Part 2. sigmoid函数的实现</h1>
+<pre><code class="language-cpp">def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+</code></pre>
+<p>借助Numpy的广播功能，sigmoid函数可支持Numpy数组的运算</p>
+<!-- more -->
+<p>获取sigmoid函数图形：</p>
+<pre><code class="language-cpp">import numpy as np
+import matplotlib.pylab as plt
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+x = np.arange(-5.0, 5.0, 0.1)
+y = sigmoid(x)
+plt.plot(x,y)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://CTerena.github.io/post-images/1633770889449.png" alt="" loading="lazy"></figure>
+<h2 id="sigmoid函数和阶跃函数的比较">sigmoid函数和阶跃函数的比较</h2>
+<ol>
+<li>与阶跃函数不同，sigmoid函数图像是一条平滑的曲线，该平滑性对神经网络的学习具有重要意义。</li>
+<li>相对于阶跃函数只能返回0或1，sigmoid函数可以返回连续的实数值信号。</li>
+<li>两函数的共同点在于，当输入信号为重要信息（接近1）时，阶跃函数和sigmoid函数都会输出较大的值；当输出信号为不重要的信息时，两者都输出较小的值。另外一个共同点是，输出信号的值始终在0到1之间</li>
+</ol>
+<!-- more -->
+<p>#Part 3. ReLU函数的实现</p>
+<pre><code class="language-cpp">def relu(x):
+    return np.maximum(0,x)
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://CTerena.github.io/post-images/1633771491628.png" alt="" loading="lazy"></figure>
+<h1 id="part-4-神经网络的内积">Part 4. 神经网络的内积</h1>
+<p>示例：用NumPy矩阵实现神经网络（省略偏置与激活函数，只有权重）<br>
+<img src="https://CTerena.github.io/post-images/1633775670115.png" alt="" loading="lazy"></p>
+<pre><code class="language-cpp">import numpy as np
+
+X = np.array([1,2])
+W = np.array([[1, 3, 5], [2, 4, 6]])
+
+Y = np.dot(X, W)
+print(Y)
+</code></pre>
+<h1 id="part-5-3层神经网络的实现">Part 5. 3层神经网络的实现</h1>
+<figure data-type="image" tabindex="4"><img src="https://CTerena.github.io/post-images/1633775953786.png" alt="" loading="lazy"></figure>
+<h2 id="1-从定义符号开始">1. 从定义符号开始：</h2>
+<p><img src="https://CTerena.github.io/post-images/1633776090499.png" alt="" loading="lazy"><br>
+如图，权重和隐藏层的神经元右上角有一个&quot;(1)&quot;，它表示权重和神经元的层号（即第一层的权重、第一次的神经元）。此外，权重右下角有两个数字，它们是后一层的神经元和前一层的神经元的索引号，按照“后一层的索引号、前一层的索引号”的顺序排列。</p>
+<!-- more -->
+<h2 id="2-各层间信号传递的实现">2. 各层间信号传递的实现</h2>
+<p><img src="https://CTerena.github.io/post-images/1633776270775.png" alt="" loading="lazy"><br>
+现在进行从输入层到第一层的第一个神经元的信号传递过程（增加了表示偏置的神经元&quot;1&quot;)可以注意到偏置右下角的索引号只有一个，这是由于前一层只有一个偏置神经元<br>
+由前所述，现在通过加权信号和偏置的和按如下方式进行计算：</p>
+<!-- more -->
+<p><strong>a<sub>1</sub><sup>(1)</sup>=w<sub>11</sub><sup>(1)</sup>x<sub>1</sub>+w<sub>12</sub><sup>(1)</sup>x<sub>2</sub>+b<sub>1</sub><sup>(1)</sup></strong><br>
+此外，如果使用矩阵的乘法运算，则可以将第一层的加权和表示成下式：<br>
+<strong>A<sup>(1)</sup>=XW<sup>(1)</sup>+B<sup>(1)</sup></strong><br>
+其中<br>
+<img src="https://CTerena.github.io/post-images/1633776861616.png" alt="" loading="lazy"><br>
+下面用NumPy多维数组来实现上式，这里将输入信号、权重和偏置设置为任意值</p>
+<pre><code class="language-cpp">x = np.array([1.0, 0.5])
+w1 = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.5]])
+b1 = np.array([0.1, 0.2, 0.3])
+
+a1 = np.dot(x, w1) + b1 #a1 = [0.3 0.7 1.1]
+</code></pre>
+<p>接下来，观察第一层中激活函数的计算过程。该过程可由下图表示<br>
+<img src="https://CTerena.github.io/post-images/1633777156190.png" alt="" loading="lazy"><br>
+如图所示，隐藏层的加权和用a表示，被激活函数转换后的信号用z表示。此外，图中h()表示激活函数，这里我们使用sigmoid函数。<br>
+<code>z1 = sigmoid(a1) #z1 = [0.57444252 0.66818777 0.75026011]</code><br>
+下面，进行第一层到第二层的信号传递（如图所示）<br>
+<img src="https://CTerena.github.io/post-images/1633777516340.png" alt="" loading="lazy"></p>
+<pre><code class="language-cpp">w2 = np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])
+b2 = np.array([0.1, 0.2])
+a2 = np.dot(z1, w1) + b2
+z2 = sigmoid(a2)
+</code></pre>
+<p>除了第一层的输出（z1）变为第二层的输入（a2）这一点外，这部分代码与前一部分完全相同。</p>
+<!-- more -->
+<p>最后是第二层到输出层的信号传递。输出层的实现也和之前的实现基本相同。不过，最后的激活函数和之前的隐藏层略有不同。<br>
+<img src="https://CTerena.github.io/post-images/1633777886238.png" alt="" loading="lazy"></p>
+<pre><code class="language-cpp">def identity_function(x):
+    return x
+
+w3 = np.array([[0.1, 0.3], [0.2, 0.4]])
+b3 = np.array([0.1, 0.2])
+
+a3 = np.dot(z2, w3) + b3
+y = identity_function(a3)
+</code></pre>
+<p>这里我们定义了identity_function()函数（恒等函数），并将其作为输出层的激活函数。（这里这样实现只是为了和之前的流程保持格式统一。</p>
+<!-- more -->
+<p>##代码整合小结</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#part-1-%E9%98%B6%E8%B7%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0">Part 1. 阶跃函数的实现</a></li>
+<li><a href="#part-2-sigmoid%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0">Part 2. sigmoid函数的实现</a>
+<ul>
+<li><a href="#sigmoid%E5%87%BD%E6%95%B0%E5%92%8C%E9%98%B6%E8%B7%83%E5%87%BD%E6%95%B0%E7%9A%84%E6%AF%94%E8%BE%83">sigmoid函数和阶跃函数的比较</a></li>
+</ul>
+</li>
+<li><a href="#part-4-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%86%85%E7%A7%AF">Part 4. 神经网络的内积</a></li>
+<li><a href="#part-5-3%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9E%E7%8E%B0">Part 5. 3层神经网络的实现</a>
+<ul>
+<li><a href="#1-%E4%BB%8E%E5%AE%9A%E4%B9%89%E7%AC%A6%E5%8F%B7%E5%BC%80%E5%A7%8B">1. 从定义符号开始：</a></li>
+<li><a href="#2-%E5%90%84%E5%B1%82%E9%97%B4%E4%BF%A1%E5%8F%B7%E4%BC%A0%E9%80%92%E7%9A%84%E5%AE%9E%E7%8E%B0">2. 各层间信号传递的实现</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
+              <h3 class="post-title">
+                感知机(perceptron)学习笔记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
