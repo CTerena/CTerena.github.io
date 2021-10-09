@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-09T11:18:18.868Z</updated>
+    <updated>2021-10-09T11:20:04.151Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -16,39 +16,22 @@
         <link href="https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/">
         </link>
         <updated>2021-10-09T08:57:53.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="part-1-阶跃函数的实现">Part 1. 阶跃函数的实现</h1>
-<pre><code class="language-cpp">def step_function(x):
-    y = x &gt; 0
-    return y.astype(np.int)
-</code></pre>
-<p>原理示例：</p>
-<pre><code class="language-cpp">import numpy as np
-
-def step_function(x):
-    y = x &gt; 0
-    return y.astype(np.int)
-
-x = np.array([-1.0, 1.0, 2.0])
-y = x &gt; 0
-print(y) #输出结果：[False  True  True]
-</code></pre>
-<p>对Numpy数组进行不等号运算时，数组的各个元素都会进行不等号运算，生成一个布尔型数组，进而用<code>astype()</code>方法将布尔型转换为int型即可得到我们想要的阶跃函数（输出int型的0或1的函数）</p>
-<p>获取阶跃函数的图形：</p>
-<pre><code class="language-cpp">import numpy as np
-import matplotlib.pylab as plt
-
-def step_function(x):
-    return np.array(x &gt; 0, dtype = np.int)
-
-x = np.arange(-5.0, 5.0, 0.1)
-y = step_function(x)
-plt.plot(x, y)
-plt.ylim(-0.1, 1.1)
-plt.show()
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633770470145.png" alt="" loading="lazy"></figure>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="part-1-阶跃函数的实现">Part 1. 阶跃函数的实现</h1>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<h1 id="part-1-阶跃函数的实现">Part 1. 阶跃函数的实现</h1>
 <pre><code class="language-cpp">def step_function(x):
     y = x &gt; 0
     return y.astype(np.int)
