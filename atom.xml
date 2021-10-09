@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-09T11:22:44.693Z</updated>
+    <updated>2021-10-09T14:11:22.501Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -154,7 +154,39 @@ y = identity_function(a3)
 </code></pre>
 <p>这里我们定义了identity_function()函数（恒等函数），并将其作为输出层的激活函数。（这里这样实现只是为了和之前的流程保持格式统一。</p>
 <!-- more -->
-<p>##代码整合小结</p>
+<h2 id="代码整合小结">代码整合小结</h2>
+<p>至此，3层神经网络的实现已经介绍完毕。下面，按照神经网络的实现惯例，我们将权重用大写字母表示，其余量用小写字母表示来整理代码：（类优化）</p>
+<pre><code class="language-cpp">def identity_function(x):
+    return x
+
+def init_network():
+    network = {}
+    network['W1'] = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.6]])
+    network['b1'] = np.array([0.1, 0.2, 0,3])
+    network['W2'] = np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])
+    network['b2'] = np.array([0.1, 0.2])
+    network['W3'] = np.array([[0.1, 0.3], [0.2, 0.4]])
+    network['b3'] = np.array([0.1, 0.2])
+    return network
+
+def forward(network, x):
+    W1, W2, W3 = network['W1'], network['W2'], network['W3']
+    b1, b2, b3 = network['b1'], network['b2'], network['b3']
+    
+    a1 = np.dot(x, W1) + b1
+    z1 = sigmoid(a1)
+    a2 = np.dot(z1, W2) + b2
+    z2 = sigmoid(a2)
+    a3 = np.dot(z2, W3) + b3
+    y = identity_function(a3)
+    
+    return y
+
+network = init_network()
+x = np.array([1.0, 0.5])
+y = forward(network, x)
+print(y)
+</code></pre>
 ]]></content>
     </entry>
     <entry>

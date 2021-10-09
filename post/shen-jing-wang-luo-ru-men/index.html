@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>神经网络入门 | 停云</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633778555571">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633788680121">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="神经网络入门 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
@@ -42,7 +42,7 @@ import numpy as..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633778555571" alt="">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633788680121" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -90,7 +90,7 @@ import numpy as..." />
                 2021-10-09
               </span>
               <span>
-                5 min read
+                7 min read
               </span>
               
                 <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
@@ -245,7 +245,39 @@ y = identity_function(a3)
 </code></pre>
 <p>这里我们定义了identity_function()函数（恒等函数），并将其作为输出层的激活函数。（这里这样实现只是为了和之前的流程保持格式统一。</p>
 <!-- more -->
-<p>##代码整合小结</p>
+<h2 id="代码整合小结">代码整合小结</h2>
+<p>至此，3层神经网络的实现已经介绍完毕。下面，按照神经网络的实现惯例，我们将权重用大写字母表示，其余量用小写字母表示来整理代码：（类优化）</p>
+<pre><code class="language-cpp">def identity_function(x):
+    return x
+
+def init_network():
+    network = {}
+    network['W1'] = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.6]])
+    network['b1'] = np.array([0.1, 0.2, 0,3])
+    network['W2'] = np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])
+    network['b2'] = np.array([0.1, 0.2])
+    network['W3'] = np.array([[0.1, 0.3], [0.2, 0.4]])
+    network['b3'] = np.array([0.1, 0.2])
+    return network
+
+def forward(network, x):
+    W1, W2, W3 = network['W1'], network['W2'], network['W3']
+    b1, b2, b3 = network['b1'], network['b2'], network['b3']
+    
+    a1 = np.dot(x, W1) + b1
+    z1 = sigmoid(a1)
+    a2 = np.dot(z1, W2) + b2
+    z2 = sigmoid(a2)
+    a3 = np.dot(z2, W3) + b3
+    y = identity_function(a3)
+    
+    return y
+
+network = init_network()
+x = np.array([1.0, 0.5])
+y = forward(network, x)
+print(y)
+</code></pre>
 
               </div>
               <div class="toc-container">
@@ -261,6 +293,7 @@ y = identity_function(a3)
 <ul>
 <li><a href="#1-%E4%BB%8E%E5%AE%9A%E4%B9%89%E7%AC%A6%E5%8F%B7%E5%BC%80%E5%A7%8B">1. 从定义符号开始：</a></li>
 <li><a href="#2-%E5%90%84%E5%B1%82%E9%97%B4%E4%BF%A1%E5%8F%B7%E4%BC%A0%E9%80%92%E7%9A%84%E5%AE%9E%E7%8E%B0">2. 各层间信号传递的实现</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E6%95%B4%E5%90%88%E5%B0%8F%E7%BB%93">代码整合小结</a></li>
 </ul>
 </li>
 </ul>
