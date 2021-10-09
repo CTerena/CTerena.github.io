@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>感知机(perceptron)学习笔记 | 停云</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633769366908">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633769693657">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="感知机(perceptron)学习笔记 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
@@ -43,7 +43,7 @@ def AND(x1,x2):
       <div class="main-content">
         <div class="site-header">
   <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633769366908" alt="">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633769693657" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -91,7 +91,7 @@ def AND(x1,x2):
                 2021-10-09
               </span>
               <span>
-                3 min read
+                4 min read
               </span>
               
                 <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
@@ -247,6 +247,45 @@ else:
 <ul>
 <li>多层感知机理论上可以表示计算机</li>
 </ul>
+<!-- more -->
+<p><strong>完整基本逻辑门代码</strong></p>
+<pre><code class="language-cpp">import numpy as np
+def AND(x1, x2):
+    x = np.array([x1, x2])     
+    w = np.array([0.5, 0.5]) 
+    b = -0.7                 
+    if np.sum(w * x) + b &gt; 0:
+        return 1
+    else:
+        return 0
+    
+def NAND(x1, x2):
+    x = np.array([x1, x2])     
+    w = np.array([0.5, 0.5]) 
+    b = -0.7                 
+    flg = np.sum(w * x)
+    if np.sum(w * x) + b &gt; 0:
+        return 0
+    else:
+        return 1
+    
+def OR(x1, x2):
+    x = np.array([x1, x2])
+    w = np.array([0.5, 0.5])
+    b = -0
+    if np.sum(w * x) + b &gt; 0:
+        return 1
+    else:
+        return 0
+
+def XOR(x1, x2):
+    s1 = NAND(x1, x2)
+    s2 = OR(x1, x2)
+    if AND(s1, s2):
+        return 1
+    else:
+        return 0
+</code></pre>
 
               </div>
               <div class="toc-container">

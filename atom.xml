@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-09T08:49:28.484Z</updated>
+    <updated>2021-10-09T08:54:55.981Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -155,6 +155,45 @@ else:
 <ul>
 <li>多层感知机理论上可以表示计算机</li>
 </ul>
+<!-- more -->
+<p><strong>完整基本逻辑门代码</strong></p>
+<pre><code class="language-cpp">import numpy as np
+def AND(x1, x2):
+    x = np.array([x1, x2])     
+    w = np.array([0.5, 0.5]) 
+    b = -0.7                 
+    if np.sum(w * x) + b &gt; 0:
+        return 1
+    else:
+        return 0
+    
+def NAND(x1, x2):
+    x = np.array([x1, x2])     
+    w = np.array([0.5, 0.5]) 
+    b = -0.7                 
+    flg = np.sum(w * x)
+    if np.sum(w * x) + b &gt; 0:
+        return 0
+    else:
+        return 1
+    
+def OR(x1, x2):
+    x = np.array([x1, x2])
+    w = np.array([0.5, 0.5])
+    b = -0
+    if np.sum(w * x) + b &gt; 0:
+        return 1
+    else:
+        return 0
+
+def XOR(x1, x2):
+    s1 = NAND(x1, x2)
+    s2 = OR(x1, x2)
+    if AND(s1, s2):
+        return 1
+    else:
+        return 0
+</code></pre>
 ]]></content>
     </entry>
     <entry>
