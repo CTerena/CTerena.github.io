@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-08T03:18:42.590Z</updated>
+    <updated>2021-10-09T06:54:53.923Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,54 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[用Matplotlib在Python中绘制图像]]></title>
+        <id>https://CTerena.github.io/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/</id>
+        <link href="https://CTerena.github.io/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/">
+        </link>
+        <updated>2021-10-09T06:18:13.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p>Matplotlib是Python中用于绘制图形的库，可实现数据的可视化<br>
+<code>import numpy as np</code><br>
+<code>import matplotlib.pyplot as plt</code></p>
+<!-- more -->
+<p>示例：绘制sin(x)曲线</p>
+<pre><code class="language-cpp">x = np.arange(0,10,0.01)
+y = sin(x)
+plt.plot(x , y)
+plt.show()
+</code></pre>
+<p>这里生成了[0, 0.1, 0.2, ... , 5.8, 5.9]的数据，将其设为x。对x的各个元素，应用NumPy的sin函数，将x、y的数据传给<code>plt.plot</code>方法，然后绘制图形。最后，通过plt.show()显示图形。运行上述代码后，就会显示如下图形：<br>
+<img src="https://CTerena.github.io/post-images/1633761147270.png" alt="" loading="lazy"></p>
+<p>对于刚才的sin(x)图像，我们可以使用pyplot的添加标题和坐标轴标签等功能,同时追加cos(x)的图像。</p>
+<pre><code class="language-cpp">import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(0, 10, 0.01)
+y1 = np.sin(x)
+y2 = np.cos(x)
+plt.plot(x, y1, label = 'sin')#label命名
+plt.plot(x, y2, linestyle = '--', label = 'cos')#linestyle设置为虚线
+plt.xlabel('x')#x轴命名
+plt.ylabel('y')#y轴命名
+plt.title('sin&amp;cos')
+plt.legend()#曲线名称标注
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633761661731.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Pandas库使用指南]]></title>
         <id>https://CTerena.github.io/post/pandas-ku-shi-yong-zhi-nan/</id>

@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MATLAB程序设计语言基础 | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633762485100">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="MATLAB程序设计语言基础 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Part 1. MATLAB语言的变量与常量
+MATLAB语言变量名由字母引导，可包含字母、数字、下划线，且变量名区分大小写。
+在MATLAB语言中为特定常数保留了一些名称，虽然这些常量也可以重新赋值，但一般不建议。
+
+eps ——机器的浮..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633762485100" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    尽道清歌传皓齿，风起，雪飞炎海变清凉
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              MATLAB程序设计语言基础
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-08
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/45b40ad162d9f2d38d801947aeec8a136227cc41.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="part-1-matlab语言的变量与常量">Part 1. MATLAB语言的变量与常量</h1>
+<p>MATLAB语言变量名由字母引导，可包含字母、数字、下划线，且变量名区分大小写。<br>
+在MATLAB语言中为特定常数保留了一些名称，虽然这些常量也可以重新赋值，但一般不建议。</p>
+<ul>
+<li><code>eps</code> ——机器的浮点运算误差限。eps默认值为2.2204e-16，若某个量的绝对值小于eps，则在程序运算中认为这个量为零</li>
+<li><code>i</code>和<code>j</code>——表示纯虚数量 j。</li>
+<li><code>Inf</code>——无穷大量的MATLAB表示，也可以写作<code>inf</code>。同样地，可用<code>-Inf</code>表示负无穷。在MATLAB程序执行时，即使遇到了以0为除数的运算，也不会终止程序运行，只会给出一个“除0”警告，并将结果赋值为inf。</li>
+<li><code>NaN</code>——not a number，通常由0/0运算、Inf/Inf及类似的运算得出。</li>
+<li><code>pi</code>——圆周率的双精度浮点表示</li>
+<li><code>lasterr</code>——存放最新一次的错误信息。此变量为字符串类型，若无错误，则该变量为空字符串</li>
+<li><code>lastwarn</code>——存放最新的警告信息。</li>
+</ul>
+<h1 id="part-2-基本语句结构">Part 2. 基本语句结构</h1>
+<h2 id="1-直接赋值语句">1. 直接赋值语句</h2>
+<p>基本结构位<code>赋值变量=赋值表达式</code>。如果赋值表达式后面没有分号，则将在MATLAB命令窗口中显示表达式的运算结果。如果省略了赋值变量和等号，则表达式运算的结果直接赋给保留变量<code>ans</code>。也就是说，<code>ans</code>将永远存放最近一次无赋值变量语句的运算结果。</p>
+<h2 id="2函数调用语句">2.函数调用语句</h2>
+<p>基本结构为<code>[返回变量列表]=函数名(输入变量列表)</code>，其中，函数名的要求与变量名的要求一致。<br>
+返回变量列表和输入变量列表均可以由若干个变量名组成，它们之间用逗号分隔。返回变量还允许用空格分隔。</p>
+<h1 id="part-3-冒号表达式与子矩阵提取">Part 3. 冒号表达式与子矩阵提取</h1>
+<p>冒号表达式的基本结构为 <code>v = s1 : s2 : s3</code>，该函数将生成一个向量<strong>v</strong>，其中s1为向量的起始值，s2为步距，s3为最大值。若省略s2，则步距为默认值1.</p>
+<!-- more -->
+<p>提取子矩阵的方法是<code>B = A(v1 , v2)</code>，其中，v1向量表示子矩阵中要保留的行号构成的向量，v2表示保留的列号构成的向量</p>
+<h1 id="part-4-基本数学运算">Part 4. 基本数学运算</h1>
+<h2 id="1-矩阵的代数运算">1. 矩阵的代数运算</h2>
+<ul>
+<li><strong>矩阵转置</strong> 使用<code>A'</code>可以得到<strong>A</strong>矩阵的Hermit转置</li>
+<li><strong>加减法运算</strong> 假设在MATLAB工作环境下有两个矩阵<strong>A</strong>和<strong>B</strong>，则可以由<code>C = A + B</code>命令执行矩阵加法。若<strong>A</strong>和<strong>B</strong>矩阵的维数相同，可正常运算。若其中之一为标量，则将自动遍加给另一矩阵。其他情况下报错。</li>
+<li><strong>矩阵乘法</strong> 维数相容的两个矩阵的乘法可直接由<code>C = A + B</code>算得</li>
+<li><strong>矩阵左除</strong> MATLAB中用&quot;&quot;运算符号表示两个矩阵的左除，A\B为方程 <strong>AX = B</strong>的解<strong>X</strong>，若<strong>A</strong>为非奇异方阵（可逆方阵），则 <strong>X = A<sup>-1</sup>B</strong></li>
+<li><strong>矩阵翻转</strong>MATLAB提供一些翻转矩阵的特殊命令，如<code>B = fliplr(A)</code>命令将矩阵A左右翻转再赋给B，<code>B = flipud(A)</code>将</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#part-1-matlab%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F">Part 1. MATLAB语言的变量与常量</a></li>
+<li><a href="#part-2-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9E%84">Part 2. 基本语句结构</a>
+<ul>
+<li><a href="#1-%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5">1. 直接赋值语句</a></li>
+<li><a href="#2%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%AF%AD%E5%8F%A5">2.函数调用语句</a></li>
+</ul>
+</li>
+<li><a href="#part-3-%E5%86%92%E5%8F%B7%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%AD%90%E7%9F%A9%E9%98%B5%E6%8F%90%E5%8F%96">Part 3. 冒号表达式与子矩阵提取</a></li>
+<li><a href="#part-4-%E5%9F%BA%E6%9C%AC%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97">Part 4. 基本数学运算</a>
+<ul>
+<li><a href="#1-%E7%9F%A9%E9%98%B5%E7%9A%84%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97">1. 矩阵的代数运算</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

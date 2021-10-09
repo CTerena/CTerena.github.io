@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>用Matplotlib在Python中绘制图像 | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633762485100">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="用Matplotlib在Python中绘制图像 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+
+
+
+
+
+
+
+
+
+
+
+Matplotlib是Python中用于绘制图形的库，可实现数据的可视化
+import numpy as np
+import matplotlib.pyplot as plt
+
+示例：绘制sin(x)曲线
+x = n..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633762485100" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    尽道清歌传皓齿，风起，雪飞炎海变清凉
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              用Matplotlib在Python中绘制图像
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-09
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/4886a7efce1b9d168d0375c7f4deb48f8d546414.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p>Matplotlib是Python中用于绘制图形的库，可实现数据的可视化<br>
+<code>import numpy as np</code><br>
+<code>import matplotlib.pyplot as plt</code></p>
+<!-- more -->
+<p>示例：绘制sin(x)曲线</p>
+<pre><code class="language-cpp">x = np.arange(0,10,0.01)
+y = sin(x)
+plt.plot(x , y)
+plt.show()
+</code></pre>
+<p>这里生成了[0, 0.1, 0.2, ... , 5.8, 5.9]的数据，将其设为x。对x的各个元素，应用NumPy的sin函数，将x、y的数据传给<code>plt.plot</code>方法，然后绘制图形。最后，通过plt.show()显示图形。运行上述代码后，就会显示如下图形：<br>
+<img src="https://CTerena.github.io/post-images/1633761147270.png" alt="" loading="lazy"></p>
+<p>对于刚才的sin(x)图像，我们可以使用pyplot的添加标题和坐标轴标签等功能,同时追加cos(x)的图像。</p>
+<pre><code class="language-cpp">import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(0, 10, 0.01)
+y1 = np.sin(x)
+y2 = np.cos(x)
+plt.plot(x, y1, label = 'sin')#label命名
+plt.plot(x, y2, linestyle = '--', label = 'cos')#linestyle设置为虚线
+plt.xlabel('x')#x轴命名
+plt.ylabel('y')#y轴命名
+plt.title('sin&amp;cos')
+plt.legend()#曲线名称标注
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633761661731.png" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/pandas-ku-shi-yong-zhi-nan/">
+              <h3 class="post-title">
+                Pandas库使用指南
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
