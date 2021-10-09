@@ -1,0 +1,328 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>感知机(perceptron)学习笔记 | 停云</title>
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633769366908">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="感知机(perceptron)学习笔记 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Part 1. 单层感知机
+
+接收参数x1和x2的AND函数
+
+def AND(x1,x2):
+    w1, w2, theta = 0.5, 0.5, 0.7
+    tmp = x1 * w1 + x2..." />
+    <meta name="keywords" content="机器学习,Python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633769366908" alt="">
+  </a>
+  <h1 class="site-title">
+    停云
+  </h1>
+  <p class="site-description">
+    尽道清歌传皓齿，风起，雪飞炎海变清凉
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              感知机(perceptron)学习笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-09
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
+                  # 机器学习
+                </a>
+              
+                <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
+                  # Python
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/8d59ebc4b74543a9ec25836419178a82b901141f.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<h1 id="part-1-单层感知机">Part 1. 单层感知机</h1>
+<ol>
+<li>接收参数x<sub>1</sub>和x<sub>2</sub>的<code>AND</code>函数</li>
+</ol>
+<pre><code class="language-cpp">def AND(x1,x2):
+    w1, w2, theta = 0.5, 0.5, 0.7
+    tmp = x1 * w1 + x2 * w2
+    if tmp &lt;=theta:
+        return 0
+    elif tmp &gt; theta:
+        return 1
+    
+print(AND(0,0)) #0
+print(AND(0,1)) #0
+print(AND(1,0)) #0
+print(AND(1,1)) #1
+</code></pre>
+<!-- more -->
+<ol start="2">
+<li>导入权重和偏置</li>
+</ol>
+<pre><code class="language-cpp">import numpy as np
+x = np.array([0, 1])     #输入
+w = np.array([0.5, 0.5]) #权重
+b = -0.7                 #偏置
+print(w * x)
+print(np.sum(w * x))
+print(np.sum(w * x) + b)
+</code></pre>
+<!-- more -->
+<ol start="3">
+<li>使用权重和偏置实现<code>AND</code>门</li>
+</ol>
+<pre><code class="language-cpp">import numpy as np
+def AND(x1, x2):
+    x = np.array([x1, x2])     #输入
+    w = np.array([0.5, 0.5]) #权重
+    b = -0.7                 #偏置
+    flg = np.sum(w * x)
+    if np.sum(w * x) + b &gt; 0:
+        return 1
+    else:
+        return 0
+    
+print(AND(0,0)) #0
+print(AND(0,1)) #0
+print(AND(1,0)) #0
+print(AND(1,1)) #1
+</code></pre>
+<p><strong>权重w<sub>1</sub>和w<sub>2</sub>是控制输入信号的重要性的参数，而偏置b是调整神经元被激活的容易程度的参数</strong></p>
+<!-- more -->
+<ol start="4">
+<li>使用权重和偏置实现<code>NAND</code>门</li>
+</ol>
+<pre><code class="language-cpp">def NAND(x1, x2):
+    x = np.array([x1, x2])     
+    w = np.array([0.5, 0.5]) 
+    b = -0.7                 
+    flg = np.sum(w * x)
+    if np.sum(w * x) + b &gt; 0:
+        return 0
+    else:
+        return 1
+</code></pre>
+<!-- more -->
+<ol start="5">
+<li>使用权重和偏置实现<code>OR</code>门</li>
+</ol>
+<pre><code class="language-cpp">def OR(x1, x2):
+x = np.array([x1, x2])
+w = np.array([0.5, 0.5])
+b = -0
+if np.sum(w * x) + b &gt; 0:
+    return 1
+else:
+    return 0
+</code></pre>
+<p><strong>单层感知机的局限性：无法实现和应用非线性空间的逻辑门</strong></p>
+<!-- more -->
+<h1 id="part-2多层感知机">Part 2.多层感知机</h1>
+<!-- more -->
+<p><code>XOR</code>门的实现(叠加了两层感知机)</p>
+<pre><code class="language-cpp">def XOR(x1, x2):
+    s1 = NAND(x1, x2)
+    s2 = OR(x1, x2)
+    if AND(s1, s2):
+        return 1
+    else:
+        return 0
+</code></pre>
+<p>该2层感知机中，x<sub>1</sub>和x<sub>2</sub>作为初始的0层信号发送至1层感知机，然后在第1层和第2层之间进行信号的传送和接收，具体如下：</p>
+<ol>
+<li>第0层的两个神经元接收输入信号，并将信号发送至第1层的神经元</li>
+<li>第1层的神经元将信号发送至第2层的神经元，第2层的神经元输出结果</li>
+</ol>
+<h1 id="part-3-总结">Part 3. 总结</h1>
+<ul>
+<li>感知机是具有输入和输出的算法。给定一个输入后，将输出一个既定的值</li>
+</ul>
+<!-- more -->
+<ul>
+<li>感知机将权重和偏置设置为参数</li>
+</ul>
+<!-- more -->
+<ul>
+<li>使用感知机可以表示与门和或门等逻辑电路</li>
+</ul>
+<!-- more -->
+<ul>
+<li>异或门无法通过单层感知机来表示</li>
+</ul>
+<!-- more -->
+<ul>
+<li>使用2层感知机可以表示异或门</li>
+</ul>
+<!-- more -->
+<ul>
+<li>单层感知机只能表示线性空间，而多层感知机可以表示非线性空间</li>
+</ul>
+<!-- more -->
+<ul>
+<li>多层感知机理论上可以表示计算机</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#part-1-%E5%8D%95%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA">Part 1. 单层感知机</a></li>
+<li><a href="#part-2%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA">Part 2.多层感知机</a></li>
+<li><a href="#part-3-%E6%80%BB%E7%BB%93">Part 3. 总结</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://CTerena.github.io/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/">
+              <h3 class="post-title">
+                用Matplotlib在Python中绘制图像
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

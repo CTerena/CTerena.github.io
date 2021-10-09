@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-09T06:56:42.000Z</updated>
+    <updated>2021-10-09T08:49:28.484Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,153 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[感知机(perceptron)学习笔记]]></title>
+        <id>https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/</id>
+        <link href="https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
+        </link>
+        <updated>2021-10-09T08:07:06.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<h1 id="part-1-单层感知机">Part 1. 单层感知机</h1>
+<ol>
+<li>接收参数x<sub>1</sub>和x<sub>2</sub>的<code>AND</code>函数</li>
+</ol>
+<pre><code class="language-cpp">def AND(x1,x2):
+    w1, w2, theta = 0.5, 0.5, 0.7
+    tmp = x1 * w1 + x2 * w2
+    if tmp &lt;=theta:
+        return 0
+    elif tmp &gt; theta:
+        return 1
+    
+print(AND(0,0)) #0
+print(AND(0,1)) #0
+print(AND(1,0)) #0
+print(AND(1,1)) #1
+</code></pre>
+<!-- more -->
+<ol start="2">
+<li>导入权重和偏置</li>
+</ol>
+<pre><code class="language-cpp">import numpy as np
+x = np.array([0, 1])     #输入
+w = np.array([0.5, 0.5]) #权重
+b = -0.7                 #偏置
+print(w * x)
+print(np.sum(w * x))
+print(np.sum(w * x) + b)
+</code></pre>
+<!-- more -->
+<ol start="3">
+<li>使用权重和偏置实现<code>AND</code>门</li>
+</ol>
+<pre><code class="language-cpp">import numpy as np
+def AND(x1, x2):
+    x = np.array([x1, x2])     #输入
+    w = np.array([0.5, 0.5]) #权重
+    b = -0.7                 #偏置
+    flg = np.sum(w * x)
+    if np.sum(w * x) + b &gt; 0:
+        return 1
+    else:
+        return 0
+    
+print(AND(0,0)) #0
+print(AND(0,1)) #0
+print(AND(1,0)) #0
+print(AND(1,1)) #1
+</code></pre>
+<p><strong>权重w<sub>1</sub>和w<sub>2</sub>是控制输入信号的重要性的参数，而偏置b是调整神经元被激活的容易程度的参数</strong></p>
+<!-- more -->
+<ol start="4">
+<li>使用权重和偏置实现<code>NAND</code>门</li>
+</ol>
+<pre><code class="language-cpp">def NAND(x1, x2):
+    x = np.array([x1, x2])     
+    w = np.array([0.5, 0.5]) 
+    b = -0.7                 
+    flg = np.sum(w * x)
+    if np.sum(w * x) + b &gt; 0:
+        return 0
+    else:
+        return 1
+</code></pre>
+<!-- more -->
+<ol start="5">
+<li>使用权重和偏置实现<code>OR</code>门</li>
+</ol>
+<pre><code class="language-cpp">def OR(x1, x2):
+x = np.array([x1, x2])
+w = np.array([0.5, 0.5])
+b = -0
+if np.sum(w * x) + b &gt; 0:
+    return 1
+else:
+    return 0
+</code></pre>
+<p><strong>单层感知机的局限性：无法实现和应用非线性空间的逻辑门</strong></p>
+<!-- more -->
+<h1 id="part-2多层感知机">Part 2.多层感知机</h1>
+<!-- more -->
+<p><code>XOR</code>门的实现(叠加了两层感知机)</p>
+<pre><code class="language-cpp">def XOR(x1, x2):
+    s1 = NAND(x1, x2)
+    s2 = OR(x1, x2)
+    if AND(s1, s2):
+        return 1
+    else:
+        return 0
+</code></pre>
+<p>该2层感知机中，x<sub>1</sub>和x<sub>2</sub>作为初始的0层信号发送至1层感知机，然后在第1层和第2层之间进行信号的传送和接收，具体如下：</p>
+<ol>
+<li>第0层的两个神经元接收输入信号，并将信号发送至第1层的神经元</li>
+<li>第1层的神经元将信号发送至第2层的神经元，第2层的神经元输出结果</li>
+</ol>
+<h1 id="part-3-总结">Part 3. 总结</h1>
+<ul>
+<li>感知机是具有输入和输出的算法。给定一个输入后，将输出一个既定的值</li>
+</ul>
+<!-- more -->
+<ul>
+<li>感知机将权重和偏置设置为参数</li>
+</ul>
+<!-- more -->
+<ul>
+<li>使用感知机可以表示与门和或门等逻辑电路</li>
+</ul>
+<!-- more -->
+<ul>
+<li>异或门无法通过单层感知机来表示</li>
+</ul>
+<!-- more -->
+<ul>
+<li>使用2层感知机可以表示异或门</li>
+</ul>
+<!-- more -->
+<ul>
+<li>单层感知机只能表示线性空间，而多层感知机可以表示非线性空间</li>
+</ul>
+<!-- more -->
+<ul>
+<li>多层感知机理论上可以表示计算机</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用Matplotlib在Python中绘制图像]]></title>
         <id>https://CTerena.github.io/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/</id>
@@ -1111,143 +1258,6 @@ print(a[1,2]) # 10
 <p><code>L.pop(1)</code> 删去列表中第二个元素 ——&gt;L = ['a', 'b', 'c', 'd', 'e', 'f']</p>
 <p><code>del L[1]</code> 同为删去列表中第二个元素 ——&gt; L = ['a', 'c', 'd', 'e', 'f']</p>
 <p><code>del L[1:]</code> 删去列表中的第二至最后一个元素 ——&gt; L = ['a']</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Summary：lecture1-lecture4]]></title>
-        <id>https://CTerena.github.io/post/zhi-shi-dian-yu-yi-cuo-dian-zong-jie-lecture1-lecture4/</id>
-        <link href="https://CTerena.github.io/post/zhi-shi-dian-yu-yi-cuo-dian-zong-jie-lecture1-lecture4/">
-        </link>
-        <updated>2021-10-04T03:08:56.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<p>*<strong>代表该内容未曾出现在试题中，可选择性了解😎</strong><br>
-<strong>若对任何操作未完全理解，建议自己在Spyder中尝试😃</strong><br>
-<strong>列表的知识归纳另附一份文件💁‍♂</strong></p>
-<h1 id="part1-程序中的基本元素from-silde">Part1 : 程序中的基本元素（from silde)🏐:</h1>
-<blockquote>
-<ul>
-<li>1.literals - Numbers and the text strings (blue and<br>
-black)</li>
-<li>2.operators - like + and = to calculate values</li>
-<li>3.names – functions and variables like print and C</li>
-<li>4.comments - # anything behind is not interpreted by python</li>
-<li>5.keywords - e.g., assert</li>
-</ul>
-</blockquote>
-<!-- more -->
-<h1 id="part2-运算符operators">Part2 : 运算符operators🏉</h1>
-<ul>
-<li>+-*</li>
-<li>exponentiation: **（乘方）</li>
-<li>	modulus: %(取模，相当于取除法的余数 e.g: 5 % 3 = 2)</li>
-<li>	floor division // （向下取整）</li>
-<li>*XOR: ^(异或运算 a^b时a与b被转化成二进制，每一位若相等则在该位返回0，反之返回1，最后转化回十进制作为结果</li>
-<li>*bitwise  left shift: <<(二进制下全体左移一位)</li>
-<li>*bitwise right shift: >>(二进制下全体右移一位)</li>
-<p>补充：在使用运算符对变量进行赋值时有两种常用语法：1. <code>a += b</code> 2. <code>a = a + b</code>两种语法效果相同</p>
-<h1 id="part3-数字类型">Part3 : 数字类型🤹‍♀</h1>
-<pre><code>1. 整型(int) : 不限大小、正负的整数
-2. 浮点数(float): 带有“.”的非复数数字类型
-3. 复数(complex): 由实部虚部两部分组成，如3+5j 
-</code></pre>
-<!-- more -->
-<pre><code>特殊地：1.0 、2.0 、8.0等属于浮点数，1 + 0j 属于复数
-(复数的实部虚部查询：print( x.real ) print( x.imag )
-(可直接用类似 a=1+1j的语句创建复数变量，也可用a=complex(x,y)的函数方法，后者a=x+yj
-</code></pre>
-<h1 id="part4-字符串">Part4 : 字符串🥁</h1>
-<p>1：创建字符串：将字符串内容置于单引号，双引号或三引号中<br>
-#注意: 当字符串本身含有引号时，最外层的引号应与内层引号相异，否则会报错👿<br>
-如：创建字符串I‘m good 需用双引号: <code>s = “I’m good”</code><br>
-*小技巧：如果不想考虑引号的选择，可以在字符串中的每个引号前打上”\”字符，”\”字符后的引号不会引起冲突 e.g: <code>s = ‘I\‘m good’</code>（因使用了\，可在最外层用单引号）</p>
-<p>2：index：字符串中单个字符的标号<br>
-标号规则：左至右：从0开始——0，1，2，3，4……<br>
-右至左：从-1开始——-1，-2，-3……<br>
-标号使用：给出标号返回字符：s<a href="%E8%BF%94%E5%9B%9Es%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%AD%97%E7%AC%A6">2</a><br>
-给出字符求标号（左起第一处出现）：s.index(a)（返回第一个’a’的位置）</p>
-<p>3：silcing切片，按指定规则提取字符串的一部分</p>
-<pre><code> 设s = ‘abcdefg’
-
- s[2:5]：s的第3—5个字符：cde
-
- s[:6]：s的第7个字符前所有的字符：abcde
-
- s[2:]：s的第3个字符后所有的字符：defg
-
- s[0:-1]：-1相当于最后一个字符，即相当于6：abcdef
-
- s[ : ]：啥也没干:abcdefg
-</code></pre>
-<p>4：常用操作：</p>
-<pre><code> len(s)：求字符串长度（字符数，包括空格）
-
- .find(str)：找到字符串中第一个出现的str，返回其起始字母的标号
-
- .upper()/.lower()：字母大写化/小写化
-
- .count(str)：统计字符串中str出现了多少次
-
- .replace(str1,str2)：将字符串中的str1替换为str2
-
- .strip()：去除字符串开头结尾的空格
-
- .isdigit()/.isalpha()：判定字符串是否仅由数字/字母组成
-
- .islower()/.isupper()：判定字符串是否全为大写/小写
-</code></pre>
-<p><strong>注意！对一个字符串进行上述操作时，该字符串本身并不会改变，只会得到一个即时性的操作改变结果</strong></p>
-<pre><code class="language-cpp">l = 'abc'
-l.upper()
-print(l)
-</code></pre>
-<p>输出结果仍为 'abc' 这是因为字符串与列表不同，不支持在原位置上直接修改某些字符，若想储存修改结果，可将该操作放入赋值语句：<code>s = l.upper()</code>也可以对自身进行迭代：<code>l = l.upper()</code></p>
-<h1 id="part5-占位符">Part5 : 占位符🎪</h1>
-<pre><code> 使用格式为：’占位符’ % 变量 e.g：’%d’ % a 其意义在于单引号内输入直接变量不能转化为变量对应的值，故用占位符占据变量位置，再于后面列出应出现在占位符位置的变量
- 注意：当同时使用多个占位符时，变量全部置于括号内，以逗号隔开 							 e.g: ‘%d%d’ % (a,b)
-</code></pre>
-<p>占位符中%后的不同字母对应不同类型的变量：</p>
-<ul>
-	<li>  %i %d : 整数</li>
-	 <li>  %f : 浮点数，常见地，%.3f表示保留浮点数三位小数（其它数值同理）</li>
-    <li>  %s：字符串 </li>
-<h1 id="part6-逻辑运算例题quiz03-2">Part6 : 逻辑运算（例题：quiz03-2）🎯</h1>
-<pre><code>布尔变量：True 或 False 
-e.g: a = (3 &gt; 2) 则 a = True ；a = (3 &lt; 2) 则 a = False
-</code></pre>
-<p><strong>布尔变量的意义在于帮助程序判定某种情况下是否满足某种条件，以进行后续操作的选择</strong></p>
-<pre><code> and 运算符：当两边的布尔变量都为True 时为True，否则为False
- e.g：(8 &gt; 3) and (2 &lt; 6) == True ；(7 &gt; 4) and (8 == 9) == False
-
- or 运算符：当两边的布尔变量至少有一个为True时为True，否则为False
- e.g：(7 &gt; 4) or (8 == 9) ==True ；(8 &lt; 1) or (1 == 4) == False
-
- not 运算符：将后接的布尔变量反转
- e.g：not True == False ；not False == True
-</code></pre>
-<!-- more -->
-<pre><code> 其它操作：
-1.指示输入：input() 使用方法：a = input()，也可a = input(‘请输入一个数字：’)单引号内可书写任意内容。
- **注意：input得到的任何输入都属于字符串类型，若想将其转化为整数，可进行如下操作：**
-                a = int( input(‘请输入一个整数：’) ) ；b = float( input() )
-2.range：(a,b,c)表示从a至b-1，每隔c个取一个，其中c可不写，不写时默认为1
-3.循环中的continue 与 break：continue 会令程序直接进入下一次循环，break则令程序终止循环
-4.注释：井号为单行注释，三个双引号可进行多行注释
-</code></pre>
-<p>🤗<br>
-注意：<br>
-1.变量命名：变量名仅能由数字、大小写字母、下划线_组成，且不能以数字开头<br>
-2.区分 &quot;=&quot; 与 &quot;==&quot; ， 前者表示赋值，后者表示判定两端是否相同<br>
-3.使用if 、while、for和函数时记得加引号<br>
-4.注意运算符的优先级：括号&gt;乘方&gt;乘除&gt;加减</p>
 ]]></content>
     </entry>
 </feed>
