@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://CTerena.github.io</id>
+    <id>http://localhost:4000</id>
     <title>停云</title>
-    <updated>2021-10-10T12:27:13.187Z</updated>
+    <updated>2021-10-10T12:29:49.750Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://CTerena.github.io"/>
-    <link rel="self" href="https://CTerena.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>尽道清歌传皓齿，风起，雪飞炎海变清凉</subtitle>
-    <logo>https://CTerena.github.io/images/avatar.png</logo>
-    <icon>https://CTerena.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
     <entry>
         <title type="html"><![CDATA[神经网络入门]]></title>
-        <id>https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/</id>
-        <link href="https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/">
+        <id>http://localhost:4000/post/shen-jing-wang-luo-ru-men/</id>
+        <link href="http://localhost:4000/post/shen-jing-wang-luo-ru-men/">
         </link>
         <updated>2021-10-09T08:57:53.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -61,7 +61,7 @@ plt.plot(x, y)
 plt.ylim(-0.1, 1.1)
 plt.show()
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633770470145.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1633770470145.png" alt="" loading="lazy"></figure>
 <!-- more -->
 <h1 id="part-2-sigmoid函数的实现">Part 2. sigmoid函数的实现</h1>
 <pre><code class="language-cpp">def sigmoid(x):
@@ -81,7 +81,7 @@ y = sigmoid(x)
 plt.plot(x,y)
 plt.show()
 </code></pre>
-<figure data-type="image" tabindex="2"><img src="https://CTerena.github.io/post-images/1633770889449.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1633770889449.png" alt="" loading="lazy"></figure>
 <h2 id="sigmoid函数和阶跃函数的比较">sigmoid函数和阶跃函数的比较</h2>
 <ol>
 <li>与阶跃函数不同，sigmoid函数图像是一条平滑的曲线，该平滑性对神经网络的学习具有重要意义。</li>
@@ -89,14 +89,14 @@ plt.show()
 <li>两函数的共同点在于，当输入信号为重要信息（接近1）时，阶跃函数和sigmoid函数都会输出较大的值；当输出信号为不重要的信息时，两者都输出较小的值。另外一个共同点是，输出信号的值始终在0到1之间</li>
 </ol>
 <!-- more -->
-<p>#Part 3. ReLU函数的实现</p>
+<h1 id="part-3-relu函数的实现">Part 3. ReLU函数的实现</h1>
 <pre><code class="language-cpp">def relu(x):
     return np.maximum(0,x)
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://CTerena.github.io/post-images/1633771491628.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1633771491628.png" alt="" loading="lazy"></figure>
 <h1 id="part-4-神经网络的内积">Part 4. 神经网络的内积</h1>
 <p>示例：用NumPy矩阵实现神经网络（省略偏置与激活函数，只有权重）<br>
-<img src="https://CTerena.github.io/post-images/1633775670115.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1633775670115.png" alt="" loading="lazy"></p>
 <pre><code class="language-cpp">import numpy as np
 
 X = np.array([1,2])
@@ -106,13 +106,13 @@ Y = np.dot(X, W)
 print(Y)
 </code></pre>
 <h1 id="part-5-3层神经网络的实现">Part 5. 3层神经网络的实现</h1>
-<figure data-type="image" tabindex="4"><img src="https://CTerena.github.io/post-images/1633775953786.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1633775953786.png" alt="" loading="lazy"></figure>
 <h2 id="1-从定义符号开始">1. 从定义符号开始：</h2>
-<p><img src="https://CTerena.github.io/post-images/1633776090499.png" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1633776090499.png" alt="" loading="lazy"><br>
 如图，权重和隐藏层的神经元右上角有一个&quot;(1)&quot;，它表示权重和神经元的层号（即第一层的权重、第一次的神经元）。此外，权重右下角有两个数字，它们是后一层的神经元和前一层的神经元的索引号，按照“后一层的索引号、前一层的索引号”的顺序排列。</p>
 <!-- more -->
 <h2 id="2-各层间信号传递的实现">2. 各层间信号传递的实现</h2>
-<p><img src="https://CTerena.github.io/post-images/1633776270775.png" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1633776270775.png" alt="" loading="lazy"><br>
 现在进行从输入层到第一层的第一个神经元的信号传递过程（增加了表示偏置的神经元&quot;1&quot;)可以注意到偏置右下角的索引号只有一个，这是由于前一层只有一个偏置神经元<br>
 由前所述，现在通过加权信号和偏置的和按如下方式进行计算：</p>
 <!-- more -->
@@ -120,7 +120,7 @@ print(Y)
 此外，如果使用矩阵的乘法运算，则可以将第一层的加权和表示成下式：<br>
 <strong>A<sup>(1)</sup>=XW<sup>(1)</sup>+B<sup>(1)</sup></strong><br>
 其中<br>
-<img src="https://CTerena.github.io/post-images/1633776861616.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1633776861616.png" alt="" loading="lazy"><br>
 下面用NumPy多维数组来实现上式，这里将输入信号、权重和偏置设置为任意值</p>
 <pre><code class="language-cpp">x = np.array([1.0, 0.5])
 w1 = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.5]])
@@ -129,11 +129,11 @@ b1 = np.array([0.1, 0.2, 0.3])
 a1 = np.dot(x, w1) + b1 #a1 = [0.3 0.7 1.1]
 </code></pre>
 <p>接下来，观察第一层中激活函数的计算过程。该过程可由下图表示<br>
-<img src="https://CTerena.github.io/post-images/1633777156190.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1633777156190.png" alt="" loading="lazy"><br>
 如图所示，隐藏层的加权和用a表示，被激活函数转换后的信号用z表示。此外，图中h()表示激活函数，这里我们使用sigmoid函数。<br>
 <code>z1 = sigmoid(a1) #z1 = [0.57444252 0.66818777 0.75026011]</code><br>
 下面，进行第一层到第二层的信号传递（如图所示）<br>
-<img src="https://CTerena.github.io/post-images/1633777516340.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1633777516340.png" alt="" loading="lazy"></p>
 <pre><code class="language-cpp">w2 = np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])
 b2 = np.array([0.1, 0.2])
 a2 = np.dot(z1, w1) + b2
@@ -142,7 +142,7 @@ z2 = sigmoid(a2)
 <p>除了第一层的输出（z1）变为第二层的输入（a2）这一点外，这部分代码与前一部分完全相同。</p>
 <!-- more -->
 <p>最后是第二层到输出层的信号传递。输出层的实现也和之前的实现基本相同。不过，最后的激活函数和之前的隐藏层略有不同。<br>
-<img src="https://CTerena.github.io/post-images/1633777886238.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1633777886238.png" alt="" loading="lazy"></p>
 <pre><code class="language-cpp">def identity_function(x):
     return x
 
@@ -191,8 +191,8 @@ print(y)
     </entry>
     <entry>
         <title type="html"><![CDATA[感知机(perceptron)学习笔记]]></title>
-        <id>https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/</id>
-        <link href="https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
+        <id>http://localhost:4000/post/gan-zhi-ji-perceptronxue-xi-bi-ji/</id>
+        <link href="http://localhost:4000/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
         </link>
         <updated>2021-10-09T08:07:06.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -377,8 +377,8 @@ def XOR(x1, x2):
     </entry>
     <entry>
         <title type="html"><![CDATA[用Matplotlib在Python中绘制图像]]></title>
-        <id>https://CTerena.github.io/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/</id>
-        <link href="https://CTerena.github.io/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/">
+        <id>http://localhost:4000/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/</id>
+        <link href="http://localhost:4000/post/yong-matplotlib-zai-python-zhong-hui-zhi-tu-xiang/">
         </link>
         <updated>2021-10-09T06:18:13.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -404,7 +404,7 @@ plt.plot(x , y)
 plt.show()
 </code></pre>
 <p>这里生成了[0, 0.1, 0.2, ... , 5.8, 5.9]的数据，将其设为x。对x的各个元素，应用NumPy的sin函数，将x、y的数据传给<code>plt.plot</code>方法，然后绘制图形。最后，通过plt.show()显示图形。运行上述代码后，就会显示如下图形：<br>
-<img src="https://CTerena.github.io/post-images/1633761147270.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1633761147270.png" alt="" loading="lazy"></p>
 <p>对于刚才的sin(x)图像，我们可以使用pyplot的添加标题和坐标轴标签等功能,同时追加cos(x)的图像。</p>
 <pre><code class="language-cpp">import numpy as np
 import matplotlib.pyplot as plt
@@ -420,13 +420,13 @@ plt.title('sin&amp;cos')
 plt.legend()#曲线名称标注
 plt.show()
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633761661731.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1633761661731.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[MATLAB程序设计语言基础]]></title>
-        <id>https://CTerena.github.io/post/matlab-cheng-xu-she-ji-yu-yan-ji-chu/</id>
-        <link href="https://CTerena.github.io/post/matlab-cheng-xu-she-ji-yu-yan-ji-chu/">
+        <id>http://localhost:4000/post/matlab-cheng-xu-she-ji-yu-yan-ji-chu/</id>
+        <link href="http://localhost:4000/post/matlab-cheng-xu-she-ji-yu-yan-ji-chu/">
         </link>
         <updated>2021-10-08T11:35:07.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -478,8 +478,8 @@ plt.show()
     </entry>
     <entry>
         <title type="html"><![CDATA[Pandas库使用指南]]></title>
-        <id>https://CTerena.github.io/post/pandas-ku-shi-yong-zhi-nan/</id>
-        <link href="https://CTerena.github.io/post/pandas-ku-shi-yong-zhi-nan/">
+        <id>http://localhost:4000/post/pandas-ku-shi-yong-zhi-nan/</id>
+        <link href="http://localhost:4000/post/pandas-ku-shi-yong-zhi-nan/">
         </link>
         <updated>2021-10-08T01:29:38.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -602,8 +602,8 @@ Pandas库中的read_csv函数，可以读取txt或csv（逗号分隔的文本文
     </entry>
     <entry>
         <title type="html"><![CDATA[线性代数中的线性方程组（一）]]></title>
-        <id>https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/</id>
-        <link href="https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/">
+        <id>http://localhost:4000/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/</id>
+        <link href="http://localhost:4000/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/">
         </link>
         <updated>2021-10-07T15:18:10.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -685,8 +685,8 @@ Pandas库中的read_csv函数，可以读取txt或csv（逗号分隔的文本文
     </entry>
     <entry>
         <title type="html"><![CDATA[树链剖分 (QTREE) 学习笔记]]></title>
-        <id>https://CTerena.github.io/post/shu-lian-pou-fen-xue-xi-bi-ji/</id>
-        <link href="https://CTerena.github.io/post/shu-lian-pou-fen-xue-xi-bi-ji/">
+        <id>http://localhost:4000/post/shu-lian-pou-fen-xue-xi-bi-ji/</id>
+        <link href="http://localhost:4000/post/shu-lian-pou-fen-xue-xi-bi-ji/">
         </link>
         <updated>2021-10-07T13:49:28.000Z</updated>
         <content type="html"><![CDATA[<h1 id="part1-树链剖分的功能">Part1. 树链剖分的功能</h1>
@@ -1036,8 +1036,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[可持久化线段树（prizident tree）学习笔记]]></title>
-        <id>https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/</id>
-        <link href="https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/">
+        <id>http://localhost:4000/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/</id>
+        <link href="http://localhost:4000/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/">
         </link>
         <updated>2021-10-07T13:29:10.000Z</updated>
         <content type="html"><![CDATA[<h1 id="part-1-定义">Part 1. 定义：</h1>
@@ -1047,7 +1047,7 @@ int main()
 <p>主席树与线段树的基本操作相同，难点在于可持久化的实现。</p>
 <p>如果想要访问每个版本的线段树，首先想到的是对线段树进行全盘复制，然后在上个版本的基础上进行本次操作以建立新版本。但很显然如此一来空间复杂度会窜到O（n*m），显然不可行</p>
 <p>考虑操作对线段树的作用：每次操作一定不会涉及线段树上所有的节点，而不涉及的节点必然在两        个版本中是相同的，也就是可以共享的</p>
-<p>以此为切入点，如果我们在每次进行操作时只修改被影响的节点，可以得到如下的结果（图源洛谷）<img src="https://CTerena.github.io/post-images/1633613428792.png" alt="" loading="lazy"></p>
+<p>以此为切入点，如果我们在每次进行操作时只修改被影响的节点，可以得到如下的结果（图源洛谷）<img src="http://localhost:4000/post-images/1633613428792.png" alt="" loading="lazy"></p>
 <p>具体的做法是，进行每次操作时复制上个版本的根作为新版本的根，再递归判断修改的子节点进行修改</p>
 <p>代码：</p>
 <pre><code class="language-cpp">inline int update(int pre, int l, int r, int x)
@@ -1140,8 +1140,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[Python中的文件操作]]></title>
-        <id>https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/</id>
-        <link href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/">
+        <id>http://localhost:4000/post/python-zhong-de-wen-jian-yun-suan/</id>
+        <link href="http://localhost:4000/post/python-zhong-de-wen-jian-yun-suan/">
         </link>
         <updated>2021-10-07T05:29:17.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -1181,7 +1181,7 @@ int main()
 </ul>
 <p>使用演示：</p>
 <p>以三种方法读取以下文件：<br>
-<img src="https://CTerena.github.io/post-images/1633588030389.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1633588030389.png" alt="" loading="lazy"></p>
 <ol>
 <li>read()</li>
 </ol>
@@ -1229,7 +1229,7 @@ int main()
 <h1 id="part-3-处理文件内容">Part 3. 处理文件内容🚲</h1>
 <p>实际办公编程中，我们常常不仅需要读取文件的所有内容，更需要对其中的重要信息进行提取归纳。这需要我们掌握一些进阶的字符串处理操作：</p>
 <p><strong>例1</strong> 提取所有作家的名字：<br>
-<img src="https://CTerena.github.io/post-images/1633590885680.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1633590885680.png" alt="" loading="lazy"><br>
     可以注意到，该文件中作家名字被逗号和换行符分开，为提取单个作家名字，可以使用<code>split()</code>函数<br>
     * <code>split()</code>函数用法：通过切除字符串中的指定字符将字符串拆分成多个并以列表形式存储，如下：</p>
 <pre><code class="language-cpp">    str = 'A rose,is a rose,is a rose,is a rose'
@@ -1276,7 +1276,7 @@ int main()
     Kincaid
 </code></pre>
 <p><strong>例2</strong> 将每一行的词语连成一句话：<br>
-<img src="https://CTerena.github.io/post-images/1633593025159.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1633593025159.png" alt="" loading="lazy"><br>
      首先，我们可通过<code>split()</code>将词语归纳到一个列表中：</p>
 <pre><code class="language-cpp">    myfile = open('An American folk.txt','r')
     mydata = myfile.read()
@@ -1293,7 +1293,7 @@ int main()
 </code></pre>
 <h1 id="part-4-写入文件内容">Part 4. 写入文件内容🚝</h1>
 <p>     <code>myfile.write(xxx)</code> 写入字节字符串到文件，以课件为例：<br>
-<img src="https://CTerena.github.io/post-images/1633594109676.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1633594109676.png" alt="" loading="lazy"><br>
 （<code>open('poem.txt','w')</code>会创建了一个新文件poem.txt）<br>
 另外，可以通过<code>writelines()</code>将列表内容按行写入文件：</p>
 <pre><code class="language-cpp">L = ['Wee ', 'Liat ', 'speaks ', 'so his mother ', 'fast ']
@@ -1304,13 +1304,13 @@ myfile.writelines(L)
 myfile.close()
 </code></pre>
 <p>即可得到文件：<br>
-<img src="https://CTerena.github.io/post-images/1633594483848.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1633594483848.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Numpy库使用指南]]></title>
-        <id>https://CTerena.github.io/post/numpy-ku-shi-yong-zhi-nan/</id>
-        <link href="https://CTerena.github.io/post/numpy-ku-shi-yong-zhi-nan/">
+        <id>http://localhost:4000/post/numpy-ku-shi-yong-zhi-nan/</id>
+        <link href="http://localhost:4000/post/numpy-ku-shi-yong-zhi-nan/">
         </link>
         <updated>2021-10-04T08:36:00.000Z</updated>
         <content type="html"><![CDATA[<p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
