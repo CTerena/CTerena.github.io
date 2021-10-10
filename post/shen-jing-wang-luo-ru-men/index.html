@@ -3,10 +3,10 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>神经网络入门 | 停云</title>
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1633868986140">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633870984804">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="神经网络入门 | 停云 - Atom Feed" href="http://localhost:4000/atom.xml">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="神经网络入门 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -41,8 +41,8 @@ import numpy as..." />
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="http://localhost:4000">
-  <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1633868986140" alt="">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633870984804" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -90,14 +90,14 @@ import numpy as..." />
                 2021-10-09
               </span>
               <span>
-                7 min read
+                9 min read
               </span>
               
-                <a href="http://localhost:4000/tag/3JmSj_8IP/" class="post-tag">
+                <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
                   # 机器学习
                 </a>
               
-                <a href="http://localhost:4000/tag/200FfDP2C/" class="post-tag">
+                <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
                   # Python
                 </a>
               
@@ -152,7 +152,7 @@ plt.plot(x, y)
 plt.ylim(-0.1, 1.1)
 plt.show()
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1633770470145.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633770470145.png" alt="" loading="lazy"></figure>
 <!-- more -->
 <h1 id="part-2-sigmoid函数的实现">Part 2. sigmoid函数的实现</h1>
 <pre><code class="language-cpp">def sigmoid(x):
@@ -172,7 +172,7 @@ y = sigmoid(x)
 plt.plot(x,y)
 plt.show()
 </code></pre>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1633770889449.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://CTerena.github.io/post-images/1633770889449.png" alt="" loading="lazy"></figure>
 <h2 id="sigmoid函数和阶跃函数的比较">sigmoid函数和阶跃函数的比较</h2>
 <ol>
 <li>与阶跃函数不同，sigmoid函数图像是一条平滑的曲线，该平滑性对神经网络的学习具有重要意义。</li>
@@ -184,10 +184,10 @@ plt.show()
 <pre><code class="language-cpp">def relu(x):
     return np.maximum(0,x)
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1633771491628.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://CTerena.github.io/post-images/1633771491628.png" alt="" loading="lazy"></figure>
 <h1 id="part-4-神经网络的内积">Part 4. 神经网络的内积</h1>
 <p>示例：用NumPy矩阵实现神经网络（省略偏置与激活函数，只有权重）<br>
-<img src="http://localhost:4000/post-images/1633775670115.png" alt="" loading="lazy"></p>
+<img src="https://CTerena.github.io/post-images/1633775670115.png" alt="" loading="lazy"></p>
 <pre><code class="language-cpp">import numpy as np
 
 X = np.array([1,2])
@@ -197,13 +197,13 @@ Y = np.dot(X, W)
 print(Y)
 </code></pre>
 <h1 id="part-5-3层神经网络的实现">Part 5. 3层神经网络的实现</h1>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1633775953786.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://CTerena.github.io/post-images/1633775953786.png" alt="" loading="lazy"></figure>
 <h2 id="1-从定义符号开始">1. 从定义符号开始：</h2>
-<p><img src="http://localhost:4000/post-images/1633776090499.png" alt="" loading="lazy"><br>
+<p><img src="https://CTerena.github.io/post-images/1633776090499.png" alt="" loading="lazy"><br>
 如图，权重和隐藏层的神经元右上角有一个&quot;(1)&quot;，它表示权重和神经元的层号（即第一层的权重、第一次的神经元）。此外，权重右下角有两个数字，它们是后一层的神经元和前一层的神经元的索引号，按照“后一层的索引号、前一层的索引号”的顺序排列。</p>
 <!-- more -->
 <h2 id="2-各层间信号传递的实现">2. 各层间信号传递的实现</h2>
-<p><img src="http://localhost:4000/post-images/1633776270775.png" alt="" loading="lazy"><br>
+<p><img src="https://CTerena.github.io/post-images/1633776270775.png" alt="" loading="lazy"><br>
 现在进行从输入层到第一层的第一个神经元的信号传递过程（增加了表示偏置的神经元&quot;1&quot;)可以注意到偏置右下角的索引号只有一个，这是由于前一层只有一个偏置神经元<br>
 由前所述，现在通过加权信号和偏置的和按如下方式进行计算：</p>
 <!-- more -->
@@ -211,7 +211,7 @@ print(Y)
 此外，如果使用矩阵的乘法运算，则可以将第一层的加权和表示成下式：<br>
 <strong>A<sup>(1)</sup>=XW<sup>(1)</sup>+B<sup>(1)</sup></strong><br>
 其中<br>
-<img src="http://localhost:4000/post-images/1633776861616.png" alt="" loading="lazy"><br>
+<img src="https://CTerena.github.io/post-images/1633776861616.png" alt="" loading="lazy"><br>
 下面用NumPy多维数组来实现上式，这里将输入信号、权重和偏置设置为任意值</p>
 <pre><code class="language-cpp">x = np.array([1.0, 0.5])
 w1 = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.5]])
@@ -220,11 +220,11 @@ b1 = np.array([0.1, 0.2, 0.3])
 a1 = np.dot(x, w1) + b1 #a1 = [0.3 0.7 1.1]
 </code></pre>
 <p>接下来，观察第一层中激活函数的计算过程。该过程可由下图表示<br>
-<img src="http://localhost:4000/post-images/1633777156190.png" alt="" loading="lazy"><br>
+<img src="https://CTerena.github.io/post-images/1633777156190.png" alt="" loading="lazy"><br>
 如图所示，隐藏层的加权和用a表示，被激活函数转换后的信号用z表示。此外，图中h()表示激活函数，这里我们使用sigmoid函数。<br>
 <code>z1 = sigmoid(a1) #z1 = [0.57444252 0.66818777 0.75026011]</code><br>
 下面，进行第一层到第二层的信号传递（如图所示）<br>
-<img src="http://localhost:4000/post-images/1633777516340.png" alt="" loading="lazy"></p>
+<img src="https://CTerena.github.io/post-images/1633777516340.png" alt="" loading="lazy"></p>
 <pre><code class="language-cpp">w2 = np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])
 b2 = np.array([0.1, 0.2])
 a2 = np.dot(z1, w1) + b2
@@ -233,7 +233,7 @@ z2 = sigmoid(a2)
 <p>除了第一层的输出（z1）变为第二层的输入（a2）这一点外，这部分代码与前一部分完全相同。</p>
 <!-- more -->
 <p>最后是第二层到输出层的信号传递。输出层的实现也和之前的实现基本相同。不过，最后的激活函数和之前的隐藏层略有不同。<br>
-<img src="http://localhost:4000/post-images/1633777886238.png" alt="" loading="lazy"></p>
+<img src="https://CTerena.github.io/post-images/1633777886238.png" alt="" loading="lazy"></p>
 <pre><code class="language-cpp">def identity_function(x):
     return x
 
@@ -278,6 +278,72 @@ x = np.array([1.0, 0.5])
 y = forward(network, x)
 print(y)
 </code></pre>
+<h1 id="part-6-输出层的设计">Part 6. 输出层的设计</h1>
+<p>神经网络可以用在分类和回归问题上，不过需要根据情况改变输出层的激活函数。一般而言，回归问题用恒等函数，分类问题用softmax函数。<br>
+*回归问题可理解为“根据某个输入预测一个数值”的问题。</p>
+<!-- more -->
+<h2 id="softmax函数">softmax函数</h2>
+<p>分类问题中使用的softmax函数可用下式表示：<br>
+<img src="https://CTerena.github.io/post-images/1633869664594.png" alt="" loading="lazy"><br>
+该式表示假设输出层共有n个神经元，计算第k个神经元的输出y<sub>k</sub>。<br>
+用图表示softmax函数：<br>
+<img src="https://CTerena.github.io/post-images/1633869768645.png" alt="" loading="lazy"><br>
+softmax函数实现：</p>
+<pre><code class="language-cpp">import numpy as np
+def softmax(a):
+    exp_a = np.exp(a) #分子
+    sum_exp_a = np.sum(exp_a) #分母
+    y = exp_a / sum_exp_a #计算
+    return y
+
+a = [12.32, 3.67, 9.83]
+print(softmax(a))
+# [9.23288490e-01 1.61692603e-04 7.65498178e-02]
+</code></pre>
+<h2 id="注意事项">注意事项</h2>
+<p>softmax函数的实现要进行指数函数的运算，指数函数的值很容易变得非常大。如果在这些超大数值之间进行除法运算，结果会出现“不确定”情况<br>
+为避免这种问题，我们可以像对算式进行如下变形优化：<br>
+<img src="https://CTerena.github.io/post-images/1633870346256.png" alt="" loading="lazy"></p>
+<!-- more -->
+<p>示例（未优化）：</p>
+<pre><code class="language-cpp">import numpy as np
+def softmax(a):
+    exp_a = np.exp(a) #分子
+    sum_exp_a = np.sum(exp_a) #分母
+    y = exp_a / sum_exp_a #计算
+    return y
+
+a = np.array([1010, 1000, 990])
+
+print(softmax(a))
+'''
+输出结果：
+[nan nan nan]
+C:\Users\Charles.Wen\untitled4.py:3: RuntimeWarning: overflow encountered in exp
+  exp_a = np.exp(a) #分子
+C:\Users\Charles.Wen\untitled4.py:5: RuntimeWarning: invalid value encountered in true_divide
+  y = exp_a / sum_exp_a #计算
+'''
+已优化：
+```cpp
+import numpy as np
+def softmax(a):
+    exp_a = np.exp(a) #分子
+    sum_exp_a = np.sum(exp_a) #分母
+    y = exp_a / sum_exp_a #计算
+    return y
+
+a = np.array([1010, 1000, 990])
+c = np.max(a)
+a -= c
+print(softmax(a))
+#正常输出：[9.99954600e-01 4.53978686e-05 2.06106005e-09]
+</code></pre>
+<h2 id="softmax函数的特征">softmax函数的特征</h2>
+<ol>
+<li>softmax函数的输出是0.0到1.0之间的实数</li>
+<li>softmax函数的输出值总和是1，正是有了这个性质，我们才可以把softmax函数的输出解释成“概率”</li>
+</ol>
 
               </div>
               <div class="toc-container">
@@ -297,6 +363,13 @@ print(y)
 <li><a href="#%E4%BB%A3%E7%A0%81%E6%95%B4%E5%90%88%E5%B0%8F%E7%BB%93">代码整合小结</a></li>
 </ul>
 </li>
+<li><a href="#part-6-%E8%BE%93%E5%87%BA%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1">Part 6. 输出层的设计</a>
+<ul>
+<li><a href="#softmax%E5%87%BD%E6%95%B0">softmax函数</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#softmax%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E5%BE%81">softmax函数的特征</a></li>
+</ul>
+</li>
 </ul>
 
               </div>
@@ -307,7 +380,7 @@ print(y)
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="http://localhost:4000/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
+            <a href="https://CTerena.github.io/post/gan-zhi-ji-perceptronxue-xi-bi-ji/">
               <h3 class="post-title">
                 感知机(perceptron)学习笔记
               </h3>
@@ -319,7 +392,7 @@ print(y)
 
         <div class="site-footer">
   与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
-  <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
     <i class="ri-rss-line"></i> RSS
   </a>
 </div>

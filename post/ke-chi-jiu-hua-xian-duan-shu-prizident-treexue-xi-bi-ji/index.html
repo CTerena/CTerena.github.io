@@ -3,10 +3,10 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>可持久化线段树（prizident tree）学习笔记 | 停云</title>
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1633868986140">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633870984804">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="可持久化线段树（prizident tree）学习笔记 | 停云 - Atom Feed" href="http://localhost:4000/atom.xml">
+<link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="可持久化线段树（prizident tree）学习笔记 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -25,8 +25,8 @@ Part 2. 原理：
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="http://localhost:4000">
-  <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1633868986140" alt="">
+  <a href="https://CTerena.github.io">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633870984804" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -77,11 +77,11 @@ Part 2. 原理：
                 4 min read
               </span>
               
-                <a href="http://localhost:4000/tag/Qal43632X/" class="post-tag">
+                <a href="https://CTerena.github.io/tag/Qal43632X/" class="post-tag">
                   # C++
                 </a>
               
-                <a href="http://localhost:4000/tag/PSUN0rh3D/" class="post-tag">
+                <a href="https://CTerena.github.io/tag/PSUN0rh3D/" class="post-tag">
                   # 数据结构
                 </a>
               
@@ -98,7 +98,7 @@ Part 2. 原理：
 <p>主席树与线段树的基本操作相同，难点在于可持久化的实现。</p>
 <p>如果想要访问每个版本的线段树，首先想到的是对线段树进行全盘复制，然后在上个版本的基础上进行本次操作以建立新版本。但很显然如此一来空间复杂度会窜到O（n*m），显然不可行</p>
 <p>考虑操作对线段树的作用：每次操作一定不会涉及线段树上所有的节点，而不涉及的节点必然在两        个版本中是相同的，也就是可以共享的</p>
-<p>以此为切入点，如果我们在每次进行操作时只修改被影响的节点，可以得到如下的结果（图源洛谷）<img src="http://localhost:4000/post-images/1633613428792.png" alt="" loading="lazy"></p>
+<p>以此为切入点，如果我们在每次进行操作时只修改被影响的节点，可以得到如下的结果（图源洛谷）<img src="https://CTerena.github.io/post-images/1633613428792.png" alt="" loading="lazy"></p>
 <p>具体的做法是，进行每次操作时复制上个版本的根作为新版本的根，再递归判断修改的子节点进行修改</p>
 <p>代码：</p>
 <pre><code class="language-cpp">inline int update(int pre, int l, int r, int x)
@@ -204,7 +204,7 @@ int main()
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="http://localhost:4000/post/python-zhong-de-wen-jian-yun-suan/">
+            <a href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/">
               <h3 class="post-title">
                 Python中的文件操作
               </h3>
@@ -216,7 +216,7 @@ int main()
 
         <div class="site-footer">
   与君同是江南客。梦中游，觉来清赏，同作飞梭掷。
-  <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">
+  <a class="rss" href="https://CTerena.github.io/atom.xml" target="_blank">
     <i class="ri-rss-line"></i> RSS
   </a>
 </div>
