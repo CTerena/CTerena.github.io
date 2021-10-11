@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-10T13:03:08.445Z</updated>
+    <updated>2021-10-11T03:18:36.558Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -253,6 +253,57 @@ print(softmax(a))
 <li>softmax函数的输出是0.0到1.0之间的实数</li>
 <li>softmax函数的输出值总和是1，正是有了这个性质，我们才可以把softmax函数的输出解释成“概率”</li>
 </ol>
+<h1 id="part-7-数字识别程序">Part 7. 数字识别程序</h1>
+<p>该数字识别借助MNIST数字集实现，需要自行下载该资源到相应的地址</p>
+<pre><code class="language-cpp">import numpy as np
+import sys, os
+sys.path.append(os.pardir)
+from dataset.mnist import load_mnist
+from PIL import Image
+
+def sigmoid(x):
+    return 1 / (1 + exp(-x))
+
+def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c)
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+    return y
+
+def get_data():
+    (x_train, t_train), (x_test, t_test) = \
+        load_mnist(normalize = True, flatten = True, one_hot_label = False)
+    return x_test, t_test
+
+def init_network():
+    with open(&quot;sample_weight.pkl&quot;, 'rb') as f:
+        network = pickle.load(f)
+    return network
+
+def predict(network, x):
+    W1, W2, W3 = network['W1'], network['W2'], network['W3']
+    b1, b2, b3 = network['b1'], network['b2'], network['b3']
+    a1 = np.dot(x, W1) + b1
+    z1 = sigmoid(a1)
+    a2 = np.dot(z1, W2) + b2
+    z2 = sigmoid(a2)
+    a3 = np.dot(z2, W3) + b3
+    y =softmax(a3)
+    
+    return y
+
+x, t = get_data()
+network = init_network()
+
+accuracy_cnt = 0
+for i in range(len(x)):
+    y = predict(network, x[i])
+    p = np.argmax(y)
+    if p == t[i]:
+        accuracy_cnt += 1
+print(&quot;Accuracy:&quot; + str(float(accuracy_cnt) / len(x))) #评估测试并输出神经网络的测试精度
+</code></pre>
 ]]></content>
     </entry>
     <entry>
