@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-11T03:18:36.558Z</updated>
+    <updated>2021-10-11T03:25:50.928Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -188,8 +188,10 @@ y = forward(network, x)
 print(y)
 </code></pre>
 <h1 id="part-6-输出层的设计">Part 6. 输出层的设计</h1>
-<p>神经网络可以用在分类和回归问题上，不过需要根据情况改变输出层的激活函数。一般而言，回归问题用恒等函数，分类问题用softmax函数。<br>
-*回归问题可理解为“根据某个输入预测一个数值”的问题。</p>
+<p>神经网络可以用在分类和回归问题上，不过需要根据情况改变输出层的激活函数。一般而言，回归问题用恒等函数，分类问题用softmax函数。</p>
+<ul>
+<li>回归问题可理解为“根据某个输入预测一个数值”的问题。</li>
+</ul>
 <!-- more -->
 <h2 id="softmax函数">softmax函数</h2>
 <p>分类问题中使用的softmax函数可用下式表示：<br>
@@ -248,13 +250,23 @@ a -= c
 print(softmax(a))
 #正常输出：[9.99954600e-01 4.53978686e-05 2.06106005e-09]
 </code></pre>
+<!-- more -->
+<p>自动进行优化的softmax函数：</p>
+<pre><code class="language-cpp">def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c)
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+    return y
+</code></pre>
+<!-- more -->
 <h2 id="softmax函数的特征">softmax函数的特征</h2>
 <ol>
 <li>softmax函数的输出是0.0到1.0之间的实数</li>
 <li>softmax函数的输出值总和是1，正是有了这个性质，我们才可以把softmax函数的输出解释成“概率”</li>
 </ol>
 <h1 id="part-7-数字识别程序">Part 7. 数字识别程序</h1>
-<p>该数字识别借助MNIST数字集实现，需要自行下载该资源到相应的地址</p>
+<p>该数字识别借助MNIST数字集实现，需要自行下载该资源到相应的地址，且权重、偏置包调用调配完毕的数据，从文件中导入即可。本程序仅实现测试数据即参数的导入与神经网络的向前计算过程</p>
 <pre><code class="language-cpp">import numpy as np
 import sys, os
 sys.path.append(os.pardir)
