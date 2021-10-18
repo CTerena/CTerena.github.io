@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>神经网络入门 | 停云</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1633922749226">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1634517221159">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="神经网络入门 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
@@ -42,7 +42,7 @@ import numpy as..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1633922749226" alt="">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1634517221159" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -90,7 +90,7 @@ import numpy as..." />
                 2021-10-09
               </span>
               <span>
-                10 min read
+                11 min read
               </span>
               
                 <a href="https://CTerena.github.io/tag/3JmSj_8IP/" class="post-tag">
@@ -325,10 +325,9 @@ C:\Users\Charles.Wen\untitled4.py:3: RuntimeWarning: overflow encountered in exp
   exp_a = np.exp(a) #分子
 C:\Users\Charles.Wen\untitled4.py:5: RuntimeWarning: invalid value encountered in true_divide
   y = exp_a / sum_exp_a #计算
-'''
-已优化：
-```cpp
-import numpy as np
+</code></pre>
+<p>已优化：</p>
+<pre><code class="language-cpp">import numpy as np
 def softmax(a):
     exp_a = np.exp(a) #分子
     sum_exp_a = np.sum(exp_a) #分母
@@ -363,9 +362,10 @@ import sys, os
 sys.path.append(os.pardir)
 from dataset.mnist import load_mnist
 from PIL import Image
+import pickle
 
 def sigmoid(x):
-    return 1 / (1 + exp(-x))
+    return 1 / (1 + np.exp(-x))
 
 def softmax(a):
     c = np.max(a)
@@ -405,7 +405,22 @@ for i in range(len(x)):
     p = np.argmax(y)
     if p == t[i]:
         accuracy_cnt += 1
-print(&quot;Accuracy:&quot; + str(float(accuracy_cnt) / len(x))) #评估测试并输出神经网络的测试精度
+print(&quot;Accuracy:&quot; + str(float(accuracy_cnt) / len(x)))
+</code></pre>
+<!-- more -->
+<h2 id="批处理优化">批处理优化</h2>
+<p>批处理对计算机的计算大有益处，可以大幅缩短处理每张图像的平均用时。大多数处理数值计算的库都进行了能够高效处理大型数组运算的最优化。并且，在神经网络的运算中，当数据传送成为瓶颈，批处理可以减轻数据总线的负荷（严格地讲，相对于数据读入，可以将更多的时间用在计算上）。也就是说，批处理一次性计算大量数组要比分开逐步计算各个小型数组速度更快</p>
+<!-- more -->
+<p>代码实现：</p>
+<pre><code class="language-cpp">x, t = get_data()
+network = init_network
+
+batch_size = 100
+
+for i in range(0， len(x), batch_size):
+    x_batch = x[i:i+batch_size]
+    y_batch = predict(network, x_batch)
+    p = np.argmax(y_batch, axis = 1)
 </code></pre>
 
               </div>
@@ -433,7 +448,11 @@ print(&quot;Accuracy:&quot; + str(float(accuracy_cnt) / len(x))) #评估测试�
 <li><a href="#softmax%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E5%BE%81">softmax函数的特征</a></li>
 </ul>
 </li>
-<li><a href="#part-7-%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E7%A8%8B%E5%BA%8F">Part 7. 数字识别程序</a></li>
+<li><a href="#part-7-%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E7%A8%8B%E5%BA%8F">Part 7. 数字识别程序</a>
+<ul>
+<li><a href="#%E6%89%B9%E5%A4%84%E7%90%86%E4%BC%98%E5%8C%96">批处理优化</a></li>
+</ul>
+</li>
 </ul>
 
               </div>

@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>用Matplotlib在Python中绘制图像 | 停云</title>
+<title>常用字典常量和操作 | 停云</title>
 <link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1634517221159">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="用Matplotlib在Python中绘制图像 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="常用字典常量和操作 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -23,13 +23,11 @@
 
 
 
-Matplotlib是Python中用于绘制图形的库，可实现数据的可视化
-import numpy as np
-import matplotlib.pyplot as plt
-
-示例：绘制sin(x)曲线
-x = n..." />
-    <meta name="keywords" content="数学建模,Python" />
+D = {}        空字典
+D = {'spam' : 2, 'eggs' : 3}    两项目字典
+D = {'food' : {'ham' : 1, 'eggs' : 2}}   字典嵌套
+D = di..." />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -79,27 +77,17 @@ x = n..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              用Matplotlib在Python中绘制图像
+              常用字典常量和操作
             </h2>
             <div class="post-info">
               <span>
-                2021-10-09
+                2021-10-17
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
-                <a href="https://CTerena.github.io/tag/I5RqL6JrB/" class="post-tag">
-                  # 数学建模
-                </a>
-              
-                <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
-                  # Python
-                </a>
-              
             </div>
-            
-              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/4886a7efce1b9d168d0375c7f4deb48f8d546414.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
@@ -115,34 +103,40 @@ x = n..." />
 <!-- more -->
 <!-- more -->
 <!-- more -->
-<p>Matplotlib是Python中用于绘制图形的库，可实现数据的可视化<br>
-<code>import numpy as np</code><br>
-<code>import matplotlib.pyplot as plt</code></p>
+<p><code>D = {}</code>        空字典</p>
+<p><code>D = {'spam' : 2, 'eggs' : 3}</code>    两项目字典</p>
+<p><code>D = {'food' : {'ham' : 1, 'eggs' : 2}}</code>   字典嵌套</p>
+<p><code>D = dict(zip(keyslist, valslist))</code>  关键字、对应的对、键列表</p>
+<p><code>D = (name = 'Bob' , age = 42)</code></p>
+<p><code>D['Bob']</code>  以键为索引运算</p>
+<p><code>D['food']['eggs']</code></p>
+<p><code>'eggs' in D</code> 成员关系：键存在测试</p>
+<p><code>D.keys()</code> 返回dict_keys类型数据</p>
+<p><code>D.values()</code> 值</p>
+<p><code>D.items()</code> 键 + 值</p>
+<p><code>D.copy()</code> 副本</p>
 <!-- more -->
-<p>示例：绘制sin(x)曲线</p>
-<pre><code class="language-cpp">x = np.arange(0,10,0.01)
-y = sin(x)
-plt.plot(x , y)
-plt.show()
+<p>示例：</p>
+<pre><code class="language-cpp">dic = {'yi' : 1, 'er' : 2}
+print(dic.keys())
+print(dic.values())
+print(dic.items())
+print(dic.copy())
 </code></pre>
-<p>这里生成了[0, 0.1, 0.2, ... , 5.8, 5.9]的数据，将其设为x。对x的各个元素，应用NumPy的sin函数，将x、y的数据传给<code>plt.plot</code>方法，然后绘制图形。最后，通过plt.show()显示图形。运行上述代码后，就会显示如下图形：<br>
-<img src="https://CTerena.github.io/post-images/1633761147270.png" alt="" loading="lazy"></p>
-<p>对于刚才的sin(x)图像，我们可以使用pyplot的添加标题和坐标轴标签等功能,同时追加cos(x)的图像。</p>
-<pre><code class="language-cpp">import numpy as np
-import matplotlib.pyplot as plt
-
-x = np.arange(0, 10, 0.01)
-y1 = np.sin(x)
-y2 = np.cos(x)
-plt.plot(x, y1, label = 'sin')#label命名
-plt.plot(x, y2, linestyle = '--', label = 'cos')#linestyle设置为虚线
-plt.xlabel('x')#x轴命名
-plt.ylabel('y')#y轴命名
-plt.title('sin&amp;cos')
-plt.legend()#曲线名称标注
-plt.show()
+<p>输出：</p>
+<pre><code class="language-cpp">dict_keys(['yi', 'er'])
+dict_values([1, 2])
+dict_items([('yi', 1), ('er', 2)])
+{'yi': 1, 'er': 2}
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633761661731.png" alt="" loading="lazy"></figure>
+<!-- more -->
+<p>更多：<br>
+<code>D.update(D2)</code> 合并</p>
+<p><code>D.pop(key)</code> 删除一个键并返回它的值</p>
+<p><code>len(D)</code> 长度（项目数目）</p>
+<p><code>D[key] = 12</code> 新增/修改键</p>
+<p><code>del D[key]</code> 根据键删除项目</p>
+<p><code>list(D.keys())</code> 字典视图</p>
 
               </div>
               <div class="toc-container">
@@ -155,9 +149,9 @@ plt.show()
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://CTerena.github.io/post/matlab-cheng-xu-she-ji-yu-yan-ji-chu/">
+            <a href="https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/">
               <h3 class="post-title">
-                MATLAB程序设计语言基础
+                神经网络入门
               </h3>
             </a>
           </div>

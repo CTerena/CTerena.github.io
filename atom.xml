@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-11T03:25:50.928Z</updated>
+    <updated>2021-10-18T00:33:42.859Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,60 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[常用字典常量和操作]]></title>
+        <id>https://CTerena.github.io/post/chang-yong-zi-dian-chang-liang-he-cao-zuo/</id>
+        <link href="https://CTerena.github.io/post/chang-yong-zi-dian-chang-liang-he-cao-zuo/">
+        </link>
+        <updated>2021-10-17T01:08:18.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p><code>D = {}</code>        空字典</p>
+<p><code>D = {'spam' : 2, 'eggs' : 3}</code>    两项目字典</p>
+<p><code>D = {'food' : {'ham' : 1, 'eggs' : 2}}</code>   字典嵌套</p>
+<p><code>D = dict(zip(keyslist, valslist))</code>  关键字、对应的对、键列表</p>
+<p><code>D = (name = 'Bob' , age = 42)</code></p>
+<p><code>D['Bob']</code>  以键为索引运算</p>
+<p><code>D['food']['eggs']</code></p>
+<p><code>'eggs' in D</code> 成员关系：键存在测试</p>
+<p><code>D.keys()</code> 返回dict_keys类型数据</p>
+<p><code>D.values()</code> 值</p>
+<p><code>D.items()</code> 键 + 值</p>
+<p><code>D.copy()</code> 副本</p>
+<!-- more -->
+<p>示例：</p>
+<pre><code class="language-cpp">dic = {'yi' : 1, 'er' : 2}
+print(dic.keys())
+print(dic.values())
+print(dic.items())
+print(dic.copy())
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-cpp">dict_keys(['yi', 'er'])
+dict_values([1, 2])
+dict_items([('yi', 1), ('er', 2)])
+{'yi': 1, 'er': 2}
+</code></pre>
+<!-- more -->
+<p>更多：<br>
+<code>D.update(D2)</code> 合并</p>
+<p><code>D.pop(key)</code> 删除一个键并返回它的值</p>
+<p><code>len(D)</code> 长度（项目数目）</p>
+<p><code>D[key] = 12</code> 新增/修改键</p>
+<p><code>del D[key]</code> 根据键删除项目</p>
+<p><code>list(D.keys())</code> 字典视图</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[神经网络入门]]></title>
         <id>https://CTerena.github.io/post/shen-jing-wang-luo-ru-men/</id>
@@ -234,10 +288,9 @@ C:\Users\Charles.Wen\untitled4.py:3: RuntimeWarning: overflow encountered in exp
   exp_a = np.exp(a) #分子
 C:\Users\Charles.Wen\untitled4.py:5: RuntimeWarning: invalid value encountered in true_divide
   y = exp_a / sum_exp_a #计算
-'''
-已优化：
-```cpp
-import numpy as np
+</code></pre>
+<p>已优化：</p>
+<pre><code class="language-cpp">import numpy as np
 def softmax(a):
     exp_a = np.exp(a) #分子
     sum_exp_a = np.sum(exp_a) #分母
@@ -272,9 +325,10 @@ import sys, os
 sys.path.append(os.pardir)
 from dataset.mnist import load_mnist
 from PIL import Image
+import pickle
 
 def sigmoid(x):
-    return 1 / (1 + exp(-x))
+    return 1 / (1 + np.exp(-x))
 
 def softmax(a):
     c = np.max(a)
@@ -314,7 +368,22 @@ for i in range(len(x)):
     p = np.argmax(y)
     if p == t[i]:
         accuracy_cnt += 1
-print(&quot;Accuracy:&quot; + str(float(accuracy_cnt) / len(x))) #评估测试并输出神经网络的测试精度
+print(&quot;Accuracy:&quot; + str(float(accuracy_cnt) / len(x)))
+</code></pre>
+<!-- more -->
+<h2 id="批处理优化">批处理优化</h2>
+<p>批处理对计算机的计算大有益处，可以大幅缩短处理每张图像的平均用时。大多数处理数值计算的库都进行了能够高效处理大型数组运算的最优化。并且，在神经网络的运算中，当数据传送成为瓶颈，批处理可以减轻数据总线的负荷（严格地讲，相对于数据读入，可以将更多的时间用在计算上）。也就是说，批处理一次性计算大量数组要比分开逐步计算各个小型数组速度更快</p>
+<!-- more -->
+<p>代码实现：</p>
+<pre><code class="language-cpp">x, t = get_data()
+network = init_network
+
+batch_size = 100
+
+for i in range(0， len(x), batch_size):
+    x_batch = x[i:i+batch_size]
+    y_batch = predict(network, x_batch)
+    p = np.argmax(y_batch, axis = 1)
 </code></pre>
 ]]></content>
     </entry>
@@ -1434,126 +1503,6 @@ myfile.close()
 </code></pre>
 <p>即可得到文件：<br>
 <img src="https://CTerena.github.io/post-images/1633594483848.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Numpy库使用指南]]></title>
-        <id>https://CTerena.github.io/post/numpy-ku-shi-yong-zhi-nan/</id>
-        <link href="https://CTerena.github.io/post/numpy-ku-shi-yong-zhi-nan/">
-        </link>
-        <updated>2021-10-04T08:36:00.000Z</updated>
-        <content type="html"><![CDATA[<p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
-<h1 id="part-1-array数组">Part 1 : array数组🤠</h1>
-<p><code>import numpy as np</code>  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调用函数<br>
-<code>import random</code></p>
-<p><code>a = np.array([1,2,3])</code> 创建一个一维数组</p>
-<p><code>print(a.shape)</code> <strong>输出：</strong>(3,)代表该数组代表三列一行的矩阵<br>
-<code>print(a[0],a[1],a[2])</code> <strong>输出：</strong>&quot;1 2 3&quot;<br>
-<code>a[0] = 4</code> <strong>支持原位置修改</strong></p>
-<pre><code class="language-cpp">a = np.array([[1,2,3],
-              [4,5,6],
-              [7,8,9]])#创建一个多维数组对象，注意在列表元素的最外侧用方括号括死
-</code></pre>
-<p><code>print(a.shape)</code> <strong>输出：</strong>(3,3)<br>
-<code>print(a[2][1],a[1][1],a[0][2])</code> <strong>输出：</strong>&quot;8 5 3&quot;</p>
-<h1 id="part-2-numpy库提供的数组创建函数">Part 2 : Numpy库提供的数组创建函数🥋</h1>
-<p><code>a = np.zeros((2,3))</code> 创建一个二行三列的全零数组<br>
-<code>print(a)</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">    [[0. 0. 0.]
-     [0. 0. 0.]]
-</code></pre>
-<p><code>a = np.ones((1,4))</code>  创建一个一行四列的全一数组<br>
-<code>print(a)</code> 输出： [1. 1. 1. 1]</p>
-<p><code>a = np.full((3,2),7)</code>  创建一个三行二列，全为7的数组<br>
-<code>print(a)</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">   [[7 7]
-    [7 7]
-    [7 7]]
-</code></pre>
-<p><code>a = np.eye(3)</code>  创建一个3维单位矩阵<br>
-<code>print(a)</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[1. 0. 0.]
- [0. 1. 0.]
- [0. 0. 1.]]
-</code></pre>
-<p><code>a = np.random.random((3,2))</code> 创建一个随机数组成的矩阵<br>
-<code>print(a)</code><br>
-<strong>输出：</strong>(一个随机矩阵)</p>
-<pre><code class="language-cpp">[[0.81083542 0.78030703]
- [0.28447308 0.0237447 ]
- [0.20348505 0.34019911]] 
-</code></pre>
-<h1 id="part-3-数组索引">Part 3 : 数组索引 🤾‍♀</h1>
-<p><code>a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])</code><br>
-<code>b = a[:2,1:3]</code><br>
-<code>print(b)</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[2 3]
- [6 7]]
-</code></pre>
-<p><code>b = a[1:,:4]</code><br>
-<code>print(b)</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[ 5  6  7  8]
- [ 9 10 11 12]]
-</code></pre>
-<p><strong>注意！当修改从原数组切片产生的新数组中的元素时，原数组的同一个元素会被同步修改</strong><br>
-如下：</p>
-<pre><code class="language-cpp">print(a[1,2]) # 7
-b[0,2] = 10
-print(a[1,2]) # 10
-</code></pre>
-<p><strong>该例说明：使用切片索引到numpy数组时，生成的数组将绑定为原数组的子数组</strong><br>
-<strong>不同于对列表进行切片时得到一个独立的新列表</strong></p>
-<h1 id="布尔数组索引">布尔数组索引</h1>
-<p><code>bool_idx = (a&gt;2)</code>  返回一个由布尔类型组成的矩阵<br>
-<code>print(bool_idx)</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[False False  True  True]
- [ True  True  True  True]
- [ True  True  True  True]]
-</code></pre>
-<p><code>print(a[a&gt;2])</code>  输出a中所有大于二的元素</p>
-<h1 id="part-4-数组中的数学">Part 4 : 数组中的数学🏄‍♀</h1>
-<p><code>x = np.array([[1,2],[3,4]])</code><br>
-<code>y = np.array([[5,6],[7,8]])</code></p>
-<p><code>print(x + y)</code><br>
-<code>print(np.add(x,y))</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[ 6  8]
- [10 12]] 加法
-</code></pre>
-<p><code>print(y - x)</code><br>
-<code>print(np.subtract(y,x))</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[4 4]
- [4 4]] 减法
-</code></pre>
-<p><code>print(x * y)</code><br>
-<code>print(np.multiply(x,y))</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[ 5 12]
- [21 32]] 乘法
-</code></pre>
-<p><code>print(x / y)</code><br>
-<code>print(np.divide(x,y))</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[0.2        0.33333333]
- [0.42857143 0.5       ]] 除法
-</code></pre>
-<p><code>print(np.sqrt(x))</code><br>
-<strong>输出：</strong></p>
-<pre><code class="language-cpp">[[1.         1.41421356]
- [1.73205081 2.        ]] 开方
-</code></pre>
-<p><code>print(np.sum(x))</code> **输出：**10   全部元素加和<br>
-<code>print(np.sum(x,axis = 0))</code> <strong>输出：</strong>[4,6]   将每一列加和<br>
-<code>print(np.sum(x,axis = 1))</code> <strong>输出：</strong>[3,7]   将每一行加和<br>
-<code>print(np.sum(x,axis = 2))</code> #将会报错</p>
-<h1 id="part-5-广播">Part 5 : 广播 🚴</h1>
 ]]></content>
     </entry>
 </feed>
