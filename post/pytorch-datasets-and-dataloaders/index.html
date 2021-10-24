@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>用Matplotlib在Python中绘制图像 | 停云</title>
+<title>PyTorch-Datasets &amp; Dataloaders | 停云</title>
 <link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1635051103490">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="用Matplotlib在Python中绘制图像 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="PyTorch-Datasets &amp; Dataloaders | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -22,14 +22,8 @@
 
 
 
-
-Matplotlib是Python中用于绘制图形的库，可实现数据的可视化
-import numpy as np
-import matplotlib.pyplot as plt
-
-示例：绘制sin(x)曲线
-x = n..." />
-    <meta name="keywords" content="数学建模,Python" />
+处理数据样本的代码可能会变得混乱且难以维护。在理想情况下，我们希望我们的数据集代码与我们的模型训练代码相分隔，以实现更好的可读性和模块化。PyTorch 提供了两个数据基本模块：torch.utils.data.Dat..." />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -79,27 +73,17 @@ x = n..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              用Matplotlib在Python中绘制图像
+              PyTorch-Datasets &amp; Dataloaders
             </h2>
             <div class="post-info">
               <span>
-                2021-10-09
+                2021-10-23
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://CTerena.github.io/tag/I5RqL6JrB/" class="post-tag">
-                  # 数学建模
-                </a>
-              
-                <a href="https://CTerena.github.io/tag/200FfDP2C/" class="post-tag">
-                  # Python
-                </a>
-              
             </div>
-            
-              <img class="post-feature-image" src="http://imgsrc.baidu.com/forum/pic/item/4886a7efce1b9d168d0375c7f4deb48f8d546414.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
@@ -114,39 +98,74 @@ x = n..." />
 <!-- more -->
 <!-- more -->
 <!-- more -->
+<p>处理数据样本的代码可能会变得混乱且难以维护。在理想情况下，我们希望我们的数据集代码与我们的模型训练代码相分隔，以实现更好的可读性和模块化。PyTorch 提供了两个数据基本模块：<code>torch.utils.data.DataLoader</code>和<code>torch.utils.data.Dataset</code>这两个模块允许用户使用预加载的数据集以及自己的数据。<code>Dataset</code>存储数据样品及其相应的标签，<code>DataLoader</code>则是对Dataset进行进一步的参数配置得到的数据学习集</p>
 <!-- more -->
-<p>Matplotlib是Python中用于绘制图形的库，可实现数据的可视化<br>
-<code>import numpy as np</code><br>
-<code>import matplotlib.pyplot as plt</code></p>
+<p>PyTorch 域库提供一些预加载的数据集（如 FashionMNIST），这些数据集可对特定数据进行子分类并实现特定功能。它们可用于设计模型和校准模型。</p>
+<h1 id="loading-a-dataset">Loading a Dataset</h1>
+<p>以下是一个载入Fashion-MNIST数据集的示例。（Fashion-MNIST数据集包含六万个训练样本和一万个测试样本，每个样本为一张28*28的灰度图，并且用有十个标签中的一个）</p>
 <!-- more -->
-<p>示例：绘制sin(x)曲线</p>
-<pre><code class="language-cpp">x = np.arange(0,10,0.01)
-y = sin(x)
-plt.plot(x , y)
-plt.show()
-</code></pre>
-<p>这里生成了[0, 0.1, 0.2, ... , 5.8, 5.9]的数据，将其设为x。对x的各个元素，应用NumPy的sin函数，将x、y的数据传给<code>plt.plot</code>方法，然后绘制图形。最后，通过plt.show()显示图形。运行上述代码后，就会显示如下图形：<br>
-<img src="https://CTerena.github.io/post-images/1633761147270.png" alt="" loading="lazy"></p>
-<p>对于刚才的sin(x)图像，我们可以使用pyplot的添加标题和坐标轴标签等功能,同时追加cos(x)的图像。</p>
-<pre><code class="language-cpp">import numpy as np
+<p>载入数据集时考虑以下参数：</p>
+<ul>
+<li><code>root</code> 数据存储地址</li>
+<li><code>train</code>用作训练数据还是测试数据</li>
+<li><code>download=True</code>下载数据（如果未下载过）</li>
+<li><code>transform</code>和<code>target_transfoem</code>指定特性和标签转换</li>
+</ul>
+<pre><code class="language-cpp">import torch
+from torch.utils.data import Dataset
+from torchvision import datasets
+from torchvision.transforms import ToTensor
 import matplotlib.pyplot as plt
 
-x = np.arange(0, 10, 0.01)
-y1 = np.sin(x)
-y2 = np.cos(x)
-plt.plot(x, y1, label = 'sin')#label命名
-plt.plot(x, y2, linestyle = '--', label = 'cos')#linestyle设置为虚线
-plt.xlabel('x')#x轴命名
-plt.ylabel('y')#y轴命名
-plt.title('sin&amp;cos')
-plt.legend()#曲线名称标注
+training_Data = datasets.FashionMNIST(
+    root=&quot;data&quot;,
+    train=True
+    download=True
+    transform=ToTensor()
+)
+
+test_data = datasets.FashionMNIST(
+    root=&quot;data&quot;,
+    train=False
+    download=True
+    transform=ToTensor
+)
+</code></pre>
+<p>解释：<br>
+<code>transform=ToTensor()</code>将不同格式的数据转换成Pytorch可以快速运算的张量类型</p>
+<h1 id="iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</h1>
+<p>对于<code>Datasets</code>，可以像对列表那样使用指数：<code>training_data[index]</code>，下面使用<code>matplotlib</code>进行一些测试样本的可视化：</p>
+<pre><code class="language-cpp">labels_map = {
+    0: &quot;T-Shirt&quot;,
+    1: &quot;Trouser&quot;,
+    2: &quot;Pullover&quot;,
+    3: &quot;Dress&quot;,
+    4: &quot;Coat&quot;,
+    5: &quot;Sandal&quot;,
+    6: &quot;Shirt&quot;,
+    7: &quot;Sneaker&quot;,
+    8: &quot;Bag&quot;,
+    9: &quot;Ankle Boot&quot;,
+}
+figure = plt.figure(figsize=(8, 8))
+cols, rows = 3, 3  #输出图片的行数列数
+for i in range(1, cols * rows + 1):
+    sample_idx = torch.randint(len(training_data), size=(1,)).item()#随机取样
+    img, label = training_data[sample_idx]
+    figure.add_subplot(rows, cols, i)#将画布分割成多个网格
+    plt.title(labels_map[label])#标题（分类）
+    plt.axis(&quot;off&quot;)#关闭坐标轴
+    plt.imshow(img.squeeze(), cmap=&quot;gray&quot;)
 plt.show()
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://CTerena.github.io/post-images/1633761661731.png" alt="" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li><a href="#loading-a-dataset">Loading a Dataset</a></li>
+<li><a href="#iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</a></li>
+</ul>
+
               </div>
             </div>
           </article>
@@ -155,9 +174,9 @@ plt.show()
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://CTerena.github.io/post/matlab-cheng-xu-she-ji-yu-yan-ji-chu/">
+            <a href="https://CTerena.github.io/post/chang-yong-zi-dian-chang-liang-he-cao-zuo/">
               <h3 class="post-title">
-                MATLAB程序设计语言基础
+                常用字典常量和操作
               </h3>
             </a>
           </div>

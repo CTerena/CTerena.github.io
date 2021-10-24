@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>停云</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1634517221159">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1635051103490">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1634517221159" alt="">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1635051103490" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -58,6 +58,62 @@
 
     
         <div class="post-container">
+  
+    <article class="post">
+      <a href="https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/">
+        <h2 class="post-title">线性代数中的线性方程组（一）</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2021-10-07
+        </span>
+        <span>
+          3 min read
+        </span>
+        
+          <a href="https://CTerena.github.io/tag/m3ZXT2XuP/" class="post-tag">
+            # 数学
+          </a>
+        
+      </div>
+      
+        <a href="https://CTerena.github.io/post/xian-xing-dai-shu-zhong-de-xian-xing-fang-cheng-zu-yi/" class="post-feature-image" style="background-image: url('http://imgsrc.baidu.com/forum/pic/item/032d55fbb2fb43165c69f2e72ca4462308f7d3fd.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://CTerena.github.io/post/shu-lian-pou-fen-xue-xi-bi-ji/">
+        <h2 class="post-title">树链剖分 (QTREE) 学习笔记</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2021-10-07
+        </span>
+        <span>
+          9 min read
+        </span>
+        
+          <a href="https://CTerena.github.io/tag/Qal43632X/" class="post-tag">
+            # C++
+          </a>
+        
+          <a href="https://CTerena.github.io/tag/PSUN0rh3D/" class="post-tag">
+            # 数据结构
+          </a>
+        
+      </div>
+      
+        <a href="https://CTerena.github.io/post/shu-lian-pou-fen-xue-xi-bi-ji/" class="post-feature-image" style="background-image: url('http://imgsrc.baidu.com/forum/pic/item/be4a19d8bc3eb13556c9823aaa1ea8d3fc1f44e0.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
   
     <article class="post">
       <a href="https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/">
@@ -124,7 +180,7 @@
           2021-10-04
         </span>
         <span>
-          4 min read
+          5 min read
         </span>
         
           <a href="https://CTerena.github.io/tag/I5RqL6JrB/" class="post-tag">
@@ -141,7 +197,26 @@
         </a>
       
       <div class="post-abstract">
-        
+        <p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
+<h1 id="part-1-array数组">Part 1 : array数组</h1>
+<p><code>import numpy as np</code>  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调用函数<br>
+<code>import random</code></p>
+<p><code>a = np.array([1,2,3])</code> 创建一个一维数组</p>
+<p><code>print(a.shape)</code> <strong>输出一个元组：</strong>(3,)代表该数组代表三列一行的矩阵<br>
+<code>print(a[0],a[1],a[2])</code> <strong>输出：</strong>&quot;1 2 3&quot;<br>
+<code>a[0] = 4</code> <strong>支持原位置修改</strong></p>
+<pre><code class="language-cpp">a = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9]])#创建一个多维数组对象，注意在列表元素的最外侧用方括号括死
+</code></pre>
+<p><code>print(a.shape)</code> 输出：(3,3)<br>
+<code>print(a[2][1],a[1][1],a[0][2])</code> <strong>输出：</strong>&quot;8 5 3&quot;</p>
+<h1 id="part-2-numpy库提供的数组创建函数">Part 2 : Numpy库提供的数组创建函数</h1>
+<p>从外部文件读取数据创造数组：</p>
+<pre><code class="language-cpp">data = np.loadtxt( 'inflammation.csv',delimiter=',' )
+print( data.shape )
+</code></pre>
+
       </div>
     </article>
   

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://CTerena.github.io</id>
     <title>停云</title>
-    <updated>2021-10-18T00:33:42.859Z</updated>
+    <updated>2021-10-24T04:51:47.238Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://CTerena.github.io"/>
     <link rel="self" href="https://CTerena.github.io/atom.xml"/>
@@ -10,6 +10,149 @@
     <logo>https://CTerena.github.io/images/avatar.png</logo>
     <icon>https://CTerena.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 停云</rights>
+    <entry>
+        <title type="html"><![CDATA[使用MATLAB求解微积分问题]]></title>
+        <id>https://CTerena.github.io/post/shi-yong-matlab-qiu-jie-wei-ji-fen-wen-ti/</id>
+        <link href="https://CTerena.github.io/post/shi-yong-matlab-qiu-jie-wei-ji-fen-wen-ti/">
+        </link>
+        <updated>2021-10-24T03:44:24.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<h1 id="part-1极限问题的解析解">Part 1.极限问题的解析解</h1>
+<p>极限问题在MATLAB符号运算工具箱中可以使用<code>limit()</code>函数直接求出，其调用格式为</p>
+<pre><code class="language-cpp">L = limit(f, x, x0) #求极限
+L = limit(f, x ,x0,'left' 或 'right') #求单边极限
+</code></pre>
+<p>在求解之前我们需要先用语句<code>syms x</code>声明自变量x，再用符号表达式的形式定义原函数f，若x0为无穷，则可以用<code>inf</code>或<code>-inf</code>来表示。如果需要求解左右极限问题，还需要给出<code>'left'</code>或<code>'right'</code>选项。<br>
+如果函数中只有一个符号变量，则可以在调用语句中忽略该变量，即省略第二项。</p>
+<p>示例：<br>
+当x从右侧趋于0时，求解y的极限<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mo>−</mo><mfrac><mrow><msup><mi mathvariant="normal">e</mi><msup><mi>x</mi><mn>3</mn></msup></msup><mo>−</mo><mn>1</mn></mrow><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><msqrt><mrow><mi>x</mi><mo>−</mo><mi>sin</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi>x</mi><mo fence="true">)</mo></mrow></mrow></msqrt><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">y=-\frac{{\mathrm{e}}^{x^3}-1}{\cos\left(\sqrt{x-\sin\left(x\right)}\right)-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.0582575em;vertical-align:-0.8383375em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2199200000000001em;"><span style="top:-2.4641625000000005em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight">cos</span><span class="minner mtight"><span class="mopen sizing reset-size3 size6 mtight delimcenter" style="top:0.07500000000000001em;"><span class="mtight">(</span></span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0369107142857144em;"><span class="svg-align" style="top:-3.428571428571429em;"><span class="pstrut" style="height:3.428571428571429em;"></span><span class="mord mtight" style="padding-left:1.19em;"><span class="mord mathdefault mtight">x</span><span class="mbin mtight">−</span><span class="mop mtight">sin</span><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">(</span></span><span class="mord mathdefault mtight">x</span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">)</span></span></span></span></span><span style="top:-3.0089107142857143em;"><span class="pstrut" style="height:3.428571428571429em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.5428571428571431em;"><svg width='400em' height='1.5428571428571431em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4196607142857143em;"><span></span></span></span></span></span><span class="mclose sizing reset-size3 size6 mtight delimcenter" style="top:0.07500000000000001em;"><span class="mtight">)</span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">e</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.1798857142857144em;"><span style="top:-3.1798857142857146em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.7488857142857146em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.04844em;"><span style="top:-3.04844em;margin-right:0.1em;"><span class="pstrut" style="height:2.64444em;"></span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8383375em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<pre><code class="language-cpp">syms x;
+f = (exp(x^3)-1)/(1-cos(sqrt(x-sin(x))));
+limit(f, x, 0, 'left')
+</code></pre>
+<p>MATLAB中显示结果如下：<br>
+<img src="https://CTerena.github.io/post-images/1635048016602.png" alt="" loading="lazy"><br>
+若极限不存在，则输出结果为<code>NaN</code></p>
+<h1 id="part-2函数导数的解析解">Part 2.函数导数的解析解</h1>
+<p>如果函数和自变量都已知，且均为符号变量，则可以用<code>diff()</code>函数接触给定函数的各阶导数。<code>diff()</code>函数的调用形式是<code>f1 = diff(f,x,n)</code>,其中，f为给定函数，x为自变量，这两个变量均为符号型变量，n为导数的阶次，若省略n则默认为求一阶导数，若f表达式中只有一个变量，则可以省略变量x。</p>
+<p>示例：<br>
+<img src="https://CTerena.github.io/post-images/1635048495769.png" alt="" loading="lazy"></p>
+<p>求解步骤：</p>
+<ol>
+<li>声明x为符号变量</li>
+<li>用MATLAB语句描述原函数</li>
+<li>调用<code>diff()</code>函数求导</li>
+</ol>
+<p>代码：</p>
+<pre><code class="language-cpp">syms x;
+f(x) = sin(x) / x^2 + 4*x + 3;
+f1 = diff(f)
+</code></pre>
+<p>得到如下输出结果：<br>
+<img src="https://CTerena.github.io/post-images/1635048659486.png" alt="" loading="lazy"><br>
+即为：<br>
+<img src="https://CTerena.github.io/post-images/1635048779930.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PyTorch-Datasets & Dataloaders]]></title>
+        <id>https://CTerena.github.io/post/pytorch-datasets-and-dataloaders/</id>
+        <link href="https://CTerena.github.io/post/pytorch-datasets-and-dataloaders/">
+        </link>
+        <updated>2021-10-23T06:25:16.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p>处理数据样本的代码可能会变得混乱且难以维护。在理想情况下，我们希望我们的数据集代码与我们的模型训练代码相分隔，以实现更好的可读性和模块化。PyTorch 提供了两个数据基本模块：<code>torch.utils.data.DataLoader</code>和<code>torch.utils.data.Dataset</code>这两个模块允许用户使用预加载的数据集以及自己的数据。<code>Dataset</code>存储数据样品及其相应的标签，<code>DataLoader</code>则是对Dataset进行进一步的参数配置得到的数据学习集</p>
+<!-- more -->
+<p>PyTorch 域库提供一些预加载的数据集（如 FashionMNIST），这些数据集可对特定数据进行子分类并实现特定功能。它们可用于设计模型和校准模型。</p>
+<h1 id="loading-a-dataset">Loading a Dataset</h1>
+<p>以下是一个载入Fashion-MNIST数据集的示例。（Fashion-MNIST数据集包含六万个训练样本和一万个测试样本，每个样本为一张28*28的灰度图，并且用有十个标签中的一个）</p>
+<!-- more -->
+<p>载入数据集时考虑以下参数：</p>
+<ul>
+<li><code>root</code> 数据存储地址</li>
+<li><code>train</code>用作训练数据还是测试数据</li>
+<li><code>download=True</code>下载数据（如果未下载过）</li>
+<li><code>transform</code>和<code>target_transfoem</code>指定特性和标签转换</li>
+</ul>
+<pre><code class="language-cpp">import torch
+from torch.utils.data import Dataset
+from torchvision import datasets
+from torchvision.transforms import ToTensor
+import matplotlib.pyplot as plt
+
+training_Data = datasets.FashionMNIST(
+    root=&quot;data&quot;,
+    train=True
+    download=True
+    transform=ToTensor()
+)
+
+test_data = datasets.FashionMNIST(
+    root=&quot;data&quot;,
+    train=False
+    download=True
+    transform=ToTensor
+)
+</code></pre>
+<p>解释：<br>
+<code>transform=ToTensor()</code>将不同格式的数据转换成Pytorch可以快速运算的张量类型</p>
+<h1 id="iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</h1>
+<p>对于<code>Datasets</code>，可以像对列表那样使用指数：<code>training_data[index]</code>，下面使用<code>matplotlib</code>进行一些测试样本的可视化：</p>
+<pre><code class="language-cpp">labels_map = {
+    0: &quot;T-Shirt&quot;,
+    1: &quot;Trouser&quot;,
+    2: &quot;Pullover&quot;,
+    3: &quot;Dress&quot;,
+    4: &quot;Coat&quot;,
+    5: &quot;Sandal&quot;,
+    6: &quot;Shirt&quot;,
+    7: &quot;Sneaker&quot;,
+    8: &quot;Bag&quot;,
+    9: &quot;Ankle Boot&quot;,
+}
+figure = plt.figure(figsize=(8, 8))
+cols, rows = 3, 3  #输出图片的行数列数
+for i in range(1, cols * rows + 1):
+    sample_idx = torch.randint(len(training_data), size=(1,)).item()#随机取样
+    img, label = training_data[sample_idx]
+    figure.add_subplot(rows, cols, i)#将画布分割成多个网格
+    plt.title(labels_map[label])#标题（分类）
+    plt.axis(&quot;off&quot;)#关闭坐标轴
+    plt.imshow(img.squeeze(), cmap=&quot;gray&quot;)
+plt.show()
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[常用字典常量和操作]]></title>
         <id>https://CTerena.github.io/post/chang-yong-zi-dian-chang-liang-he-cao-zuo/</id>
@@ -1230,279 +1373,6 @@ int main()
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[可持久化线段树（prizident tree）学习笔记]]></title>
-        <id>https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/</id>
-        <link href="https://CTerena.github.io/post/ke-chi-jiu-hua-xian-duan-shu-prizident-treexue-xi-bi-ji/">
-        </link>
-        <updated>2021-10-07T13:29:10.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="part-1-定义">Part 1. 定义：</h1>
-<p>    可持久化：数据结构可以支持回退，访问之前版本的性质<br>
-    主席树：可以访问未经过其他操作的版本的线段树</p>
-<h1 id="part-2-原理">Part 2. 原理：</h1>
-<p>主席树与线段树的基本操作相同，难点在于可持久化的实现。</p>
-<p>如果想要访问每个版本的线段树，首先想到的是对线段树进行全盘复制，然后在上个版本的基础上进行本次操作以建立新版本。但很显然如此一来空间复杂度会窜到O（n*m），显然不可行</p>
-<p>考虑操作对线段树的作用：每次操作一定不会涉及线段树上所有的节点，而不涉及的节点必然在两        个版本中是相同的，也就是可以共享的</p>
-<p>以此为切入点，如果我们在每次进行操作时只修改被影响的节点，可以得到如下的结果（图源洛谷）<img src="https://CTerena.github.io/post-images/1633613428792.png" alt="" loading="lazy"></p>
-<p>具体的做法是，进行每次操作时复制上个版本的根作为新版本的根，再递归判断修改的子节点进行修改</p>
-<p>代码：</p>
-<pre><code class="language-cpp">inline int update(int pre, int l, int r, int x)
-{
-    int rt=++cnt;
-    L[rt]=L[pre]; R[rt]=R[pre]; sum[rt]=sum[pre]+1;
-    if (l&lt;r)
-    {
-        if (x &lt;= mid) L[rt] = update(L[pre], l, mid, x);
-        else R[rt]=update(R[pre], mid+1, r, x);
-    }
-    return rt;
-}
-</code></pre>
-<h1 id="part3-模板题查询静态区间第k小">Part3. 模板题：查询静态区间第k小</h1>
-<p>与主席树的联系：把序列从左到右插入到树中，没插入一次对应一个版本，在l——r间查询对应在版本l和r间进行比较查询</p>
-<p>建树方法：先把整个序列进行离散化，线段树维护每个数出现过多少次</p>
-<p>比较方法：导入两个根，先对两者左儿子中数的个数进行比较，若比k小则说明k在右儿子中，进行递归</p>
-<p>完整代码：</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#define maxn 200010
-#define mid (l + r) / 2
-using namespace std;
-int ls[maxn &lt;&lt; 5],rs[maxn &lt;&lt; 5],sum[maxn &lt;&lt; 5];
-int a[maxn],b[maxn],cnt = 0,t[maxn &lt;&lt; 5];
-int n,m,q;
-int build(int l,int r)
-{
-    int rt = ++cnt;
-    sum[rt] = 0;
-    if(l &lt; r)
-    {
-        ls[rt] = build(l,mid);
-        rs[rt] = build(mid + 1,r);
-    }
-    return rt;
-}
-int update(int pre,int l,int r,int k)
-{
-    int rt = ++cnt;
-    ls[rt] = ls[pre];
-    rs[rt] = rs[pre];
-    sum[rt] = sum[pre] + 1;
-    if(l &lt; r)
-    {
-        if(k &lt;= mid)
-            ls[rt] = update(ls[pre],l,mid,k);
-        else
-            rs[rt] = update(rs[pre],mid + 1,r,k);
-    }
-    return rt;
-}
-int query(int u,int v,int l,int r,int k)
-{
-    if(l &gt;= r)
-        return l;
-    int usm = sum[ls[v]]-sum[ls[u]];
-    if(k &lt;= usm)
-        return query(ls[u],ls[v],l,mid,k);
-    else
-        return query(rs[u],rs[v],mid + 1,r,k - usm);
-}
-int main()
-{
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;q);
-    for(int  i = 1;i &lt;= n;i++)    
-    {
-        scanf(&quot;%d&quot;,&amp;a[i]);
-        b[i] = a[i];
-    }
-    sort(b + 1,b + n + 1);
-    m = unique(b + 1,b + n + 1) - b - 1;
-    t[0] = build(1,m);
-    for(int i = 1;i &lt;= n;i++)
-    {
-        int p = lower_bound(b + 1,b + m + 1,a[i]) - b;
-        t[i] = update(t[i - 1],1,m,p);
-    }
-    while(q--)
-    {
-        int x,y,z;
-        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
-        printf(&quot;%d\n&quot;,b[query(t[x - 1],t[y],1,m,z)]);
-    }
-    return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python中的文件操作]]></title>
-        <id>https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/</id>
-        <link href="https://CTerena.github.io/post/python-zhong-de-wen-jian-yun-suan/">
-        </link>
-        <updated>2021-10-07T05:29:17.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<!-- more -->
-<p>概述：文件是计算机中由操作系统管理的具有名字的存储区域<br>
-借助Python内置的open函数，我们可通过程序对计算机上已有的文件进行读写，也可以创建新文件并赋予其任意内容</p>
-<h1 id="part-1-打开文件">Part 1. 打开文件🚗</h1>
-<p> 操作：<code>myfile = open('file.txt','r')</code><br>
- 为了打开一个文件，程序要调用open函数，内部参数首先是文件名，接着是处理模式。处理模式中，<code>'r'</code>代表输入打开文件，<code>'w'</code>代表输出生成并打开文件，<code>'a'</code>代表在打开文件并在文件尾部追加内容，若想对一个文件同时进行读写操作，可使用<code>'r+'</code>。若不填写处理模式，则默认为<code>'r'</code><br>
-<strong>注意：关闭文件：<code>myfile.close()</code>调用close函数将会终止对外部文件的链接，手动关闭文件不是必要的，但是一个很好的习惯，可以有效地防止文件数据丢失或篡改</strong></p>
-<h1 id="part-2-读取文件内容">Part 2. 读取文件内容🛴</h1>
-<!-- more -->
-<ul>
-<li><code>mydata = myfile.read()</code>  将整个文件读进单一字符串<br>
-使用read()读取将会返回一个包含文件全部内容（包括行末标识符）的字符串</li>
-</ul>
-<!-- more -->
-<ul>
-<li><code>mydata = myfile.readline()</code>  读取下一行（包括行末标识符）到一个字符串<br>
-从第一行开始，每次使用readline会自动读取下一行的全部内容，以字符串形式返回</li>
-</ul>
-<!-- more -->
-<ul>
-<li><code>mydata = myfile.readlines()</code> 读取整个文件到字符串列表<br>
-生成一个元素数等于文件行数的列表，列表中的每一元素为文件中一行全部内容的字符串</li>
-</ul>
-<p>使用演示：</p>
-<p>以三种方法读取以下文件：<br>
-<img src="https://CTerena.github.io/post-images/1633588030389.png" alt="" loading="lazy"></p>
-<ol>
-<li>read()</li>
-</ol>
-<pre><code class="language-cpp">    myfile = open('sonnet 18.txt','r')
-    mydata = myfile.read()
-    myfile.close()
-    print(type(mydata))
-    print(mydata)
-</code></pre>
-<p>结果：</p>
-<pre><code class="language-cpp">    &lt;class 'str'&gt;
-    So long as men can breathe, or eyes can see,
-    So long lives this, and this gives life to thee.
-</code></pre>
-<!-- more -->
-<p>2.readline()</p>
-<pre><code class="language-cpp">    myfile = open('sonnet 18.txt','r')
-    mydata1 = myfile.readline()
-    mydata2 = myfile.readline()
-    myfile.close()
-    print(type(mydata1))
-    print('第一行：%s' % mydata2)
-    print('第二行：%s' % mydata1)
-</code></pre>
-<p>结果：</p>
-<pre><code class="language-cpp">    &lt;class 'str'&gt;
-    第一行：So long lives this, and this gives life to thee.
-    第二行：So long as men can breathe, or eyes can see,
-</code></pre>
-<!-- more -->
-<p>3.readlines()</p>
-<pre><code class="language-cpp">    myfile = open('sonnet 18.txt','r')
-    mydata = myfile.readlines()
-    myfile.close()
-    print(type(mydata))
-    print(mydata)
-
-    print(mydata[1])
-</code></pre>
-<p>结果：</p>
-<pre><code class="language-cpp">    &lt;class 'list'&gt;
-    ['So long as men can breathe, or eyes can see,\n', 'So long lives this, and this gives life to thee.']
-    So long lives this, and this gives life to thee.
-</code></pre>
-<h1 id="part-3-处理文件内容">Part 3. 处理文件内容🚲</h1>
-<p>实际办公编程中，我们常常不仅需要读取文件的所有内容，更需要对其中的重要信息进行提取归纳。这需要我们掌握一些进阶的字符串处理操作：</p>
-<p><strong>例1</strong> 提取所有作家的名字：<br>
-<img src="https://CTerena.github.io/post-images/1633590885680.png" alt="" loading="lazy"><br>
-    可以注意到，该文件中作家名字被逗号和换行符分开，为提取单个作家名字，可以使用<code>split()</code>函数<br>
-    * <code>split()</code>函数用法：通过切除字符串中的指定字符将字符串拆分成多个并以列表形式存储，如下：</p>
-<pre><code class="language-cpp">    str = 'A rose,is a rose,is a rose,is a rose'
-    lis = str.split(',')
-    print(lis)
-</code></pre>
-<p>    结果：</p>
-<pre><code class="language-cpp">    ['A rose', 'is a rose', 'is a rose', 'is a rose']
-</code></pre>
-<p>    该例中，我们使用<code>split()</code>以逗号为隔断将字符串拆成多个。而为了处理上方的作家名问    题，我们需要分别以换行符和逗号作为隔断，顺便一提，换行符的表示方法是<code>'\n'</code></p>
-<pre><code class="language-cpp">    myfile = open('2021诺贝尔文学奖预测.txt','r')
-    mydata = myfile.read() #全部读取
-    print(mydata,'\n') 
-
-    mydata = mydata.split('\n') #以换行符为隔断
-    print(mydata,'\n') 
-
-    for row in mydata: #枚举列表元素，相当于枚举原文件每行（字符串形式）
-        name = row.split(',') #在该行中以逗号为隔断
-        for i in range(0,len(name)): #输出名字
-            print(name[i])
-</code></pre>
-<p>    结果：</p>
-<pre><code class="language-cpp">    Murakami,Ngugi,Carson,Ulitskaya
-    Atwood,Krasznahorkai,Lillo
-    Oates,Pynchon,CanXue,Houellebecq
-    YanLianke,Elena,Kincaid 
-
-    ['Murakami,Ngugi,Carson,Ulitskaya', 'Atwood,Krasznahorkai,Lillo', 'Oates,   Pynchon,CanXue,Houellebecq', 'YanLianke,Elena,Kincaid'] 
-
-    Murakami
-    Ngugi
-    Carson
-    Ulitskaya
-    Atwood
-    Krasznahorkai
-    Lillo
-    Oates
-    Pynchon
-    CanXue
-    Houellebecq
-    YanLianke
-    Elena
-    Kincaid
-</code></pre>
-<p><strong>例2</strong> 将每一行的词语连成一句话：<br>
-<img src="https://CTerena.github.io/post-images/1633593025159.png" alt="" loading="lazy"><br>
-     首先，我们可通过<code>split()</code>将词语归纳到一个列表中：</p>
-<pre><code class="language-cpp">    myfile = open('An American folk.txt','r')
-    mydata = myfile.read()
-    mydata = mydata.split('\n')
-</code></pre>
-<p>     此时，<code>mydata</code>为<code>['May', 'your', 'days', 'be', 'fragrant,', 'And may', 'all', 'your', 'Christamses', 'be', 'merry', 'and bright.']</code></p>
-<!-- more -->
-<p>     借着，我们可借助<code>join()</code>函数将这些词语连为一句：</p>
-<pre><code class="language-cpp">    folk = ' '.join(mydata)
-    print(folk)
-</code></pre>
-<p>     结果：</p>
-<pre><code class="language-cpp">May your days be fragrant, And may all your Christamses be merry and bright.
-</code></pre>
-<h1 id="part-4-写入文件内容">Part 4. 写入文件内容🚝</h1>
-<p>     <code>myfile.write(xxx)</code> 写入字节字符串到文件，以课件为例：<br>
-<img src="https://CTerena.github.io/post-images/1633594109676.png" alt="" loading="lazy"><br>
-（<code>open('poem.txt','w')</code>会创建了一个新文件poem.txt）<br>
-另外，可以通过<code>writelines()</code>将列表内容按行写入文件：</p>
-<pre><code class="language-cpp">L = ['Wee ', 'Liat ', 'speaks ', 'so his mother ', 'fast ']
-
-myfile = open('Wee.txt','w')
-myfile.writelines(L)
-
-myfile.close()
-</code></pre>
-<p>即可得到文件：<br>
-<img src="https://CTerena.github.io/post-images/1633594483848.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>

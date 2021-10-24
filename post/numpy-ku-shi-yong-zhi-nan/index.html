@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Numpy库使用指南 | 停云</title>
-<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1634517221159">
+<link rel="shortcut icon" href="https://CTerena.github.io/favicon.ico?v=1635051103490">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://CTerena.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Numpy库使用指南 | 停云 - Atom Feed" href="https://CTerena.github.io/atom.xml">
@@ -12,8 +12,8 @@
 
 
     <meta name="description" content="Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具
-Part 1 : array数组🤠
-import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;..." />
+Part 1 : array数组
+import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调..." />
     <meta name="keywords" content="数学建模,Python" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -23,7 +23,7 @@ import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;n
       <div class="main-content">
         <div class="site-header">
   <a href="https://CTerena.github.io">
-  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1634517221159" alt="">
+  <img class="avatar" src="https://CTerena.github.io/images/avatar.png?v=1635051103490" alt="">
   </a>
   <h1 class="site-title">
     停云
@@ -71,7 +71,7 @@ import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;n
                 2021-10-04
               </span>
               <span>
-                4 min read
+                5 min read
               </span>
               
                 <a href="https://CTerena.github.io/tag/I5RqL6JrB/" class="post-tag">
@@ -89,20 +89,25 @@ import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;n
             <div class="post-content-wrapper">
               <div class="post-content">
                 <p>Numpy 是 Python 的核心库，提供多维数组对象及处理数组的工具</p>
-<h1 id="part-1-array数组">Part 1 : array数组🤠</h1>
+<h1 id="part-1-array数组">Part 1 : array数组</h1>
 <p><code>import numpy as np</code>  名称简化，程序中可以以&quot;np&quot;代替&quot;numpy&quot;来调用函数<br>
 <code>import random</code></p>
 <p><code>a = np.array([1,2,3])</code> 创建一个一维数组</p>
-<p><code>print(a.shape)</code> <strong>输出：</strong>(3,)代表该数组代表三列一行的矩阵<br>
+<p><code>print(a.shape)</code> <strong>输出一个元组：</strong>(3,)代表该数组代表三列一行的矩阵<br>
 <code>print(a[0],a[1],a[2])</code> <strong>输出：</strong>&quot;1 2 3&quot;<br>
 <code>a[0] = 4</code> <strong>支持原位置修改</strong></p>
 <pre><code class="language-cpp">a = np.array([[1,2,3],
               [4,5,6],
               [7,8,9]])#创建一个多维数组对象，注意在列表元素的最外侧用方括号括死
 </code></pre>
-<p><code>print(a.shape)</code> <strong>输出：</strong>(3,3)<br>
+<p><code>print(a.shape)</code> 输出：(3,3)<br>
 <code>print(a[2][1],a[1][1],a[0][2])</code> <strong>输出：</strong>&quot;8 5 3&quot;</p>
-<h1 id="part-2-numpy库提供的数组创建函数">Part 2 : Numpy库提供的数组创建函数🥋</h1>
+<h1 id="part-2-numpy库提供的数组创建函数">Part 2 : Numpy库提供的数组创建函数</h1>
+<p>从外部文件读取数据创造数组：</p>
+<pre><code class="language-cpp">data = np.loadtxt( 'inflammation.csv',delimiter=',' )
+print( data.shape )
+</code></pre>
+<!-- more -->
 <p><code>a = np.zeros((2,3))</code> 创建一个二行三列的全零数组<br>
 <code>print(a)</code><br>
 <strong>输出：</strong></p>
@@ -111,28 +116,37 @@ import numpy as np  名称简化，程序中可以以&quot;np&quot;代替&quot;n
 </code></pre>
 <p><code>a = np.ones((1,4))</code>  创建一个一行四列的全一数组<br>
 <code>print(a)</code> 输出： [1. 1. 1. 1]</p>
-<p><code>a = np.full((3,2),7)</code>  创建一个三行二列，全为7的数组<br>
+<p><code>a = np.full((3,2),7)</code>  *创建一个三行二列，全为7的数组<br>
 <code>print(a)</code><br>
 <strong>输出：</strong></p>
 <pre><code class="language-cpp">   [[7 7]
     [7 7]
     [7 7]]
 </code></pre>
-<p><code>a = np.eye(3)</code>  创建一个3维单位矩阵<br>
+<p><code>a = np.eye(3)</code>  创建一个3维单位矩阵（对角线元素为1）<br>
 <code>print(a)</code><br>
 <strong>输出：</strong></p>
 <pre><code class="language-cpp">[[1. 0. 0.]
  [0. 1. 0.]
  [0. 0. 1.]]
 </code></pre>
-<p><code>a = np.random.random((3,2))</code> 创建一个随机数组成的矩阵<br>
+<p><code>a = np.random.random((3,2))</code> *创建一个随机数组成的矩阵<br>
 <code>print(a)</code><br>
 <strong>输出：</strong>(一个随机矩阵)</p>
 <pre><code class="language-cpp">[[0.81083542 0.78030703]
  [0.28447308 0.0237447 ]
  [0.20348505 0.34019911]] 
 </code></pre>
-<h1 id="part-3-数组索引">Part 3 : 数组索引 🤾‍♀</h1>
+<p>linspace函数：通过定义均匀间隔创建数值序列。其实，需要指定间隔起始点、终止端，以及指定分隔值总数（包括起始点和终止点），得到的数值规定为浮点数<br>
+调用格式：<code>np.linspace(起始点（数字）, 终止端（数字）, 取点总数)</code><br>
+示例：</p>
+<pre><code class="language-cpp">import numpy as np
+
+myrange = np.linspace( 1,10,10 )
+print(myrange )
+</code></pre>
+<p>输出：<code>[ 1. 2. 3. 4. 5. 6. 7. 8. 9. 10.]</code></p>
+<h1 id="part-3-数组索引">Part 3 : 数组索引</h1>
 <p><code>a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])</code><br>
 <code>b = a[:2,1:3]</code><br>
 <code>print(b)</code><br>
@@ -163,7 +177,7 @@ print(a[1,2]) # 10
  [ True  True  True  True]]
 </code></pre>
 <p><code>print(a[a&gt;2])</code>  输出a中所有大于二的元素</p>
-<h1 id="part-4-数组中的数学">Part 4 : 数组中的数学🏄‍♀</h1>
+<h1 id="part-4-数组中的数学">Part 4 : 数组中的数学</h1>
 <p><code>x = np.array([[1,2],[3,4]])</code><br>
 <code>y = np.array([[5,6],[7,8]])</code></p>
 <p><code>print(x + y)</code><br>
@@ -195,21 +209,36 @@ print(a[1,2]) # 10
 <pre><code class="language-cpp">[[1.         1.41421356]
  [1.73205081 2.        ]] 开方
 </code></pre>
-<p><code>print(np.sum(x))</code> **输出：**10   全部元素加和<br>
+<p><code>print(np.sum(x))</code> 输出：10   全部元素加和<br>
 <code>print(np.sum(x,axis = 0))</code> <strong>输出：</strong>[4,6]   将每一列加和<br>
-<code>print(np.sum(x,axis = 1))</code> <strong>输出：</strong>[3,7]   将每一行加和<br>
-<code>print(np.sum(x,axis = 2))</code> #将会报错</p>
-<h1 id="part-5-广播">Part 5 : 广播 🚴</h1>
+<code>print(np.sum(x,axis = 1))</code> <strong>输出：</strong>[3,7]   将每一行加和</p>
+<p>课件中涉及的其它操作：<br>
+<img src="https://CTerena.github.io/post-images/1635050029174.png" alt="" loading="lazy"><br>
+从上至下依次为：</p>
+<ul>
+<li>求矩阵的转置（可理解为把原来的第n行变为第n列，第n列变为第n行），且不改变原矩阵</li>
+<li>将矩阵转化为列表，且不改变原矩阵</li>
+<li>给矩阵排序，会改变原矩阵</li>
+<li>两个矩阵相同位置的对应元素相乘，并非线代意义上的矩阵乘法</li>
+<li>线代意义上的矩阵乘法，暂时不用了解</li>
+</ul>
+<h1 id="part-5-其余课件要点补充">Part 5. 其余课件要点补充</h1>
+<pre><code>1. numpy数组中的元素类型可以是：布尔型、整型、浮点型、复数型
+2. 若想对numpy中的所有元素统一进行三角函数、指数等运算，不从`math`库调用函数，而直接使用如下语句：（这些操作不会修改原数组）
+`np.sin( myarray )`
+`np.tanh( myarray )`
+`np.exp( -myarray )`
+</code></pre>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#part-1-array%E6%95%B0%E7%BB%84">Part 1 : array数组🤠</a></li>
-<li><a href="#part-2-numpy%E5%BA%93%E6%8F%90%E4%BE%9B%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">Part 2 : Numpy库提供的数组创建函数🥋</a></li>
-<li><a href="#part-3-%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">Part 3 : 数组索引 🤾‍♀</a></li>
+<li><a href="#part-1-array%E6%95%B0%E7%BB%84">Part 1 : array数组</a></li>
+<li><a href="#part-2-numpy%E5%BA%93%E6%8F%90%E4%BE%9B%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">Part 2 : Numpy库提供的数组创建函数</a></li>
+<li><a href="#part-3-%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">Part 3 : 数组索引</a></li>
 <li><a href="#%E5%B8%83%E5%B0%94%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">布尔数组索引</a></li>
-<li><a href="#part-4-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6">Part 4 : 数组中的数学🏄‍♀</a></li>
-<li><a href="#part-5-%E5%B9%BF%E6%92%AD">Part 5 : 广播 🚴</a></li>
+<li><a href="#part-4-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6">Part 4 : 数组中的数学</a></li>
+<li><a href="#part-5-%E5%85%B6%E4%BD%99%E8%AF%BE%E4%BB%B6%E8%A6%81%E7%82%B9%E8%A1%A5%E5%85%85">Part 5. 其余课件要点补充</a></li>
 </ul>
 
               </div>
